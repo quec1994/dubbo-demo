@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c1e1d083-20ff-4c53-a5c1-fdf9f24ddf4d" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1nK68tRMBlDPy3qvt1w48Rl2uIt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/consumer/src/main/java/com/tuling" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dubbo-admin" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.tuling.controller" />
+      <recent name="com.tuling.provider.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\dubbo-tuling-demo\consumer\src\main\resources" />
+      <recent name="D:\IdeaProjects\dubbo-tuling-demo\provider\src\main\resources" />
+      <recent name="D:\IdeaProjects\dubbo-tuling-demo\consumer\src\main\java\com\tuling\consumer" />
+      <recent name="D:\IdeaProjects\dubbo-tuling-demo\provider\src\main\java\com\tuling\provider\service" />
+      <recent name="D:\IdeaProjects\dubbo-tuling-demo\interface\src\main\java\com\tuling" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.DubboConsumerDemo">
+    <configuration name="CallbackDubboConsumerDemo" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="consumer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tuling.consumer.CallbackDubboConsumerDemo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DubboConsumerDemo" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="consumer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tuling.DubboConsumerDemo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DubboProviderDemo" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="provider" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tuling.DubboProviderDemo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoadBalanceDubboConsumerDemo" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="consumer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tuling.consumer.LoadBalanceDubboConsumerDemo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.DubboProviderDemo" />
+        <item itemvalue="Spring Boot.DubboConsumerDemo" />
+        <item itemvalue="Spring Boot.CallbackDubboConsumerDemo" />
+        <item itemvalue="Spring Boot.LoadBalanceDubboConsumerDemo" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2685" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1611133946651">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2685" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611133946651" />
+    <state x="2660" y="278" key="FileChooserDialogImpl" timestamp="1611136464836">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2660" y="278" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611136464836" />
+    <state width="1877" height="481" key="GridCell.Tab.0.bottom" timestamp="1611210170606">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="280" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036005" />
+    <state width="1877" height="481" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611210170606" />
+    <state width="1877" height="481" key="GridCell.Tab.0.center" timestamp="1611210170606">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="280" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036004" />
+    <state width="1877" height="481" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611210170606" />
+    <state width="1877" height="481" key="GridCell.Tab.0.left" timestamp="1611210170606">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="280" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036004" />
+    <state width="1877" height="481" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611210170606" />
+    <state width="1877" height="481" key="GridCell.Tab.0.right" timestamp="1611210170606">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="280" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036005" />
+    <state width="1877" height="481" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611210170606" />
+    <state width="1877" height="481" key="GridCell.Tab.1.bottom" timestamp="1611210170606">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="280" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036005" />
+    <state width="1877" height="481" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611210170606" />
+    <state width="1877" height="481" key="GridCell.Tab.1.center" timestamp="1611210170606">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="280" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036005" />
+    <state width="1877" height="481" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611210170606" />
+    <state width="1877" height="481" key="GridCell.Tab.1.left" timestamp="1611210170606">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="280" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036005" />
+    <state width="1877" height="481" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611210170606" />
+    <state width="1877" height="481" key="GridCell.Tab.1.right" timestamp="1611210170606">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="280" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036005" />
+    <state width="1877" height="481" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611210170606" />
+    <state x="2360" y="98" key="SettingsEditor" timestamp="1611144961077">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2360" y="98" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611144961077" />
+    <state x="2676" y="301" key="chooseDestDirectoryDialog" timestamp="1611131885738">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2676" y="301" key="chooseDestDirectoryDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611131885738" />
+    <state x="178" y="0" key="new project wizard" timestamp="1611126315342">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="178" y="0" key="new project wizard/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611126315342" />
+  </component>
+</project>
