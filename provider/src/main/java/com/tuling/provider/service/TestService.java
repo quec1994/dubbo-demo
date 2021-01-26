@@ -4,7 +4,7 @@ import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.rpc.service.GenericException;
 import org.apache.dubbo.rpc.service.GenericService;
 
-@Service
+//@Service
 public class TestService implements GenericService {
     @Override
     public Object $invoke(String s, String[] strings, Object[] objects) throws GenericException {

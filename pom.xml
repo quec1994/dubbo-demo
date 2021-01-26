@@ -17,7 +17,6 @@
     <properties>
         <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
         <dubbo.version>2.7.5</dubbo.version>
-
     </properties>
 
     <dependencyManagement>
