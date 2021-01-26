@@ -13,8 +13,6 @@ import java.util.concurrent.TimeUnit;
 //@Service(timeout = 3000)
 public class TimeoutDemoService implements DemoService {
 
-    //
-
     private final Map<String, DemoServiceListener> listeners = new ConcurrentHashMap<String, DemoServiceListener>();
 
     @Override
