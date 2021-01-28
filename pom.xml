@@ -12,6 +12,7 @@
         <module>provider</module>
         <module>consumer</module>
         <module>interface</module>
+        <module>dubbo-rpc-tuling</module>
     </modules>
 
     <properties>

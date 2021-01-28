@@ -59,5 +59,6 @@
             <artifactId>dubbo-rpc-http</artifactId>
             <version>${dubbo.version}</version>
         </dependency>
+
     </dependencies>
 </project>

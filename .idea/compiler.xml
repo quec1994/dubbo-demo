@@ -9,6 +9,7 @@
         <module name="consumer" />
         <module name="interface" />
         <module name="provider" />
+        <module name="dubbo-rpc-tuling" />
       </profile>
     </annotationProcessing>
   </component>

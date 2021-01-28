@@ -15,19 +15,17 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 
-//@Service
-//@Path("demo")
+@Service(version = "rest")
+@Path("demo")
 public class RestDemoService implements DemoService {
-
-    private final Map<String, DemoServiceListener> listeners = new ConcurrentHashMap<String, DemoServiceListener>();
 
     @GET
     @Path("say")
     @Produces({ContentType.APPLICATION_JSON_UTF_8, ContentType.TEXT_XML_UTF_8})
     @Override
     public String sayHello(@QueryParam("name") String name) {
+        System.out.println("执行了rest服务" + name);
 
-        System.out.println("执行了");
         URL url = RpcContext.getContext().getUrl();
         return String.format("%s: %s, Hello, %s", url.getProtocol(), url.getPort(), name);  // 正常访问
     }

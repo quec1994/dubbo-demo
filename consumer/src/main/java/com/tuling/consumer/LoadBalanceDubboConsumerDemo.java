@@ -12,7 +12,7 @@ import java.io.IOException;
 public class LoadBalanceDubboConsumerDemo {
 
 
-    @Reference(loadbalance = "roundrobin")
+    @Reference(version = "default", loadbalance = "consistenthash")
     private DemoService demoService;
 
     public static void main(String[] args) throws IOException {
@@ -21,8 +21,18 @@ public class LoadBalanceDubboConsumerDemo {
         DemoService demoService = context.getBean(DemoService.class);
 
         // 用来负载均衡
+//        for (int i = 0; i < 1000; i++) {
+//            System.out.println((demoService.sayHello("周瑜")));
+//            try {
+//                Thread.sleep(1 * 1000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+
+        // 一致性hash算法测试
         for (int i = 0; i < 1000; i++) {
-            System.out.println((demoService.sayHello("周瑜")));
+            System.out.println((demoService.sayHello(i%5+"周瑜")));
             try {
                 Thread.sleep(1 * 1000);
             } catch (InterruptedException e) {
