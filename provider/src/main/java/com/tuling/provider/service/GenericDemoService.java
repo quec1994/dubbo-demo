@@ -5,7 +5,7 @@ import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.rpc.service.GenericException;
 import org.apache.dubbo.rpc.service.GenericService;
 
-@Service(interfaceClass = DemoService.class, version = "generic")
+@Service(interfaceName = "com.tuling.DemoService", version = "generic")
 public class GenericDemoService implements GenericService {
     @Override
     public Object $invoke(String s, String[] strings, Object[] objects) throws GenericException {

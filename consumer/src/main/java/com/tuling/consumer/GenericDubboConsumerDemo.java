@@ -12,9 +12,8 @@ import java.io.IOException;
 public class GenericDubboConsumerDemo {
 
 
-    @Reference(id = "demoService", interfaceName = "com.luban.DemoService", generic = true)
-    private GenericService genericService; // Demoserver UServjisser
-
+    @Reference(id = "demoService", version = "default", interfaceName = "com.tuling.DemoService", generic = true)
+    private GenericService genericService;
 
     public static void main(String[] args) throws IOException {
         ConfigurableApplicationContext context = SpringApplication.run(GenericDubboConsumerDemo.class);

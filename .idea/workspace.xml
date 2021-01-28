@@ -3,21 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="c1e1d083-20ff-4c53-a5c1-fdf9f24ddf4d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consumer/src/main/java/com/tuling/DubboConsumerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/consumer/src/main/java/com/tuling/DubboConsumerDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consumer/src/main/java/com/tuling/consumer/CallbackDubboConsumerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/consumer/src/main/java/com/tuling/consumer/CallbackDubboConsumerDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consumer/src/main/java/com/tuling/consumer/MockDubboConsumerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/consumer/src/main/java/com/tuling/consumer/MockDubboConsumerDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consumer/src/main/java/com/tuling/consumer/StubDubboConsumerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/consumer/src/main/java/com/tuling/consumer/StubDubboConsumerDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consumer/src/main/java/com/tuling/consumer/TimeoutDubboConsumerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/consumer/src/main/java/com/tuling/consumer/TimeoutDubboConsumerDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/consumer/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consumer/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/consumer/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consumer/target/classes/com/tuling/DubboConsumerDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/consumer/target/classes/com/tuling/DubboConsumerDemo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consumer/target/classes/com/tuling/consumer/TimeoutDubboConsumerDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/consumer/target/classes/com/tuling/consumer/TimeoutDubboConsumerDemo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provider/src/main/java/com/tuling/provider/service/CallBackDemoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/provider/src/main/java/com/tuling/provider/service/CallBackDemoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provider/src/main/java/com/tuling/provider/service/TimeoutDemoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/provider/src/main/java/com/tuling/provider/service/TimeoutDemoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provider/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/provider/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provider/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/provider/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provider/target/classes/com/tuling/provider/service/CallBackDemoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/provider/target/classes/com/tuling/provider/service/CallBackDemoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/provider/target/classes/com/tuling/provider/service/TimeoutDemoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/provider/target/classes/com/tuling/provider/service/TimeoutDemoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/consumer/src/main/java/com/tuling/consumer/GenericDubboConsumerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/consumer/src/main/java/com/tuling/consumer/GenericDubboConsumerDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/consumer/target/classes/com/tuling/consumer/CallbackDubboConsumerDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/consumer/target/classes/com/tuling/consumer/CallbackDubboConsumerDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/consumer/target/classes/com/tuling/consumer/GenericDubboConsumerDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/consumer/target/classes/com/tuling/consumer/GenericDubboConsumerDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/consumer/target/classes/com/tuling/consumer/MockDubboConsumerDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/consumer/target/classes/com/tuling/consumer/MockDubboConsumerDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/consumer/target/classes/com/tuling/consumer/StubDubboConsumerDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/consumer/target/classes/com/tuling/consumer/StubDubboConsumerDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/provider/src/main/java/com/tuling/provider/service/GenericDemoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/provider/src/main/java/com/tuling/provider/service/GenericDemoService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +56,7 @@
       <recent name="D:\IdeaProjects\dubbo-tuling-demo\interface\src\main\java\com\tuling" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.DubboProviderDemo">
+  <component name="RunManager" selected="Spring Boot.GenericDubboConsumerDemo">
     <configuration name="CallbackDubboConsumerDemo" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="consumer" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.tuling.consumer.CallbackDubboConsumerDemo" />
@@ -76,6 +67,13 @@
     <configuration name="DubboProviderDemo" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="provider" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.tuling.DubboProviderDemo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GenericDubboConsumerDemo" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="consumer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tuling.consumer.GenericDubboConsumerDemo" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -94,20 +92,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TimeoutDubboConsumerDemo" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="consumer" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tuling.consumer.TimeoutDubboConsumerDemo" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.CallbackDubboConsumerDemo" />
+        <item itemvalue="Spring Boot.GenericDubboConsumerDemo" />
         <item itemvalue="Spring Boot.DubboProviderDemo" />
+        <item itemvalue="Spring Boot.CallbackDubboConsumerDemo" />
         <item itemvalue="Spring Boot.StubDubboConsumerDemo" />
         <item itemvalue="Spring Boot.MockDubboConsumerDemo" />
-        <item itemvalue="Spring Boot.TimeoutDubboConsumerDemo" />
       </list>
     </recent_temporary>
   </component>
@@ -134,10 +125,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2338" y="236" key="#xdebugger.evaluate/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611824787359" />
-    <state x="2524" y="115" key="CommitChangelistDialog2" timestamp="1611820102430">
+    <state x="2524" y="115" key="CommitChangelistDialog2" timestamp="1611826346864">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2524" y="115" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611820102430" />
+    <state x="2524" y="115" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611826346864" />
     <state width="696" height="466" key="DebuggerActiveHint" timestamp="1611826092465">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -150,70 +141,70 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2660" y="278" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611824386466" />
-    <state width="1877" height="501" key="GridCell.Tab.0.bottom" timestamp="1611825999501">
+    <state width="1877" height="431" key="GridCell.Tab.0.bottom" timestamp="1611829232094">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="280" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036005" />
-    <state width="1877" height="501" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611825999501" />
-    <state width="1877" height="501" key="GridCell.Tab.0.center" timestamp="1611825999501">
+    <state width="1877" height="431" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611829232094" />
+    <state width="1877" height="431" key="GridCell.Tab.0.center" timestamp="1611829232093">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="280" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036004" />
-    <state width="1877" height="501" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611825999501" />
-    <state width="1877" height="501" key="GridCell.Tab.0.left" timestamp="1611825999501">
+    <state width="1877" height="431" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611829232093" />
+    <state width="1877" height="431" key="GridCell.Tab.0.left" timestamp="1611829232093">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="280" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036004" />
-    <state width="1877" height="501" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611825999501" />
-    <state width="1877" height="501" key="GridCell.Tab.0.right" timestamp="1611825999501">
+    <state width="1877" height="431" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611829232093" />
+    <state width="1877" height="431" key="GridCell.Tab.0.right" timestamp="1611829232094">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="280" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036005" />
-    <state width="1877" height="501" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611825999501" />
-    <state width="1877" height="501" key="GridCell.Tab.1.bottom" timestamp="1611825999502">
+    <state width="1877" height="431" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611829232094" />
+    <state width="1877" height="431" key="GridCell.Tab.1.bottom" timestamp="1611829232094">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="280" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036005" />
-    <state width="1877" height="501" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611825999502" />
-    <state width="1877" height="501" key="GridCell.Tab.1.center" timestamp="1611825999502">
+    <state width="1877" height="431" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611829232094" />
+    <state width="1877" height="431" key="GridCell.Tab.1.center" timestamp="1611829232094">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="280" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036005" />
-    <state width="1877" height="501" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611825999502" />
-    <state width="1877" height="501" key="GridCell.Tab.1.left" timestamp="1611825999501">
+    <state width="1877" height="431" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611829232094" />
+    <state width="1877" height="431" key="GridCell.Tab.1.left" timestamp="1611829232094">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="280" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036005" />
-    <state width="1877" height="501" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611825999501" />
-    <state width="1877" height="501" key="GridCell.Tab.1.right" timestamp="1611825999502">
+    <state width="1877" height="431" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611829232094" />
+    <state width="1877" height="431" key="GridCell.Tab.1.right" timestamp="1611829232094">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="280" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1611143036005" />
-    <state width="1877" height="501" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611825999502" />
-    <state width="1877" height="461" key="GridCell.Tab.2.bottom" timestamp="1611825979636">
+    <state width="1877" height="431" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611829232094" />
+    <state width="1877" height="224" key="GridCell.Tab.2.bottom" timestamp="1611829018725">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="461" key="GridCell.Tab.2.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611825979636" />
-    <state width="1877" height="461" key="GridCell.Tab.2.center" timestamp="1611825979636">
+    <state width="1877" height="224" key="GridCell.Tab.2.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611829018725" />
+    <state width="1877" height="224" key="GridCell.Tab.2.center" timestamp="1611829018725">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="461" key="GridCell.Tab.2.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611825979636" />
-    <state width="1877" height="461" key="GridCell.Tab.2.left" timestamp="1611825979636">
+    <state width="1877" height="224" key="GridCell.Tab.2.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611829018725" />
+    <state width="1877" height="224" key="GridCell.Tab.2.left" timestamp="1611829018725">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="461" key="GridCell.Tab.2.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611825979636" />
-    <state width="1877" height="461" key="GridCell.Tab.2.right" timestamp="1611825979636">
+    <state width="1877" height="224" key="GridCell.Tab.2.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611829018725" />
+    <state width="1877" height="224" key="GridCell.Tab.2.right" timestamp="1611829018725">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="461" key="GridCell.Tab.2.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611825979636" />
+    <state width="1877" height="224" key="GridCell.Tab.2.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611829018725" />
     <state x="2360" y="98" key="SettingsEditor" timestamp="1611144961077">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2360" y="98" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611144961077" />
-    <state x="2472" y="256" key="Vcs.Push.Dialog.v2" timestamp="1611820106869">
+    <state x="2472" y="256" key="Vcs.Push.Dialog.v2" timestamp="1611826527270">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2472" y="256" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611820106869" />
+    <state x="2472" y="256" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611826527270" />
     <state x="2627" y="257" key="VcsDiffUtil.ChangesDialog" timestamp="1611814572617">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -226,10 +217,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2676" y="301" key="chooseDestDirectoryDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611131885738" />
-    <state x="2500" y="246" width="759" height="548" key="find.popup" timestamp="1611825572663">
+    <state x="2500" y="246" width="759" height="548" key="find.popup" timestamp="1611829111404">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2500" y="246" width="759" height="548" key="find.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611825572663" />
+    <state x="2500" y="246" width="759" height="548" key="find.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611829111404" />
     <state x="2143" y="0" key="new project wizard" timestamp="1611740095496">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
