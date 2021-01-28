@@ -22,24 +22,14 @@ public class DubboConsumerDemo implements WebMvcConfigurer {
         registry.addInterceptor(new ConsumerInterceptor());
     }
 
-    @Reference
+    @Reference(version = "default")
     private DemoService demoService;
 
     public static void main(String[] args) throws IOException {
         ConfigurableApplicationContext context = SpringApplication.run(DubboConsumerDemo.class);
 
-        System.out.println(context);
-
-//        DemoService demoService = context.getBean(DemoService.class);
-
-        //
-//        RpcContext.getContext().setAttachment("dubbo.tag","tag1");
-
-//        System.out.println((demoService.sayHello("周瑜")));
-
-//        RpcContext.getContext().setAttachment("dubbo.tag","tag1");
-
-
+        DemoService demoService = context.getBean(DemoService.class);
+        System.out.println((demoService.sayHello("周瑜")));
     }
 
 }
