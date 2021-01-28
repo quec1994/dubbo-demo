@@ -12,7 +12,8 @@ import java.io.IOException;
 public class StubDubboConsumerDemo {
 
 
-    @Reference(stub = "true")
+//    @Reference(version = "timeout", timeout = 1000, stub = "com.tuling.DemoServiceStub")
+    @Reference(version = "timeout", timeout = 1000, stub = "true")
     private DemoService demoService;
 
     public static void main(String[] args) throws IOException {

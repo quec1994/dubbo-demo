@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 // DemoService的sayHello方法的index=1的参数是回调对象，服务消费者可以调用addListener方法来添加回调对象，服务提供者一旦执行回调对象的方法就会通知给服务消费者
 
-@Service(version = "callback", methods = {@Method(name = "sayHello", arguments = {@Argument(index = 2, callback = true)})})
+@Service(version = "callback", methods = {@Method(name = "sayHello", arguments = {@Argument(index = 2, callback = true)})}, callbacks = 3)
 public class CallBackDemoService implements DemoService {
 
     private final Map<String, DemoServiceListener> listeners = new ConcurrentHashMap<String, DemoServiceListener>();

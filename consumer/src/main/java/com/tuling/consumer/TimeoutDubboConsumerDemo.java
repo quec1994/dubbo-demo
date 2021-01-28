@@ -12,7 +12,7 @@ import java.io.IOException;
 public class TimeoutDubboConsumerDemo {
 
 
-    @Reference(cluster = "failfast", stub = "true")   //d
+    @Reference(version = "timeout", timeout = 3000)
     private DemoService demoService;
 
     public static void main(String[] args) throws IOException {

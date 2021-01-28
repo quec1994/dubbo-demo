@@ -12,7 +12,7 @@ import java.io.IOException;
 public class CallbackDubboConsumerDemo {
 
 
-    @Reference(loadbalance = "roundrobin")
+    @Reference(version = "callback")
     private DemoService demoService;
 
     public static void main(String[] args) throws IOException {
@@ -22,6 +22,8 @@ public class CallbackDubboConsumerDemo {
 
         // 用来进行callback
         System.out.println(demoService.sayHello("周瑜", "d1", new DemoServiceListenerImpl()));
+        System.out.println(demoService.sayHello("周瑜", "d2", new DemoServiceListenerImpl()));
+        System.out.println(demoService.sayHello("周瑜", "d3", new DemoServiceListenerImpl()));
     }
 
 }

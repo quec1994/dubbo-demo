@@ -12,8 +12,8 @@ import java.io.IOException;
 public class MockDubboConsumerDemo {
 
 
-    //    @Reference(mock = "fail: return 123")
-    @Reference(mock = "true")
+        @Reference(version = "timeout", timeout = 1000, mock = "fail: return 123")
+//    @Reference(version = "timeout", mock = "true")
     private DemoService demoService;
 
     public static void main(String[] args) throws IOException {

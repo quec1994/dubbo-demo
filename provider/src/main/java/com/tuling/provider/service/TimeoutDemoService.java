@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 
-@Service(version = "timeout")
+@Service(version = "timeout", timeout = 6000)
 public class TimeoutDemoService implements DemoService {
 
     @Override
