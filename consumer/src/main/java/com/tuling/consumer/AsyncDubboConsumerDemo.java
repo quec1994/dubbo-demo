@@ -12,7 +12,7 @@ import java.util.concurrent.CompletableFuture;
 @EnableAutoConfiguration
 public class AsyncDubboConsumerDemo {
 
-    @Reference
+    @Reference(version = "async")
     private DemoService demoService;
 
     public static void main(String[] args) throws IOException {
