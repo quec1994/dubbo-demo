@@ -20,6 +20,9 @@ public class AsyncDemoService implements DemoService {
     @Override
     public CompletableFuture<String> sayHelloAsync(String name) {
         System.out.println("执行了异步服务" + name);
-        return CompletableFuture.completedFuture(sayHello(name));
+
+        return CompletableFuture.supplyAsync(() -> {
+            return sayHello(name);
+        });
     }
 }
