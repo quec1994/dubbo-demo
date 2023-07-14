@@ -9,10 +9,10 @@ public interface DemoService {
     // 异步调用方法
     default CompletableFuture<String> sayHelloAsync(String name) {
         return null;
-    };
+    }
 
     // 添加回调
     default String sayHello(String name, String key, DemoServiceListener listener) {
         return null;
-    };
+    }
 }

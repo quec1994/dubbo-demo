@@ -1,7 +1,5 @@
 package com.demo;
 
-import com.demo.DemoService;
-
 public class DemoServiceMock implements DemoService {
 
     @Override
