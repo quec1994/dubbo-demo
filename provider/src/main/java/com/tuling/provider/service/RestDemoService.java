@@ -1,10 +1,8 @@
 package com.tuling.provider.service;
 
 import com.tuling.DemoService;
-import com.tuling.DemoServiceListener;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.annotation.DubboService;
-import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.rpc.RpcContext;
 import org.apache.dubbo.rpc.protocol.rest.support.ContentType;
 
@@ -12,8 +10,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 
 @DubboService(version = "rest", protocol = "rest")

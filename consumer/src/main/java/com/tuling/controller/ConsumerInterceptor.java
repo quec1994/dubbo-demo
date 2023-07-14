@@ -11,7 +11,7 @@ import java.util.List;
 public class ConsumerInterceptor implements HandlerInterceptor {
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
 
         // 测试账号
         List<String> tester = new ArrayList<>();

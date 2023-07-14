@@ -6,7 +6,6 @@ import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.annotation.Argument;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.config.annotation.Method;
-import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.rpc.RpcContext;
 
 import java.text.SimpleDateFormat;
@@ -20,21 +19,18 @@ import java.util.concurrent.ConcurrentHashMap;
 @DubboService(version = "callback", methods = {@Method(name = "sayHello", arguments = {@Argument(index = 2, callback = true)})}, callbacks = 3)
 public class CallBackDemoService implements DemoService {
 
-    private final Map<String, DemoServiceListener> listeners = new ConcurrentHashMap<String, DemoServiceListener>();
+    private final Map<String, DemoServiceListener> listeners = new ConcurrentHashMap<>();
 
     public CallBackDemoService() {
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    for (Map.Entry<String, DemoServiceListener> entry : listeners.entrySet()) {
-                        entry.getValue().changed(getChanged(entry.getKey()));
-                    }
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+        Thread t = new Thread(() -> {
+            while (true) {
+                for (Map.Entry<String, DemoServiceListener> entry : listeners.entrySet()) {
+                    entry.getValue().changed(getChanged(entry.getKey()));
+                }
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -45,7 +41,7 @@ public class CallBackDemoService implements DemoService {
 
 
     private String getChanged(String key) {
-        return "Changed: " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        return "key: " + key + ",Changed: " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
     }
 
     @Override

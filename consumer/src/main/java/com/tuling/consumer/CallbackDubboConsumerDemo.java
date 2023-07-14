@@ -7,8 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import java.io.IOException;
-
 @EnableAutoConfiguration
 public class CallbackDubboConsumerDemo {
 
@@ -16,7 +14,7 @@ public class CallbackDubboConsumerDemo {
     @DubboReference(version = "callback")
     private DemoService demoService;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(CallbackDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);

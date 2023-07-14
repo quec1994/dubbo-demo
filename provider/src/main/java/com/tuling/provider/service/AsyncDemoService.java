@@ -3,7 +3,6 @@ package com.tuling.provider.service;
 import com.tuling.DemoService;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.annotation.DubboService;
-import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.rpc.RpcContext;
 
 import java.util.concurrent.CompletableFuture;
@@ -22,8 +21,6 @@ public class AsyncDemoService implements DemoService {
     public CompletableFuture<String> sayHelloAsync(String name) {
         System.out.println("执行了异步服务" + name);
 
-        return CompletableFuture.supplyAsync(() -> {
-            return sayHello(name);
-        });
+        return CompletableFuture.supplyAsync(() -> sayHello(name));
     }
 }

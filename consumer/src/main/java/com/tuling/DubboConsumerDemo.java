@@ -8,8 +8,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.io.IOException;
-
 @SpringBootApplication
 public class DubboConsumerDemo implements WebMvcConfigurer {
 
@@ -21,7 +19,7 @@ public class DubboConsumerDemo implements WebMvcConfigurer {
     @DubboReference(version = "default")
     private DemoService demoService;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(DubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);

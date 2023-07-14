@@ -2,12 +2,9 @@ package com.tuling.consumer;
 
 import com.tuling.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
-
-import java.io.IOException;
 
 @EnableAutoConfiguration
 public class LoadBalanceDubboConsumerDemo {
@@ -16,7 +13,7 @@ public class LoadBalanceDubboConsumerDemo {
     @DubboReference(version = "default", loadbalance = "consistenthash")
     private DemoService demoService;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(LoadBalanceDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
@@ -33,9 +30,9 @@ public class LoadBalanceDubboConsumerDemo {
 
         // 一致性hash算法测试
         for (int i = 0; i < 1000; i++) {
-            System.out.println((demoService.sayHello(i%5+"周瑜")));
+            System.out.println((demoService.sayHello(i % 5 + "周瑜")));
             try {
-                Thread.sleep(1 * 1000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -14,8 +14,7 @@ public class HelloController {
 
     @RequestMapping("/consumer/user/say")
     public String sayHello() {
-        String result = demoService.sayHello("周瑜Controller");
-        return result;
+        return demoService.sayHello("周瑜Controller");
     }
 
 }

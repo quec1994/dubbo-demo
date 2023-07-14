@@ -2,22 +2,19 @@ package com.tuling.consumer;
 
 import com.tuling.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
-
-import java.io.IOException;
 
 @EnableAutoConfiguration
 public class StubDubboConsumerDemo {
 
 
-//    @DubboReference(version = "timeout", timeout = 1000, stub = "com.tuling.DemoServiceStub")
+    //    @DubboReference(version = "timeout", timeout = 1000, stub = "com.tuling.DemoServiceStub")
     @DubboReference(version = "timeout", timeout = 1000, stub = "true")
     private DemoService demoService;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(StubDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);

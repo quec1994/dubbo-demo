@@ -1,13 +1,10 @@
 package com.tuling.consumer;
 
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.rpc.service.GenericService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
-
-import java.io.IOException;
 
 @EnableAutoConfiguration
 public class GenericDubboConsumerDemo {
@@ -16,7 +13,7 @@ public class GenericDubboConsumerDemo {
     @DubboReference(id = "demoService", version = "default", interfaceName = "com.tuling.DemoService", generic = true)
     private GenericService genericService;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(GenericDubboConsumerDemo.class);
 
         GenericService genericService = (GenericService) context.getBean("demoService");
