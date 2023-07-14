@@ -3,6 +3,7 @@ package com.tuling.provider.service;
 import com.tuling.DemoService;
 import com.tuling.DemoServiceListener;
 import org.apache.dubbo.common.URL;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.rpc.RpcContext;
 import org.apache.dubbo.rpc.protocol.rest.support.ContentType;
@@ -15,7 +16,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 
-@Service(version = "rest", protocol = "rest")
+@DubboService(version = "rest", protocol = "rest")
 @Path("demo")
 public class RestDemoService implements DemoService {
 

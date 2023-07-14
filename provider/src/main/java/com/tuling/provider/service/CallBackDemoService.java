@@ -4,6 +4,7 @@ import com.tuling.DemoService;
 import com.tuling.DemoServiceListener;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.annotation.Argument;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.config.annotation.Method;
 import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.rpc.RpcContext;
@@ -16,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 // DemoService的sayHello方法的index=1的参数是回调对象，服务消费者可以调用addListener方法来添加回调对象，服务提供者一旦执行回调对象的方法就会通知给服务消费者
 
-@Service(version = "callback", methods = {@Method(name = "sayHello", arguments = {@Argument(index = 2, callback = true)})}, callbacks = 3)
+@DubboService(version = "callback", methods = {@Method(name = "sayHello", arguments = {@Argument(index = 2, callback = true)})}, callbacks = 3)
 public class CallBackDemoService implements DemoService {
 
     private final Map<String, DemoServiceListener> listeners = new ConcurrentHashMap<String, DemoServiceListener>();

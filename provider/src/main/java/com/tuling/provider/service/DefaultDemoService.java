@@ -3,6 +3,7 @@ package com.tuling.provider.service;
 import com.tuling.DemoService;
 import com.tuling.DemoServiceListener;
 import org.apache.dubbo.common.URL;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.rpc.RpcContext;
 
@@ -10,7 +11,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 
-@Service(version = "default")
+@DubboService(version = "default")
 public class DefaultDemoService implements DemoService {
 
     @Override

@@ -3,6 +3,7 @@ package com.tuling.provider.service;
 import com.tuling.DemoService;
 import com.tuling.DemoServiceListener;
 import org.apache.dubbo.common.URL;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.rpc.RpcContext;
 
@@ -11,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 
-@Service(version = "timeout", timeout = 6000)
+@DubboService(version = "timeout", timeout = 6000)
 public class TimeoutDemoService implements DemoService {
 
     @Override

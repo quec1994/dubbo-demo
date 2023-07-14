@@ -1,5 +1,6 @@
 package com.tuling.consumer;
 
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.rpc.service.GenericService;
 import org.springframework.boot.SpringApplication;
@@ -12,7 +13,7 @@ import java.io.IOException;
 public class GenericDubboConsumerDemo {
 
 
-    @Reference(id = "demoService", version = "default", interfaceName = "com.tuling.DemoService", generic = true)
+    @DubboReference(id = "demoService", version = "default", interfaceName = "com.tuling.DemoService", generic = true)
     private GenericService genericService;
 
     public static void main(String[] args) throws IOException {

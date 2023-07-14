@@ -1,6 +1,5 @@
 package com.tuling.controller;
 
-import org.apache.dubbo.rpc.Constants;
 import org.apache.dubbo.rpc.RpcContext;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -26,4 +25,5 @@ public class ConsumerInterceptor implements HandlerInterceptor {
         }
         return true;
     }
+
 }

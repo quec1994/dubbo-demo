@@ -1,6 +1,7 @@
 package com.tuling.consumer;
 
 import com.tuling.DemoService;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -12,7 +13,7 @@ import java.io.IOException;
 public class LoadBalanceDubboConsumerDemo {
 
 
-    @Reference(version = "default", loadbalance = "consistenthash")
+    @DubboReference(version = "default", loadbalance = "consistenthash")
     private DemoService demoService;
 
     public static void main(String[] args) throws IOException {
