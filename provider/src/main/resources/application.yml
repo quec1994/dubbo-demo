@@ -3,22 +3,3 @@ server:
 spring:
   application:
     name: dubbo-provider-demo
-# Dubbo
-dubbo:
-  application:
-    name: ${spring.application.name}
-  # Dubbo Protocol
-  protocol:
-    id: dubbo
-    name: dubbo
-    port: -1
-  protocols:
-    rest:
-      name: rest
-      port: -1
-  provider:
-    # Provider default Protocol
-    protocol: dubbo
-  # Dubbo Registry
-  registry:
-    address: zookeeper://127.0.0.1:2181
