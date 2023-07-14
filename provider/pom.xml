@@ -5,17 +5,20 @@
     <parent>
         <artifactId>dubbo-demo-2723</artifactId>
         <groupId>com.demo</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>provider</artifactId>
+    <name>${project.parent.artifactId}-provider</name>
 
     <dependencies>
         <dependency>
             <groupId>com.demo</groupId>
             <artifactId>interface</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
         </dependency>
 
         <dependency>
@@ -41,13 +44,22 @@
 
         <dependency>
             <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-rpc-dubbo</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-rpc-rest</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-dependencies-zookeeper</artifactId>
-            <type>pom</type>
+            <artifactId>dubbo-registry-zookeeper</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-configcenter-zookeeper</artifactId>
         </dependency>
 
         <dependency>
