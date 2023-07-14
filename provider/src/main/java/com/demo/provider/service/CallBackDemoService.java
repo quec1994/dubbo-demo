@@ -1,7 +1,7 @@
-package com.tuling.provider.service;
+package com.demo.provider.service;
 
-import com.tuling.DemoService;
-import com.tuling.DemoServiceListener;
+import com.demo.DemoService;
+import com.demo.DemoServiceListener;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.annotation.Argument;
 import org.apache.dubbo.config.annotation.DubboService;

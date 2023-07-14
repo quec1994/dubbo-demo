@@ -1,4 +1,4 @@
-package com.tuling.controller;
+package com.demo.controller;
 
 import org.apache.dubbo.rpc.RpcContext;
 import org.springframework.web.servlet.HandlerInterceptor;

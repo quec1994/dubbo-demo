@@ -1,6 +1,6 @@
-package com.tuling.controller;
+package com.demo.controller;
 
-import com.tuling.DemoService;
+import com.demo.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

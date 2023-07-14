@@ -1,6 +1,6 @@
-package com.tuling;
+package com.demo;
 
-import com.tuling.DemoService;
+import com.demo.DemoService;
 
 public class DemoServiceMock implements DemoService {
 

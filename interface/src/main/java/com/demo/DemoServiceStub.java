@@ -1,4 +1,4 @@
-package com.tuling;
+package com.demo;
 
 public class DemoServiceStub implements DemoService {
 

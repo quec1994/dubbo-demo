@@ -1,6 +1,6 @@
-package com.tuling;
+package com.demo;
 
-import com.tuling.controller.ConsumerInterceptor;
+import com.demo.controller.ConsumerInterceptor;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

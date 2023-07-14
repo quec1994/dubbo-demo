@@ -1,10 +1,10 @@
-package com.tuling.provider.service;
+package com.demo.provider.service;
 
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.service.GenericException;
 import org.apache.dubbo.rpc.service.GenericService;
 
-@DubboService(interfaceName = "com.tuling.DemoService", version = "generic")
+@DubboService(interfaceName = "com.demo.DemoService", version = "generic")
 public class GenericDemoService implements GenericService {
     @Override
     public Object $invoke(String s, String[] strings, Object[] objects) throws GenericException {

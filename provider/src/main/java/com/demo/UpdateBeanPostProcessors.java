@@ -1,4 +1,4 @@
-package com.tuling;
+package com.demo;
 
 import org.apache.dubbo.config.spring.ServiceBean;
 import org.springframework.beans.BeansException;

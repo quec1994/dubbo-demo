@@ -1,6 +1,6 @@
-package com.tuling.consumer;
+package com.demo.consumer;
 
-import com.tuling.DemoService;
+import com.demo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
