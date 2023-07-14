@@ -1,4 +1,4 @@
-package com.demo.controller;
+package com.demo.autowired;
 
 import com.demo.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ public class HelloController {
 
     @Autowired
     private DemoService demoService;
-
 
     @RequestMapping("/consumer/user/say")
     public String sayHello() {

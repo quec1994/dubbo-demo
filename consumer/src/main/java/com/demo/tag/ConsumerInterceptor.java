@@ -1,4 +1,4 @@
-package com.demo.controller;
+package com.demo.tag;
 
 import org.apache.dubbo.rpc.RpcContext;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -12,7 +12,6 @@ public class ConsumerInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-
         // 测试账号
         List<String> tester = new ArrayList<>();
         tester.add("18888888888");
