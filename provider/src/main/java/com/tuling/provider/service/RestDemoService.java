@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 
-@Service(version = "rest")
+@Service(version = "rest", protocol = "rest")
 @Path("demo")
 public class RestDemoService implements DemoService {
 
