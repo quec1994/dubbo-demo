@@ -1,8 +1,7 @@
-package com.demo.consumer;
+package com.demo.single;
 
 import com.demo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 
@@ -15,12 +14,13 @@ public class AsyncDubboConsumerDemo {
     private DemoService demoService;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(AsyncDubboConsumerDemo.class);
+
+        ConfigurableApplicationContext context = SingleDubboDemoStart.run(AsyncDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
 
         // 调用直接返回CompletableFuture
-        CompletableFuture<String> future = demoService.sayHelloAsync("异步调用");  // 5
+        CompletableFuture<String> future = demoService.sayHelloAsync("World");  // 5
 
         future.whenComplete((v, t) -> {
             if (t != null) {
@@ -29,6 +29,14 @@ public class AsyncDubboConsumerDemo {
                 System.out.println("Response: " + v);
             }
         });
+
+        try {
+            System.out.println("线程暂停");
+            Thread.sleep(3000);
+            System.out.println("线程恢复");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
         System.out.println("结束了");
 

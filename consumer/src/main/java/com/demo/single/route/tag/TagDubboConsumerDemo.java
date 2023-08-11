@@ -1,6 +1,7 @@
-package com.demo.tag;
+package com.demo.single.route.tag;
 
 import com.demo.DemoService;
+import com.demo.single.SingleDubboDemoStart;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -16,10 +17,10 @@ public class TagDubboConsumerDemo implements WebMvcConfigurer {
     }
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(TagDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboDemoStart.run(TagDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
-        System.out.println((demoService.sayHello("周瑜")));
+        System.out.println((demoService.sayHello("World")));
     }
 
 }

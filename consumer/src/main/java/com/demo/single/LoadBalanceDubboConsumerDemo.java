@@ -1,4 +1,4 @@
-package com.demo.consumer;
+package com.demo.single;
 
 import com.demo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -14,13 +14,13 @@ public class LoadBalanceDubboConsumerDemo {
     private DemoService demoService;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(LoadBalanceDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboDemoStart.run(LoadBalanceDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
 
         // 用来负载均衡
 //        for (int i = 0; i < 1000; i++) {
-//            System.out.println((demoService.sayHello("周瑜")));
+//            System.out.println((demoService.sayHello("World")));
 //            try {
 //                Thread.sleep(1 * 1000);
 //            } catch (InterruptedException e) {
@@ -30,7 +30,7 @@ public class LoadBalanceDubboConsumerDemo {
 
         // 一致性hash算法测试
         for (int i = 0; i < 1000; i++) {
-            System.out.println((demoService.sayHello(i % 5 + "周瑜")));
+            System.out.println((demoService.sayHello(i % 5 + "World")));
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {

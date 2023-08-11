@@ -1,8 +1,7 @@
-package com.demo.consumer;
+package com.demo.single;
 
 import com.demo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 
@@ -10,15 +9,15 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class ClusterDubboConsumerDemo {
 
 
-    @DubboReference(timeout = 1000, cluster = "failfast")
+    @DubboReference(version = "timeout", timeout = 1000, cluster = "failfast")
     private DemoService demoService;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(ClusterDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboDemoStart.run(ClusterDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
 
-        System.out.println((demoService.sayHello("周瑜")));
+        System.out.println((demoService.sayHello("World")));
 
     }
 

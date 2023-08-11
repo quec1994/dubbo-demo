@@ -1,21 +1,19 @@
-package com.demo.consumer;
+package com.demo.single;
 
 import com.demo.DemoService;
 import com.demo.DemoServiceListener;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @EnableAutoConfiguration
 public class CallbackDubboConsumerDemo {
 
-
     @DubboReference(version = "callback")
     private DemoService demoService;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(CallbackDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboDemoStart.run(CallbackDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
 

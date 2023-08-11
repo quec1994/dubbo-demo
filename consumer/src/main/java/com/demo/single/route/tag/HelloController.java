@@ -1,4 +1,4 @@
-package com.demo.tag;
+package com.demo.single.route.tag;
 
 import com.demo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -13,7 +13,7 @@ public class HelloController {
 
     @RequestMapping("/consumer/user/say")
     public String sayHello() {
-        return demoService.sayHello("周瑜Controller");
+        return demoService.sayHello("WorldController");
     }
 
 }

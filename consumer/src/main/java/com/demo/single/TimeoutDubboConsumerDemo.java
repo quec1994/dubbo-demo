@@ -1,4 +1,4 @@
-package com.demo.consumer;
+package com.demo.single;
 
 import com.demo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -14,13 +14,13 @@ public class TimeoutDubboConsumerDemo {
     private DemoService demoService;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(TimeoutDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboDemoStart.run(TimeoutDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
 
         // 服务调用超时时间为1秒，默认为3秒
         // 如果这1秒内没有收到服务结果，则会报错
-        System.out.println((demoService.sayHello("周瑜"))); //xxservestub
+        System.out.println((demoService.sayHello("World"))); //xxservestub
 
 
     }
