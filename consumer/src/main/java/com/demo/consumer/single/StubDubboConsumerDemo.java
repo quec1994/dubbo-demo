@@ -14,7 +14,7 @@ public class StubDubboConsumerDemo {
     private DemoService demoService;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboDemoStart.run(StubDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(StubDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
 

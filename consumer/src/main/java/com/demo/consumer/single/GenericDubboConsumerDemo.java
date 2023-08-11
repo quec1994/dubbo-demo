@@ -13,7 +13,7 @@ public class GenericDubboConsumerDemo {
     private GenericService genericService;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboDemoStart.run(GenericDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(GenericDubboConsumerDemo.class);
 
         GenericService genericService = (GenericService) context.getBean("demoService");
 

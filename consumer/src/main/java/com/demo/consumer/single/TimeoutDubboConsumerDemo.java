@@ -13,7 +13,7 @@ public class TimeoutDubboConsumerDemo {
     private DemoService demoService;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboDemoStart.run(TimeoutDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(TimeoutDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
 

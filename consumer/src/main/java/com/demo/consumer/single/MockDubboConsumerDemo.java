@@ -14,7 +14,7 @@ public class MockDubboConsumerDemo {
     private DemoService demoService;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboDemoStart.run(MockDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(MockDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
 

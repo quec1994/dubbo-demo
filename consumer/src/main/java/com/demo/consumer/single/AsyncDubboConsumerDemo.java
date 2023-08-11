@@ -15,7 +15,7 @@ public class AsyncDubboConsumerDemo {
 
     public static void main(String[] args) {
 
-        ConfigurableApplicationContext context = SingleDubboDemoStart.run(AsyncDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(AsyncDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
 

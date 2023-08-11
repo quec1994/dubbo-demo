@@ -6,9 +6,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-public class SingleDubboDemoStart {
+public class SingleDubboDemoStarter {
 
-    public static ConfigurableApplicationContext run(Class<?> primarySource, String... args) {
+    public static ConfigurableApplicationContext run(Class<?> primarySource) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConsumerConfiguration.class, primarySource);
         context.start();
         return context;

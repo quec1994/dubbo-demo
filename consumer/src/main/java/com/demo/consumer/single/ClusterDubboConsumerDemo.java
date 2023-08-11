@@ -13,7 +13,7 @@ public class ClusterDubboConsumerDemo {
     private DemoService demoService;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboDemoStart.run(ClusterDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(ClusterDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
 

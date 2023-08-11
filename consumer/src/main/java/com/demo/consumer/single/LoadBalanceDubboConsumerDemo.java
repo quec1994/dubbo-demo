@@ -13,7 +13,7 @@ public class LoadBalanceDubboConsumerDemo {
     private DemoService demoService;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboDemoStart.run(LoadBalanceDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(LoadBalanceDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
 
