@@ -13,14 +13,19 @@ public class AsyncDemoService implements DemoService {
     @Override
     public String sayHello(String name) {
         System.out.println("执行了同步服务" + name);
-        URL url = RpcContext.getContext().getUrl();
-        return String.format("%s：%s, Hello, %s", url.getProtocol(), url.getPort(), name);  // 正常访问
+        return createResult(name, RpcContext.getContext());
+    }
+
+    private static String createResult(String name, RpcContext context) {
+        URL url = context.getUrl();
+        return String.format("%s：%s, Hello, %s", url.getProtocol(), url.getPort(), name);
     }
 
     @Override
     public CompletableFuture<String> sayHelloAsync(String name) {
         System.out.println("执行了异步服务" + name);
-
-        return CompletableFuture.supplyAsync(() -> sayHello(name));
+        RpcContext savedContext = RpcContext.getContext();
+        return CompletableFuture.supplyAsync(() -> createResult(name, savedContext));
     }
+
 }
