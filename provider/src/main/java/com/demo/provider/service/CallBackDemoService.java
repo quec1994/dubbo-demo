@@ -25,10 +25,18 @@ public class CallBackDemoService implements DemoService {
         Thread t = new Thread(() -> {
             while (true) {
                 for (Map.Entry<String, DemoServiceListener> entry : listeners.entrySet()) {
-                    entry.getValue().changed(getChanged(entry.getKey()));
+                    String key = entry.getKey();
+                    DemoServiceListener callback = entry.getValue();
+                    boolean available = callback.available(key);
+                    if (available) {
+                        callback.changed(key, getChanged());
+                    } else {
+                        listeners.remove(key);
+                        callback.result(key, "监听移除成功");
+                    }
                 }
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -39,9 +47,8 @@ public class CallBackDemoService implements DemoService {
 
     }
 
-
-    private String getChanged(String key) {
-        return "key: " + key + ",Changed: " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+    private String getChanged() {
+        return "Changed: " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
     }
 
     @Override
@@ -54,6 +61,7 @@ public class CallBackDemoService implements DemoService {
         System.out.println("执行了回调服务" + name);
 
         listeners.put(key, callback);
+        callback.result(key, "注册成功");
         URL url = RpcContext.getContext().getUrl();
         return String.format("%s：%s, Hello, %s", url.getProtocol(), url.getPort(), name);  // 正常访问
     }
