@@ -1,4 +1,4 @@
-package com.demo.single;
+package com.demo.consumer.single;
 
 import com.demo.DemoService;
 import com.demo.DemoServiceListener;

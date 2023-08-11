@@ -1,4 +1,4 @@
-package com.demo.provider.service;
+package com.demo.provider.manager.dubbo;
 
 import com.demo.DemoService;
 import org.apache.dubbo.common.URL;
@@ -14,7 +14,7 @@ import javax.ws.rs.QueryParam;
 
 @DubboService(version = "rest", protocol = "rest")
 @Path("demo")
-public class RestDemoService implements DemoService {
+public class RestDemoDubboService implements DemoService {
 
     @GET
     @Path("say")

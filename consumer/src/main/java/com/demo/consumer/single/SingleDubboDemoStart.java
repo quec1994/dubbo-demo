@@ -1,4 +1,4 @@
-package com.demo.single;
+package com.demo.consumer.single;
 
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.context.ConfigurableApplicationContext;

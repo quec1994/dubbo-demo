@@ -1,4 +1,4 @@
-package com.demo.config;
+package com.demo.provider.config;
 
 import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @EnableDubbo
-@DubboComponentScan(basePackages = "com.demo.provider.service")
+@DubboComponentScan(basePackages = "com.demo.provider.manager.dubbo")
 @PropertySource("classpath:/spring/dubbo-provider.properties")
-public class DubboProviderConfiguration {
+public class DubboConfiguration {
 }

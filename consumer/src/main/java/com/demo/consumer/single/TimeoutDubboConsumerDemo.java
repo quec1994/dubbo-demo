@@ -1,8 +1,7 @@
-package com.demo.single;
+package com.demo.consumer.single;
 
 import com.demo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 

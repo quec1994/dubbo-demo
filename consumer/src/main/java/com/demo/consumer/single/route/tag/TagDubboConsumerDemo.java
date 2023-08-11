@@ -1,8 +1,7 @@
-package com.demo.single.route.tag;
+package com.demo.consumer.single.route.tag;
 
 import com.demo.DemoService;
-import com.demo.single.SingleDubboDemoStart;
-import org.springframework.boot.SpringApplication;
+import com.demo.consumer.single.SingleDubboDemoStart;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

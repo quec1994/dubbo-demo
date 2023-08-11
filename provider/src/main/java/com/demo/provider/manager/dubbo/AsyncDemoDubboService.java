@@ -1,4 +1,4 @@
-package com.demo.provider.service;
+package com.demo.provider.manager.dubbo;
 
 import com.demo.DemoService;
 import org.apache.dubbo.common.URL;
@@ -8,7 +8,7 @@ import org.apache.dubbo.rpc.RpcContext;
 import java.util.concurrent.CompletableFuture;
 
 @DubboService(version = "async")
-public class AsyncDemoService implements DemoService {
+public class AsyncDemoDubboService implements DemoService {
 
     @Override
     public String sayHello(String name) {

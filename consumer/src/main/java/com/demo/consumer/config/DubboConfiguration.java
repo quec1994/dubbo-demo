@@ -1,4 +1,4 @@
-package com.demo.config;
+package com.demo.consumer.config;
 
 import com.demo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @EnableDubbo
 @PropertySource("classpath:/spring/dubbo-consumer.properties")
-public class DubboConfig {
+public class DubboConfiguration {
 
     @DubboReference(version = "default")
     private DemoService demoService;

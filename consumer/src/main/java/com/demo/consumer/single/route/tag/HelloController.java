@@ -1,19 +1,19 @@
-package com.demo.web;
+package com.demo.consumer.single.route.tag;
 
 import com.demo.DemoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
 
-    @Autowired
+    @DubboReference(version = "default")
     private DemoService demoService;
 
     @RequestMapping("/consumer/user/say")
     public String sayHello() {
-        return demoService.sayHello("World");
+        return demoService.sayHello("WorldController");
     }
 
 }

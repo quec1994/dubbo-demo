@@ -1,4 +1,4 @@
-package com.demo.single;
+package com.demo.consumer.single;
 
 import com.demo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -37,8 +37,6 @@ public class AsyncDubboConsumerDemo {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
-        System.out.println("结束了");
 
     }
 

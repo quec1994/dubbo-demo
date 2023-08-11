@@ -1,4 +1,4 @@
-package com.demo.provider.service;
+package com.demo.provider.manager.dubbo;
 
 import com.demo.DemoService;
 import org.apache.dubbo.common.URL;
@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 
 @DubboService(version = "timeout", timeout = 6000)
-public class TimeoutDemoService implements DemoService {
+public class TimeoutDemoDubboService implements DemoService {
 
     @Override
     public String sayHello(String name) {

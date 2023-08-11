@@ -1,4 +1,4 @@
-package com.demo.provider.service;
+package com.demo.provider.manager.dubbo;
 
 import com.demo.DemoService;
 import com.demo.DemoServiceListener;
@@ -17,11 +17,11 @@ import java.util.concurrent.ConcurrentHashMap;
 // DemoService的sayHello方法的index=1的参数是回调对象，服务消费者可以调用addListener方法来添加回调对象，服务提供者一旦执行回调对象的方法就会通知给服务消费者
 
 @DubboService(version = "callback", methods = {@Method(name = "sayHello", arguments = {@Argument(index = 2, callback = true)})}, callbacks = 3)
-public class CallBackDemoService implements DemoService {
+public class CallBackDemoDubboService implements DemoService {
 
     private final Map<String, DemoServiceListener> listeners = new ConcurrentHashMap<>();
 
-    public CallBackDemoService() {
+    public CallBackDemoDubboService() {
         Thread t = new Thread(() -> {
             while (true) {
                 for (Map.Entry<String, DemoServiceListener> entry : listeners.entrySet()) {
