@@ -24,17 +24,13 @@ public class CallBackDemoDubboService implements DemoService {
     public CallBackDemoDubboService() {
         Thread t = new Thread(() -> {
             while (true) {
-                for (Map.Entry<String, DemoServiceListener> entry : listeners.entrySet()) {
-                    String key = entry.getKey();
-                    DemoServiceListener callback = entry.getValue();
-                    boolean available = callback.available(key);
-                    if (available) {
-                        callback.changed(key, getChanged());
-                    } else {
-                        listeners.remove(key);
-                        callback.result(key, "监听移除成功");
+                listeners.entrySet().forEach(entry -> {
+                    try {
+                        this.notify(entry);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                }
+                });
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -45,6 +41,18 @@ public class CallBackDemoDubboService implements DemoService {
 
         t.start();
 
+    }
+
+    private void notify(Map.Entry<String, DemoServiceListener> entry) {
+        String key = entry.getKey();
+        DemoServiceListener callback = entry.getValue();
+        boolean available = callback.available(key);
+        if (available) {
+            callback.changed(key, getChanged());
+        } else {
+            listeners.remove(key);
+            callback.result(key, "监听移除成功");
+        }
     }
 
     private String getChanged() {
