@@ -1,9 +1,0 @@
-log4j:
-  ###output to the console###
-  appender:
-    stdout: org.apache.log4j.ConsoleAppender
-    stdout.Target: System.out
-    stdout.layout: org.apache.log4j.PatternLayout
-    stdout.layout.ConversionPattern: '[%d{dd/MM/yy HH:mm:ss:SSS z}] %t %5p %c{2}: %m%n'
-  ###set log levels###
-  rootLogger: info, stdout
