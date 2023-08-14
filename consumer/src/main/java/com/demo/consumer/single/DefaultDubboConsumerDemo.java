@@ -14,7 +14,7 @@ public class DefaultDubboConsumerDemo {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SingleDubboDemoStarter.run(DefaultDubboConsumerDemo.class);
         DemoService demoService = context.getBean(DemoService.class);
-        System.out.println((demoService.sayHello("World")));
+        System.out.println(demoService.sayHello("World"));
     }
 
 }
