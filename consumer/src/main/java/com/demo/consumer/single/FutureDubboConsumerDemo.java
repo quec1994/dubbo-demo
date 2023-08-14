@@ -1,6 +1,6 @@
 package com.demo.consumer.single;
 
-import com.demo.DemoService;
+import com.demo.dubbo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -8,19 +8,19 @@ import org.springframework.context.ConfigurableApplicationContext;
 import java.util.concurrent.CompletableFuture;
 
 @EnableAutoConfiguration
-public class AsyncDubboConsumerDemo {
+public class FutureDubboConsumerDemo {
 
-    @DubboReference(version = "async")
+    @DubboReference(version = "future")
     private DemoService demoService;
 
     public static void main(String[] args) {
 
-        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(AsyncDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(FutureDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
 
         // 调用直接返回CompletableFuture
-        CompletableFuture<String> future = demoService.sayHelloAsync("World");  // 5
+        CompletableFuture<String> future = demoService.sayHelloFuture("World");  // 5
 
         future.whenComplete((v, t) -> {
             if (t != null) {

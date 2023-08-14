@@ -1,14 +1,15 @@
 package com.demo.provider.manager.dubbo;
 
-import com.demo.DemoService;
+import com.demo.dubbo.DemoService;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcContext;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
-@DubboService(version = "async")
-public class AsyncDemoDubboService implements DemoService {
+@DubboService(version = "future")
+public class FutureDemoServiceImpl implements DemoService {
 
     @Override
     public String sayHello(String name) {
@@ -22,9 +23,14 @@ public class AsyncDemoDubboService implements DemoService {
     }
 
     @Override
-    public CompletableFuture<String> sayHelloAsync(String name) {
+    public CompletableFuture<String> sayHelloFuture(String name) {
         System.out.println("执行了异步服务" + name);
         RpcContext savedContext = RpcContext.getContext();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return CompletableFuture.supplyAsync(() -> createResult(name, savedContext));
     }
 

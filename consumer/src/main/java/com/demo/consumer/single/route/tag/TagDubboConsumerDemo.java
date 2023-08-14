@@ -1,6 +1,6 @@
 package com.demo.consumer.single.route.tag;
 
-import com.demo.DemoService;
+import com.demo.dubbo.DemoService;
 import com.demo.consumer.single.SingleDubboDemoStarter;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;

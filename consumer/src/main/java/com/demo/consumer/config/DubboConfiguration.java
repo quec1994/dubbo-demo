@@ -1,6 +1,6 @@
 package com.demo.consumer.config;
 
-import com.demo.DemoService;
+import com.demo.dubbo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.context.annotation.Configuration;

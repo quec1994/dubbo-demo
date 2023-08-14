@@ -1,6 +1,6 @@
 package com.demo.provider.manager.dubbo;
 
-import com.demo.DemoService;
+import com.demo.dubbo.DemoService;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcContext;
@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 
 @DubboService(version = "timeout", timeout = 6000)
-public class TimeoutDemoDubboService implements DemoService {
+public class TimeoutDemoServiceImpl implements DemoService {
 
     @Override
     public String sayHello(String name) {

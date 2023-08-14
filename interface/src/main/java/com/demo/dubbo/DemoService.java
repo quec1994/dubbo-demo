@@ -1,4 +1,4 @@
-package com.demo;
+package com.demo.dubbo;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -7,7 +7,7 @@ public interface DemoService {
     String sayHello(String name);
 
     // 异步调用方法
-    default CompletableFuture<String> sayHelloAsync(String name) {
+    default CompletableFuture<String> sayHelloFuture(String name) {
         return null;
     }
 

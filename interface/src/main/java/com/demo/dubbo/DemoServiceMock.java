@@ -1,4 +1,4 @@
-package com.demo;
+package com.demo.dubbo;
 
 public class DemoServiceMock implements DemoService {
 
