@@ -8,8 +8,11 @@ import org.springframework.context.annotation.PropertySource;
 
 public class SingleDubboDemoStarter {
 
-    public static ConfigurableApplicationContext run(Class<?> primarySource) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConsumerConfiguration.class, primarySource);
+    public static ConfigurableApplicationContext run(Class<?>... primarySourceClasses) {
+        Class<?>[] annotatedClasses = new Class[primarySourceClasses.length + 1];
+        System.arraycopy(primarySourceClasses, 0, annotatedClasses, 1, primarySourceClasses.length);
+        annotatedClasses[0] = ConsumerConfiguration.class;
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(annotatedClasses);
         context.start();
         return context;
     }
