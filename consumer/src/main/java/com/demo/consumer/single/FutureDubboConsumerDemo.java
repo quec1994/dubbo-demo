@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 @EnableAutoConfiguration
 public class FutureDubboConsumerDemo {
 
-    @DubboReference(version = "future")
+    @DubboReference(version = "future", timeout = 3000)
     private DemoService demoService;
 
     public static void main(String[] args) {

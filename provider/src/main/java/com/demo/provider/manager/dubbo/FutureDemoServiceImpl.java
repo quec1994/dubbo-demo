@@ -14,11 +14,11 @@ public class FutureDemoServiceImpl implements DemoService {
     @Override
     public String sayHello(String name) {
         System.out.println("执行了同步服务" + name);
-        return createResult(name, RpcContext.getContext());
+        return createResult(name);
     }
 
-    private static String createResult(String name, RpcContext context) {
-        URL url = context.getUrl();
+    private String createResult(String name) {
+        URL url = RpcContext.getContext().getUrl();
         return String.format("%s：%s, Hello, %s", url.getProtocol(), url.getPort(), name);
     }
 
@@ -26,12 +26,17 @@ public class FutureDemoServiceImpl implements DemoService {
     public CompletableFuture<String> sayHelloFuture(String name) {
         System.out.println("执行了异步服务" + name);
         RpcContext savedContext = RpcContext.getContext();
-        try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        return CompletableFuture.supplyAsync(() -> createResult(name, savedContext));
+        RpcContext savedServerContext = RpcContext.getServerContext();
+        return CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            RpcContext.restoreContext(savedContext);
+            RpcContext.restoreServerContext(savedServerContext);
+            return this.createResult(name);
+        });
     }
 
 }
