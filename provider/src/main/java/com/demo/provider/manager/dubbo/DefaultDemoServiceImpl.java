@@ -11,7 +11,7 @@ public class DefaultDemoServiceImpl implements DemoService {
 
     @Override
     public String sayHello(String name) {
-        System.out.println("执行了服务" + name);
+        System.out.println(name + " 执行了default服务");
 
         URL url = RpcContext.getContext().getUrl();
         return String.format("%s：%s, Hello, %s", url.getProtocol(), url.getPort(), name);  // 正常访问

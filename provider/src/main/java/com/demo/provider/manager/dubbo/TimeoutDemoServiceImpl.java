@@ -13,7 +13,7 @@ public class TimeoutDemoServiceImpl implements DemoService {
 
     @Override
     public String sayHello(String name) {
-        System.out.println("执行了timeout服务" + name);
+        System.out.println(name + " 执行了timeout服务");
 
         // 服务执行5秒
         // 服务超时时间为3秒，但是执行了5秒，服务端会把任务执行完的
@@ -24,7 +24,7 @@ public class TimeoutDemoServiceImpl implements DemoService {
             e.printStackTrace();
         }
 
-        System.out.println("执行结束" + name);
+        System.out.println(name + " 执行结束");
 
         URL url = RpcContext.getContext().getUrl();
         return String.format("%s：%s, Hello, %s", url.getProtocol(), url.getPort(), name);  // 正常访问

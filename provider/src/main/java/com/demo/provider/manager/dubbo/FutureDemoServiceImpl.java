@@ -13,7 +13,7 @@ public class FutureDemoServiceImpl implements DemoService {
 
     @Override
     public String sayHello(String name) {
-        System.out.println("执行了同步服务" + name);
+        System.out.println(name + " 调用了同步服务");
         return createResult(name);
     }
 
@@ -24,7 +24,7 @@ public class FutureDemoServiceImpl implements DemoService {
 
     @Override
     public CompletableFuture<String> sayHelloFuture(String name) {
-        System.out.println("执行了异步服务" + name);
+        System.out.println(name + " 执行了异步方法返回值服务");
         RpcContext savedContext = RpcContext.getContext();
         RpcContext savedServerContext = RpcContext.getServerContext();
         return CompletableFuture.supplyAsync(() -> {

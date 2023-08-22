@@ -66,7 +66,7 @@ public class CallBackDemoServiceImpl implements DemoService {
 
     @Override
     public String sayHello(String name, String key, DemoServiceListener callback) {
-        System.out.println("执行了回调服务" + name);
+        System.out.println(name + " 执行了回调服务");
 
         listeners.put(key, callback);
         callback.result(key, "注册成功");
