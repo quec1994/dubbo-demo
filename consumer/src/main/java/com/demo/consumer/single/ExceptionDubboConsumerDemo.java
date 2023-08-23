@@ -10,11 +10,12 @@ import org.springframework.context.annotation.Configuration;
 
 @EnableAutoConfiguration
 @Configuration
-public class ClusterDubboConsumerDemo {
+public class ExceptionDubboConsumerDemo {
 
-
-    @DubboReference(version = "timeout", cluster = "failfast",
-//    @DubboReference(version = "timeout", cluster = "failover",
+    @DubboReference(version = "bizException",
+//    @DubboReference(version = "timeout", mock = "true",
+//    @DubboReference(version = "timeout", mock = "fail: return mock-return-123",
+//    @DubboReference(version = "bizException", mock = "fail: return mock-return-123",
             methods = {
                     @Method(name = "sayHello", oninvoke = "methodInvokeListener.oninvoke",
                             onreturn = "methodInvokeListener.onreturn",
@@ -24,12 +25,13 @@ public class ClusterDubboConsumerDemo {
     private DemoService demoService;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(ClusterDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(ExceptionDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
 
-        System.out.println((demoService.sayHello("World")));
-
+        System.out.println((demoService.sayHello("customize")));
+//        System.out.println((demoService.sayHello("null")));
+//        System.out.println((demoService.sayHello("World")));
     }
 
     @Bean
