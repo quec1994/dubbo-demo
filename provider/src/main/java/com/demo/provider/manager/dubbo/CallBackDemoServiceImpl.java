@@ -71,7 +71,7 @@ public class CallBackDemoServiceImpl implements DemoService {
         listeners.put(key, callback);
         callback.result(key, "注册成功");
         URL url = RpcContext.getContext().getUrl();
-        return String.format("%s：%s, Hello, %s", url.getProtocol(), url.getPort(), name);  // 正常访问
+        return String.format("%s：%s, Hello %s", url.getProtocol(), url.getPort(), name);  // 正常访问
     }
 
 }

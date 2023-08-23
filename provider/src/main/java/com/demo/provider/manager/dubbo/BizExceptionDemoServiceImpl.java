@@ -20,7 +20,7 @@ public class BizExceptionDemoServiceImpl implements DemoService {
         if (name.equals("null")) {
             throw new NullPointerException(String.format("%s：%s, NullPointerException, %s", url.getProtocol(), url.getPort(), name));
         }
-        return String.format("%s：%s, Hello, %s", url.getProtocol(), url.getPort(), name);
+        return String.format("%s：%s, Hello %s", url.getProtocol(), url.getPort(), name);
     }
 
     public static class CustomizeException extends RuntimeException {

@@ -27,7 +27,7 @@ public class TimeoutDemoServiceImpl implements DemoService {
         System.out.println(name + " 执行结束");
 
         URL url = RpcContext.getContext().getUrl();
-        return String.format("%s：%s, Hello, %s", url.getProtocol(), url.getPort(), name);  // 正常访问
+        return String.format("%s：%s, Hello %s", url.getProtocol(), url.getPort(), name);  // 正常访问
     }
 
 }

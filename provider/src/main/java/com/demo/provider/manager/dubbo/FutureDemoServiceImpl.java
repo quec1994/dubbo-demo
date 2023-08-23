@@ -19,7 +19,7 @@ public class FutureDemoServiceImpl implements DemoService {
 
     private String createResult(String name) {
         URL url = RpcContext.getContext().getUrl();
-        return String.format("%s：%s, Hello, %s", url.getProtocol(), url.getPort(), name);
+        return String.format("%s：%s, Hello %s", url.getProtocol(), url.getPort(), name);
     }
 
     @Override
