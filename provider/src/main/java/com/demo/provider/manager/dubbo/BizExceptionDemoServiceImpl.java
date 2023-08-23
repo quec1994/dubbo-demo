@@ -4,6 +4,7 @@ import com.demo.dubbo.DemoService;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcContext;
+import org.apache.dubbo.rpc.RpcException;
 
 
 @DubboService(version = "bizException")
@@ -14,11 +15,18 @@ public class BizExceptionDemoServiceImpl implements DemoService {
         System.out.println(name + " 执行了bizException服务");
 
         URL url = RpcContext.getContext().getUrl();
+        String format = String.format("%s：%s, %s, %s", url.getProtocol(), url.getPort(), "%s", name);
         if (name.equals("customize")) {
-            throw new CustomizeException(String.format("%s：%s, CustomizeException, %s", url.getProtocol(), url.getPort(), name));
+            throw new CustomizeException(String.format(format, "CustomizeException"));
         }
         if (name.equals("null")) {
-            throw new NullPointerException(String.format("%s：%s, NullPointerException, %s", url.getProtocol(), url.getPort(), name));
+            throw new NullPointerException(String.format(format, "NullPointerException"));
+        }
+        if (name.equals("rpc")) {
+            throw new RpcException(String.format(format, "RpcException"));
+        }
+        if (name.equals("rpc_biz")) {
+            throw new RpcException(RpcException.BIZ_EXCEPTION, String.format(format, "RpcException_BIZ"));
         }
         return String.format("%s：%s, Hello %s", url.getProtocol(), url.getPort(), name);
     }

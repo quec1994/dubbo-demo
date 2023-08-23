@@ -13,9 +13,9 @@ import org.springframework.context.annotation.Configuration;
 public class ExceptionDubboConsumerDemo {
 
     @DubboReference(version = "bizException",
+//    @DubboReference(version = "bizException", mock = "fail: return mock-return-123",
 //    @DubboReference(version = "timeout", mock = "true",
 //    @DubboReference(version = "timeout", mock = "fail: return mock-return-123",
-//    @DubboReference(version = "bizException", mock = "fail: return mock-return-123",
             methods = {
                     @Method(name = "sayHello", oninvoke = "methodInvokeListener.oninvoke",
                             onreturn = "methodInvokeListener.onreturn",
@@ -29,9 +29,12 @@ public class ExceptionDubboConsumerDemo {
 
         DemoService demoService = context.getBean(DemoService.class);
 
-        System.out.println((demoService.sayHello("customize")));
-//        System.out.println((demoService.sayHello("null")));
-//        System.out.println((demoService.sayHello("World")));
+        System.out.println(demoService.sayHello("customize"));
+//        System.out.println(demoService.sayHello("null"));
+        // mock可以控制远端方法抛出的RpcException在消费者端是直接抛出还是容错，默认是直接抛出
+//        System.out.println(demoService.sayHello("rpc"));
+//        System.out.println(demoService.sayHello("rpc_biz"));
+//        System.out.println(demoService.sayHello("World"));
     }
 
     @Bean
