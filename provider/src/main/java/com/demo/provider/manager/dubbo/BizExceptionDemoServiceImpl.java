@@ -11,7 +11,7 @@ public class BizExceptionDemoServiceImpl implements DemoService {
 
     @Override
     public String sayHello(String name) {
-        System.out.println(name + " 执行了default服务");
+        System.out.println(name + " 执行了bizException服务");
 
         URL url = RpcContext.getContext().getUrl();
         if (name.equals("customize")) {
