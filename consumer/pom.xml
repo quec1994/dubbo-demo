@@ -2,23 +2,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>dubbo-demo</artifactId>
-        <groupId>com.demo</groupId>
-        <version>${revision}</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
-
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>consumer</artifactId>
-    <name>${project.parent.artifactId}-consumer</name>
+    <parent>
+        <groupId>com.demo</groupId>
+        <artifactId>dubbo-demo</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>${consumer.artifactId}</artifactId>
+    <version>${consumer.version}</version>
+    <name>${project.parent.artifactId}-${project.artifactId}</name>
 
     <dependencies>
         <dependency>
             <groupId>com.demo</groupId>
             <artifactId>interface</artifactId>
-            <version>${project.parent.version}</version>
+            <version>${interface.version}</version>
         </dependency>
 
         <dependency>
