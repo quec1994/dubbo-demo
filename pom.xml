@@ -83,10 +83,32 @@
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-registry-zookeeper</artifactId>
                 <version>${dubbo.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
                 <exclusions>
+                    <!-- 排除掉 log4j 的包，不排除的话要加log4j的配置文件，不然会影响dubbo框架的日志打印 -->
+                    <exclusion>
+                        <artifactId>log4j</artifactId>
+                        <groupId>log4j</groupId>
+                    </exclusion>
                     <exclusion>
                         <artifactId>slf4j-log4j12</artifactId>
                         <groupId>org.slf4j</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-common</artifactId>
+                <exclusions>
+                    <!-- 排除掉 log4j 的包，不排除的话要加log4j的配置文件，不然会影响dubbo框架的日志打印 -->
+                    <exclusion>
+                        <artifactId>log4j</artifactId>
+                        <groupId>log4j</groupId>
                     </exclusion>
                 </exclusions>
             </dependency>
