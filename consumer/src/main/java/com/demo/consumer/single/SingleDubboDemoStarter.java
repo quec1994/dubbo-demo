@@ -8,6 +8,10 @@ import org.springframework.context.annotation.PropertySource;
 
 public class SingleDubboDemoStarter {
 
+    static {
+        System.setProperty("dubbo.application.logger", "slf4j");
+    }
+
     public static ConfigurableApplicationContext run(Class<?>... primarySourceClasses) {
         Class<?>[] annotatedClasses = new Class[primarySourceClasses.length + 1];
         System.arraycopy(primarySourceClasses, 0, annotatedClasses, 1, primarySourceClasses.length);
