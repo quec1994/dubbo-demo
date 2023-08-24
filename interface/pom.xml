@@ -9,6 +9,15 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.jboss.spec.javax.ws.rs</groupId>
+            <artifactId>jboss-jaxrs-api_2.0_spec</artifactId>
+            <version>1.0.1.Beta1</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>interface</artifactId>
