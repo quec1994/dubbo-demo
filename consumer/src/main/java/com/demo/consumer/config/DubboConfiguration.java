@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @EnableDubbo
-@PropertySource("classpath:/spring/dubbo-consumer.properties")
+@PropertySource("classpath:/dubbo/dubbo-consumer.properties")
 public class DubboConfiguration {
 
     @DubboReference(version = "default")

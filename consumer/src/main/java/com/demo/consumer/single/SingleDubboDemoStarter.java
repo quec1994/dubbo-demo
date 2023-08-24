@@ -19,7 +19,7 @@ public class SingleDubboDemoStarter {
 
     @Configuration
     @EnableDubbo
-    @PropertySource(value = {"classpath:/application.properties", "classpath:/spring/dubbo-consumer.properties"})
+    @PropertySource(value = {"classpath:/application.yml", "classpath:/dubbo/dubbo-consumer.properties"})
     static class ConsumerConfiguration {
 
     }

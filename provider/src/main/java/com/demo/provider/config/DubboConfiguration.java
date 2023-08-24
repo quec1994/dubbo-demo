@@ -8,6 +8,6 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @EnableDubbo
 @DubboComponentScan(basePackages = "com.demo.provider.manager.dubbo")
-@PropertySource("classpath:/spring/dubbo-provider.properties")
+@PropertySource("classpath:/dubbo/dubbo-provider.properties")
 public class DubboConfiguration {
 }
