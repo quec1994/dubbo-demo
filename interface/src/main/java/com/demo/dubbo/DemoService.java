@@ -3,6 +3,7 @@ package com.demo.dubbo;
 import java.util.concurrent.CompletableFuture;
 
 public interface DemoService {
+
     // 同步调用方法
     String sayHello(String name);
 
@@ -15,4 +16,5 @@ public interface DemoService {
     default String sayHello(String name, String key, DemoServiceListener listener) {
         return null;
     }
+
 }

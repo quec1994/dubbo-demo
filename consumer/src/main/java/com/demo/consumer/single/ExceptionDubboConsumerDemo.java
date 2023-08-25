@@ -12,10 +12,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ExceptionDubboConsumerDemo {
 
-    @DubboReference(version = "bizException",
-//    @DubboReference(version = "bizException", mock = "fail: return mock-return-123",
-//    @DubboReference(version = "timeout", mock = "true",
-//    @DubboReference(version = "timeout", mock = "fail: return mock-return-123",
+    @DubboReference(version = "exception", mock = "fail: return mock-return-123",
+//    @DubboReference(version = "exception",
             methods = {
                     @Method(name = "sayHello", oninvoke = "methodInvokeListener.oninvoke",
                             onreturn = "methodInvokeListener.onreturn",
@@ -27,14 +25,21 @@ public class ExceptionDubboConsumerDemo {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SingleDubboDemoStarter.run(ExceptionDubboConsumerDemo.class);
 
-        DemoService demoService = context.getBean(DemoService.class);
-
-        System.out.println(demoService.sayHello("customize"));
+        try {
+            DemoService demoService = context.getBean(DemoService.class);
+            // 不会触发集群容错，也不会触发mock容错
+//            System.out.println(demoService.sayHello("customize"));
+            // 不会触发集群容错，也不会触发mock容错
 //        System.out.println(demoService.sayHello("null"));
-        // mock可以控制远端方法抛出的RpcException在消费者端是直接抛出还是容错，默认是直接抛出
-//        System.out.println(demoService.sayHello("rpc"));
+            // 不会触发集群容错，也不会触发mock容错
 //        System.out.println(demoService.sayHello("rpc_biz"));
-//        System.out.println(demoService.sayHello("World"));
+            // 不会触发集群容错，但是可以触发mock容错
+        System.out.println(demoService.sayHello("rpc"));
+        } catch (Exception e) {
+            System.out.println("执行时抛出了异常");
+            e.printStackTrace();
+        }
+        System.out.println("执行结束");
     }
 
     @Bean

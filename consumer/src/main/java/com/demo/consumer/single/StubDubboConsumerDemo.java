@@ -8,9 +8,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 @EnableAutoConfiguration
 public class StubDubboConsumerDemo {
 
-
-    //    @DubboReference(version = "timeout", timeout = 1000, stub = "com.demo.DemoServiceStub")
-    @DubboReference(version = "timeout", timeout = 1000, stub = "true")
+    @DubboReference(version = "timeout", timeout = 1000,
+            // 使用com.demo.dubbo.DemoServiceStub实现类的方法
+//            stub = "true"
+            // 使用InternalDemoServiceStub实现类的方法
+            stub = "com.demo.consumer.single.local.LocalDemoServiceStub"
+    )
     private DemoService demoService;
 
     public static void main(String[] args) {
@@ -24,3 +27,4 @@ public class StubDubboConsumerDemo {
     }
 
 }
+
