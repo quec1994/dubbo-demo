@@ -2,18 +2,20 @@ package com.demo.consumer.manager.web;
 
 import com.demo.dubbo.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloController {
+@RequestMapping("salute")
+public class SaluteController {
 
     @Autowired
     private DemoService demoService;
 
-    @RequestMapping("/consumer/user/say")
-    public String sayHello() {
-        return demoService.sayHello("World");
+    @GetMapping("sayHello")
+    public String sayHello(String name) {
+        return demoService.sayHello(name);
     }
 
 }
