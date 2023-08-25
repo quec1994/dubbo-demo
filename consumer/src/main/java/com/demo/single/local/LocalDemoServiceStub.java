@@ -1,4 +1,4 @@
-package com.demo.consumer.single.local;
+package com.demo.single.local;
 
 import com.demo.dubbo.DemoService;
 

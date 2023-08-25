@@ -1,6 +1,6 @@
-package com.demo.consumer.single;
+package com.demo.single;
 
-import com.demo.consumer.single.starter.SingleDubboConsumerDemoStarter;
+import com.demo.single.starter.SingleDubboConsumerDemoStarter;
 import com.demo.dubbo.RestDemoService;
 import org.apache.commons.codec.Charsets;
 import org.apache.dubbo.config.annotation.DubboReference;

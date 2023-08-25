@@ -1,6 +1,6 @@
-package com.demo.consumer.single;
+package com.demo.single;
 
-import com.demo.consumer.single.starter.SingleDubboConsumerDemoStarter;
+import com.demo.single.starter.SingleDubboConsumerDemoStarter;
 import com.demo.dubbo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
@@ -20,7 +20,7 @@ public class MockDubboConsumerDemo {
                             onthrow = "methodInvokeListener.onthrow")
             },
             // 使用InternalDemoServiceMock实现类的方法返回模拟数据
-            mock = "com.demo.consumer.single.MockDubboConsumerDemo$InternalDemoServiceMock"
+            mock = "com.demo.single.MockDubboConsumerDemo$InternalDemoServiceMock"
             // 使用com.demo.dubbo.DemoServiceMock实现类的方法返回模拟数据
 //            mock = "true"
             // 返回固定字符串“mock-return-123”
