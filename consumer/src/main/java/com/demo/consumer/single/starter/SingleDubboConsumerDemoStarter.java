@@ -1,4 +1,4 @@
-package com.demo.consumer.single;
+package com.demo.consumer.single.starter;
 
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -6,7 +6,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-public class SingleDubboDemoStarter {
+public class SingleDubboConsumerDemoStarter {
 
     static {
         System.setProperty("dubbo.application.logger", "slf4j");

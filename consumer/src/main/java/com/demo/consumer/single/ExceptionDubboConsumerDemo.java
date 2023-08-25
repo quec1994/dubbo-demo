@@ -1,5 +1,6 @@
 package com.demo.consumer.single;
 
+import com.demo.consumer.single.starter.SingleDubboConsumerDemoStarter;
 import com.demo.dubbo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
@@ -23,7 +24,7 @@ public class ExceptionDubboConsumerDemo {
     private DemoService demoService;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(ExceptionDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(ExceptionDubboConsumerDemo.class);
 
         try {
             DemoService demoService = context.getBean(DemoService.class);

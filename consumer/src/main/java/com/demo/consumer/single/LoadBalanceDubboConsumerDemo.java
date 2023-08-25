@@ -1,5 +1,6 @@
 package com.demo.consumer.single;
 
+import com.demo.consumer.single.starter.SingleDubboConsumerDemoStarter;
 import com.demo.dubbo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -13,7 +14,7 @@ public class LoadBalanceDubboConsumerDemo {
     private DemoService demoService;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(LoadBalanceDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(LoadBalanceDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
 

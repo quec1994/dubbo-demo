@@ -1,5 +1,6 @@
 package com.demo.consumer.single;
 
+import com.demo.consumer.single.starter.SingleDubboConsumerDemoStarter;
 import com.demo.dubbo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -15,7 +16,7 @@ public class FutureDubboConsumerDemo {
 
     public static void main(String[] args) {
 
-        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(FutureDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(FutureDubboConsumerDemo.class);
 
         DemoService demoService = context.getBean(DemoService.class);
 

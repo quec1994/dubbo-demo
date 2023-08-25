@@ -1,5 +1,6 @@
 package com.demo.consumer.single;
 
+import com.demo.consumer.single.starter.SingleDubboConsumerDemoStarter;
 import com.demo.dubbo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
@@ -25,7 +26,7 @@ public class MethodListenerDubboConsumerDemo {
     private DemoService demoService;
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(MethodListenerDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(MethodListenerDubboConsumerDemo.class);
         DemoService demoService = context.getBean(DemoService.class);
         System.out.println(demoService.sayHello("World"));
     }

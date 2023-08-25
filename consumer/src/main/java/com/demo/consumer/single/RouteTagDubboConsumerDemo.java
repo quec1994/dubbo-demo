@@ -1,12 +1,11 @@
 package com.demo.consumer.single;
 
+import com.demo.consumer.single.starter.SingleDubboConsumerDemoStarter;
 import com.demo.dubbo.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.rpc.RpcContext;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -20,7 +19,7 @@ import java.util.Map;
 public class RouteTagDubboConsumerDemo implements WebMvcConfigurer {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(RouteTagDubboConsumerDemo.class,
+        ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(RouteTagDubboConsumerDemo.class,
                 RouteTagTestService.class);
         Map<String, String> map = new HashMap<>();
         map.put("phone", "18888888888");

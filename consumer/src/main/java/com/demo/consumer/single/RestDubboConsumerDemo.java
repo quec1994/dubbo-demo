@@ -1,5 +1,6 @@
 package com.demo.consumer.single;
 
+import com.demo.consumer.single.starter.SingleDubboConsumerDemoStarter;
 import com.demo.dubbo.RestDemoService;
 import org.apache.commons.codec.Charsets;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -33,7 +34,7 @@ public class RestDubboConsumerDemo {
     }
 
     private static void dubboDemo() {
-        ConfigurableApplicationContext context = SingleDubboDemoStarter.run(RestDubboConsumerDemo.class);
+        ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(RestDubboConsumerDemo.class);
         RestDemoService restDemoService = context.getBean(RestDemoService.class);
         System.out.println("dubboDemo：" + restDemoService.sayHello("World"));
     }
