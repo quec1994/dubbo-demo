@@ -45,7 +45,7 @@ public class RouteTagDubboConsumerDemo implements WebMvcConfigurer {
             map.get("name");
             String iphone = map.get("phone");
             if (tester.contains(iphone)) {
-                RpcContext.getContext().setAttachment("dubbo.tag", "tester");
+                RpcContext.getServiceContext().setAttachment("dubbo.tag", "tester");
             }
             return demoService.sayHello("World");
         }

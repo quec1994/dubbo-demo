@@ -14,7 +14,7 @@ public class ExceptionDemoServiceImpl implements DemoService {
     public String sayHello(String name) {
         System.out.println(name + " 执行了exception服务");
 
-        URL url = RpcContext.getContext().getUrl();
+        URL url = RpcContext.getServiceContext().getUrl();
         String format = String.format("%s：%s, %s", url.getProtocol(), url.getPort(), "%s");
         if (name.equals("customize")) {
             // 不会触发消费者端集群容错，也不会消费者端触发mock容错

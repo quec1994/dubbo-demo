@@ -70,7 +70,7 @@ public class CallBackDemoServiceImpl implements DemoService {
 
         listeners.put(key, callback);
         callback.result(key, "注册成功");
-        URL url = RpcContext.getContext().getUrl();
+        URL url = RpcContext.getServiceContext().getUrl();
         return String.format("%s：%s, Hello %s", url.getProtocol(), url.getPort(), name);  // 正常访问
     }
 

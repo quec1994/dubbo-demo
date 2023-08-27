@@ -25,9 +25,9 @@
         <consumer.artifactId>consumer</consumer.artifactId>
         <consumer.version>${revision}</consumer.version>
 
-        <spring-boot.version>2.1.4.RELEASE</spring-boot.version>
+        <dubbo.version>3.2.5</dubbo.version>
 
-        <dubbo.version>2.7.23</dubbo.version>
+        <spring-boot.version>2.7.14</spring-boot.version>
 
         <java.version>8</java.version>
         <maven.compiler.source>8</maven.compiler.source>
@@ -64,7 +64,7 @@
 
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo</artifactId>
+                <artifactId>dubbo-config-spring</artifactId>
                 <version>${dubbo.version}</version>
             </dependency>
 
@@ -84,18 +84,18 @@
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-registry-zookeeper</artifactId>
                 <version>${dubbo.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>slf4j-log4j12</artifactId>
-                        <groupId>org.slf4j</groupId>
-                    </exclusion>
-                </exclusions>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-configcenter-zookeeper</artifactId>
                 <version>${dubbo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>slf4j-reload4j</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
         </dependencies>

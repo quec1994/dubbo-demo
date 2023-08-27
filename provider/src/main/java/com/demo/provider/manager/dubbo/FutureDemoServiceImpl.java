@@ -3,6 +3,7 @@ package com.demo.provider.manager.dubbo;
 import com.demo.dubbo.DemoService;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.apache.dubbo.rpc.AsyncContext;
 import org.apache.dubbo.rpc.RpcContext;
 
 import java.util.concurrent.CompletableFuture;
@@ -18,23 +19,22 @@ public class FutureDemoServiceImpl implements DemoService {
     }
 
     private String createResult(String name) {
-        URL url = RpcContext.getContext().getUrl();
+        URL url = RpcContext.getServiceContext().getUrl();
         return String.format("%s：%s, Hello %s", url.getProtocol(), url.getPort(), name);
     }
 
     @Override
     public CompletableFuture<String> sayHelloFuture(String name) {
         System.out.println(name + " 执行了异步方法返回值服务");
-        RpcContext savedContext = RpcContext.getContext();
-        RpcContext savedServerContext = RpcContext.getServerContext();
+        final AsyncContext asyncContext = RpcContext.startAsync();
         return CompletableFuture.supplyAsync(() -> {
+            // 如果要使用上下文，则必须要放在第一句执行
+            asyncContext.signalContextSwitch();
             try {
                 TimeUnit.SECONDS.sleep(2);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            RpcContext.restoreContext(savedContext);
-            RpcContext.restoreServerContext(savedServerContext);
             return this.createResult(name);
         });
     }

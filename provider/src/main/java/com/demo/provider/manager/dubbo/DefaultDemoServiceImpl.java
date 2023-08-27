@@ -13,7 +13,7 @@ public class DefaultDemoServiceImpl implements DemoService {
     public String sayHello(String name) {
         System.out.println(name + " 执行了default服务");
 
-        URL url = RpcContext.getContext().getUrl();
+        URL url = RpcContext.getServiceContext().getUrl();
         return String.format("%s：%s, Hello %s", url.getProtocol(), url.getPort(), name);  // 正常访问
     }
 
