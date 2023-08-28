@@ -18,9 +18,13 @@ public class TimeoutDubboConsumerDemo {
 
         DemoService demoService = context.getBean(DemoService.class);
 
-        // 服务调用超时时间为1秒，默认为3秒
-        // 如果这1秒内没有收到服务结果，则会报错
-        System.out.println((demoService.sayHello("World"))); //xxservestub
+        try {
+            // 服务调用默认超时时间为1秒，如果这1秒内没有收到服务结果，则会报错
+            System.out.println((demoService.sayHello("World"))); //xxservestub
+        } catch (Exception e) {
+            System.out.println("执行出现了异常");
+            e.printStackTrace();
+        }
 
 
     }
