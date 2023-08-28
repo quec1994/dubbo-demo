@@ -1,12 +1,13 @@
 package com.demo.provider.manager.dubbo;
 
+import com.demo.dubbo.DemoService;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.service.GenericException;
 import org.apache.dubbo.rpc.service.GenericService;
 
 import java.util.Arrays;
 
-@DubboService(interfaceName = "com.demo.DemoService", version = "generic")
+@DubboService(interfaceName = "com.demo.dubbo.DemoService", version = "generic")
 public class GenericDemoServiceImpl implements GenericService {
     @Override
     public Object $invoke(String method, String[] parameterTypes, Object[] args) throws GenericException {
