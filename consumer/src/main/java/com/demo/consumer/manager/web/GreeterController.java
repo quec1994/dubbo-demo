@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("salute")
-public class SaluteController {
+@RequestMapping("greeter")
+public class GreeterController {
 
     @Autowired
     private DemoService demoService;
