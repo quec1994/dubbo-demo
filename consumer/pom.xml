@@ -7,18 +7,18 @@
     <parent>
         <groupId>com.demo</groupId>
         <artifactId>dubbo-demo</artifactId>
-        <version>${revision}</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>${consumer.artifactId}</artifactId>
-    <version>${consumer.version}</version>
+    <artifactId>consumer</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <name>${project.parent.artifactId}-${project.artifactId}</name>
 
     <dependencies>
         <dependency>
             <groupId>com.demo</groupId>
             <artifactId>interface</artifactId>
-            <version>${interface.version}</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -48,4 +48,5 @@
         </dependency>
 
     </dependencies>
+
 </project>
