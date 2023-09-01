@@ -1,8 +1,9 @@
 package com.demo.dubbo;
 
+
 import java.util.concurrent.CompletableFuture;
 
-public interface DemoService {
+public interface GreeterService {
 
     // 同步调用方法
     String sayHello(String name);
@@ -13,7 +14,7 @@ public interface DemoService {
     }
 
     // 添加回调
-    default String sayHello(String name, String key, DemoServiceListener listener) {
+    default String sayHello(String name, String key, GreeterServiceCallback listener) {
         return null;
     }
 

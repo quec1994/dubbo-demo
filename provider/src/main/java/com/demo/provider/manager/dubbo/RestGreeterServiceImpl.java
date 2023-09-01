@@ -1,13 +1,13 @@
 package com.demo.provider.manager.dubbo;
 
-import com.demo.dubbo.RestDemoService;
+import com.demo.dubbo.RestGreeterService;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcContext;
 
 
 @DubboService(version = "rest", protocol = "rest")
-public class RestDemoServiceImpl implements RestDemoService {
+public class RestGreeterServiceImpl implements RestGreeterService {
 
     @Override
     public String sayHello(String name) {

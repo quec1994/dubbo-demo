@@ -1,6 +1,6 @@
 package com.demo.provider.manager.dubbo;
 
-import com.demo.dubbo.DemoService;
+import com.demo.dubbo.GreeterService;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.AsyncContext;
@@ -10,11 +10,11 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 @DubboService(version = "future")
-public class FutureDemoServiceImpl implements DemoService {
+public class FutureGreeterServiceImpl implements GreeterService {
 
     @Override
     public String sayHello(String name) {
-        System.out.println(name + " 调用了同步服务");
+        System.out.println(name + " 执行了同步服务");
         return createResult(name);
     }
 

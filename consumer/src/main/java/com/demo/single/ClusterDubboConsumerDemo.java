@@ -1,7 +1,7 @@
 package com.demo.single;
 
 import com.demo.single.starter.SingleDubboConsumerDemoStarter;
-import com.demo.dubbo.DemoService;
+import com.demo.dubbo.GreeterService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -22,14 +22,14 @@ public class ClusterDubboConsumerDemo {
                             onthrow = "methodInvokeListener.onthrow")
             }
     )
-    private DemoService demoService;
+    private GreeterService greeterService;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(ClusterDubboConsumerDemo.class);
 
-        DemoService demoService = context.getBean(DemoService.class);
+        GreeterService greeterService = context.getBean(GreeterService.class);
 
-        System.out.println((demoService.sayHello("World")));
+        System.out.println((greeterService.sayHello("World")));
 
     }
 

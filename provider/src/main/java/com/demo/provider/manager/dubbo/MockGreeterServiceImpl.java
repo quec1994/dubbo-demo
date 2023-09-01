@@ -1,9 +1,7 @@
 package com.demo.provider.manager.dubbo;
 
-import com.demo.dubbo.DemoService;
-import org.apache.dubbo.common.URL;
+import com.demo.dubbo.GreeterService;
 import org.apache.dubbo.config.annotation.DubboService;
-import org.apache.dubbo.rpc.RpcContext;
 import org.apache.dubbo.rpc.RpcException;
 
 
@@ -11,7 +9,7 @@ import org.apache.dubbo.rpc.RpcException;
         // 使用com.demo.dubbo.DemoServiceMock实现类的方法返回模拟数据
         , mock = "true"
 )
-public class MockDemoServiceImpl implements DemoService {
+public class MockGreeterServiceImpl implements GreeterService {
 
     @Override
     public String sayHello(String name) {

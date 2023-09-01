@@ -1,7 +1,7 @@
 package com.demo.single;
 
 import com.demo.single.starter.SingleDubboConsumerDemoStarter;
-import com.demo.dubbo.DemoService;
+import com.demo.dubbo.GreeterService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.rpc.RpcContext;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -38,7 +38,7 @@ public class RouteTagDubboConsumerDemo implements WebMvcConfigurer {
         }
 
         @DubboReference(version = "default")
-        private DemoService demoService;
+        private GreeterService greeterService;
 
         @RequestMapping("/consumer/user/say")
         public String sayHello(Map<String, String> map) {
@@ -47,7 +47,7 @@ public class RouteTagDubboConsumerDemo implements WebMvcConfigurer {
             if (tester.contains(iphone)) {
                 RpcContext.getServiceContext().setAttachment("dubbo.tag", "tester");
             }
-            return demoService.sayHello("World");
+            return greeterService.sayHello("World");
         }
 
     }

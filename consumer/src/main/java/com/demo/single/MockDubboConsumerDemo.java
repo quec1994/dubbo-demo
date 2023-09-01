@@ -1,6 +1,6 @@
 package com.demo.single;
 
-import com.demo.dubbo.DemoService;
+import com.demo.dubbo.GreeterService;
 import com.demo.single.starter.SingleDubboConsumerDemoStarter;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
@@ -26,14 +26,14 @@ public class MockDubboConsumerDemo {
             // 使用internalDemoServiceMock Bean的方法返回模拟数据
 //            , id = "demoService", mock = "internalDemoServiceMock"
     )
-    private DemoService demoService;
+    private GreeterService greeterService;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(MockDubboConsumerDemo.class);
 
-        DemoService demoService = context.getBean(DemoService.class);
+        GreeterService greeterService = context.getBean(GreeterService.class);
 //        DemoService demoService = context.getBean("demoService", DemoService.class);
-        System.out.println(demoService.sayHello("World"));
+        System.out.println(greeterService.sayHello("World"));
     }
 
     @Bean
@@ -42,11 +42,11 @@ public class MockDubboConsumerDemo {
     }
 
 //    @Bean
-    public DemoService internalDemoServiceMock() {
-        return new InternalDemoServiceMock();
+    public GreeterService internalDemoServiceMock() {
+        return new InternalGreeterServiceMock();
     }
 
-    public static class InternalDemoServiceMock implements DemoService {
+    public static class InternalGreeterServiceMock implements GreeterService {
 
         @Override
         public String sayHello(String name) {

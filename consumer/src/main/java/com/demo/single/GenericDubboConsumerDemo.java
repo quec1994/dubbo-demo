@@ -10,7 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class GenericDubboConsumerDemo {
 
 
-    @DubboReference(id = "demoService", interfaceName = "com.demo.dubbo.DemoService", version = "default")
+    @DubboReference(id = "demoService", interfaceName = "com.demo.dubbo.GreeterService", version = "default")
     private GenericService genericService;
 
     public static void main(String[] args) {

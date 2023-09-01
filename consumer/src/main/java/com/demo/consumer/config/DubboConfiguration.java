@@ -1,6 +1,6 @@
 package com.demo.consumer.config;
 
-import com.demo.dubbo.DemoService;
+import com.demo.dubbo.GreeterService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +12,6 @@ import org.springframework.context.annotation.PropertySource;
 public class DubboConfiguration {
 
     @DubboReference(version = "default")
-    private DemoService demoService;
+    private GreeterService greeterService;
 
 }

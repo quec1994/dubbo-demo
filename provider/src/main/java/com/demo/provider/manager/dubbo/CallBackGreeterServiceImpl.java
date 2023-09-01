@@ -1,7 +1,7 @@
 package com.demo.provider.manager.dubbo;
 
-import com.demo.dubbo.DemoService;
-import com.demo.dubbo.DemoServiceListener;
+import com.demo.dubbo.GreeterService;
+import com.demo.dubbo.GreeterServiceCallback;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.annotation.Argument;
 import org.apache.dubbo.config.annotation.DubboService;
@@ -17,11 +17,11 @@ import java.util.concurrent.ConcurrentHashMap;
 // DemoService的sayHello方法的index=1的参数是回调对象，服务消费者可以调用addListener方法来添加回调对象，服务提供者一旦执行回调对象的方法就会通知给服务消费者
 
 @DubboService(version = "callback", methods = {@Method(name = "sayHello", arguments = {@Argument(index = 2, callback = true)})}, callbacks = 3)
-public class CallBackDemoServiceImpl implements DemoService {
+public class CallBackGreeterServiceImpl implements GreeterService {
 
-    private final Map<String, DemoServiceListener> listeners = new ConcurrentHashMap<>();
+    private final Map<String, GreeterServiceCallback> listeners = new ConcurrentHashMap<>();
 
-    public CallBackDemoServiceImpl() {
+    public CallBackGreeterServiceImpl() {
         Thread t = new Thread(() -> {
             while (true) {
                 listeners.entrySet().forEach(entry -> {
@@ -43,9 +43,9 @@ public class CallBackDemoServiceImpl implements DemoService {
 
     }
 
-    private void notify(Map.Entry<String, DemoServiceListener> entry) {
+    private void notify(Map.Entry<String, GreeterServiceCallback> entry) {
         String key = entry.getKey();
-        DemoServiceListener callback = entry.getValue();
+        GreeterServiceCallback callback = entry.getValue();
         boolean available = callback.available(key);
         if (available) {
             callback.changed(key, getChanged());
@@ -65,7 +65,7 @@ public class CallBackDemoServiceImpl implements DemoService {
     }
 
     @Override
-    public String sayHello(String name, String key, DemoServiceListener callback) {
+    public String sayHello(String name, String key, GreeterServiceCallback callback) {
         System.out.println(name + " 执行了回调服务");
 
         listeners.put(key, callback);

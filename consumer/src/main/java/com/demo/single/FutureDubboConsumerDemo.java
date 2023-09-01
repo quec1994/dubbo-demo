@@ -1,7 +1,7 @@
 package com.demo.single;
 
 import com.demo.single.starter.SingleDubboConsumerDemoStarter;
-import com.demo.dubbo.DemoService;
+import com.demo.dubbo.GreeterService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -12,16 +12,16 @@ import java.util.concurrent.CompletableFuture;
 public class FutureDubboConsumerDemo {
 
     @DubboReference(version = "future", timeout = 3000)
-    private DemoService demoService;
+    private GreeterService greeterService;
 
     public static void main(String[] args) {
 
         ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(FutureDubboConsumerDemo.class);
 
-        DemoService demoService = context.getBean(DemoService.class);
+        GreeterService greeterService = context.getBean(GreeterService.class);
 
         // 调用直接返回CompletableFuture
-        CompletableFuture<String> future = demoService.sayHelloFuture("World");  // 5
+        CompletableFuture<String> future = greeterService.sayHelloFuture("World");  // 5
 
         future.whenComplete((v, t) -> {
             if (t != null) {

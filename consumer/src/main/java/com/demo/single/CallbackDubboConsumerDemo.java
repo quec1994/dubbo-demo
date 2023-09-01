@@ -1,8 +1,8 @@
 package com.demo.single;
 
 import com.demo.single.starter.SingleDubboConsumerDemoStarter;
-import com.demo.dubbo.DemoService;
-import com.demo.dubbo.DemoServiceListener;
+import com.demo.dubbo.GreeterService;
+import com.demo.dubbo.GreeterServiceCallback;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -14,18 +14,18 @@ import java.util.Set;
 public class CallbackDubboConsumerDemo {
 
     @DubboReference(version = "callback")
-    private DemoService demoService;
+    private GreeterService greeterService;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(CallbackDubboConsumerDemo.class);
 
-        DemoService demoService = context.getBean(DemoService.class);
+        GreeterService greeterService = context.getBean(GreeterService.class);
 
         // 用来进行callback
-        DemoServiceListenerImpl listener = new DemoServiceListenerImpl();
-        System.out.println(demoService.sayHello("World k1", "k1", listener));
-        System.out.println(demoService.sayHello("World k2", "k2", listener));
-        System.out.println(demoService.sayHello("World k3", "k3", listener));
+        GreeterServiceCallbackImpl listener = new GreeterServiceCallbackImpl();
+        System.out.println(greeterService.sayHello("World k1", "k1", listener));
+        System.out.println(greeterService.sayHello("World k2", "k2", listener));
+        System.out.println(greeterService.sayHello("World k3", "k3", listener));
 
 
         try {
@@ -51,7 +51,7 @@ public class CallbackDubboConsumerDemo {
         }
     }
 
-    static class DemoServiceListenerImpl implements DemoServiceListener {
+    static class GreeterServiceCallbackImpl implements GreeterServiceCallback {
 
         private final Set<String> destroyKey = new HashSet<>();
 

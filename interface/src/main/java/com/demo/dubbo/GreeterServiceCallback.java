@@ -1,6 +1,6 @@
 package com.demo.dubbo;
 
-public interface DemoServiceListener {
+public interface GreeterServiceCallback {
 
     void changed(String key, String msg);
 

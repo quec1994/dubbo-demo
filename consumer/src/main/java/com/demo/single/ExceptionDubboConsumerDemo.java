@@ -1,7 +1,7 @@
 package com.demo.single;
 
 import com.demo.single.starter.SingleDubboConsumerDemoStarter;
-import com.demo.dubbo.DemoService;
+import com.demo.dubbo.GreeterService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -21,13 +21,13 @@ public class ExceptionDubboConsumerDemo {
                             onthrow = "methodInvokeListener.onthrow")
             }
     )
-    private DemoService demoService;
+    private GreeterService greeterService;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(ExceptionDubboConsumerDemo.class);
 
         try {
-            DemoService demoService = context.getBean(DemoService.class);
+            GreeterService greeterService = context.getBean(GreeterService.class);
             // 不会触发集群容错，也不会触发mock容错
 //            System.out.println(demoService.sayHello("customize"));
             // 不会触发集群容错，也不会触发mock容错
@@ -35,7 +35,7 @@ public class ExceptionDubboConsumerDemo {
             // 不会触发集群容错，也不会触发mock容错
 //        System.out.println(demoService.sayHello("rpc_biz"));
             // 不会触发集群容错，但是可以触发mock容错
-        System.out.println(demoService.sayHello("rpc"));
+        System.out.println(greeterService.sayHello("rpc"));
         } catch (Exception e) {
             System.out.println("执行时抛出了异常");
             e.printStackTrace();

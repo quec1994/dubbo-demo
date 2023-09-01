@@ -1,6 +1,6 @@
 package com.demo.dubbo;
 
-public class DemoServiceMock implements DemoService {
+public class GreeterServiceMock implements GreeterService {
 
     @Override
     public String sayHello(String name) {

@@ -1,13 +1,13 @@
 package com.demo.provider.manager.dubbo;
 
-import com.demo.dubbo.DemoService;
+import com.demo.dubbo.GreeterService;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcContext;
 
 
 @DubboService(version = "default")
-public class DefaultDemoServiceImpl implements DemoService {
+public class DefaultGreeterServiceImpl implements GreeterService {
 
     @Override
     public String sayHello(String name) {

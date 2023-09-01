@@ -8,7 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
 @Path("demo")
-public interface RestDemoService {
+public interface RestGreeterService {
 
     @GET
     @Path("say")

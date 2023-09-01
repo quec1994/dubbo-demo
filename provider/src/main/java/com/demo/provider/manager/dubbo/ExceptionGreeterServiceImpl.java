@@ -1,6 +1,6 @@
 package com.demo.provider.manager.dubbo;
 
-import com.demo.dubbo.DemoService;
+import com.demo.dubbo.GreeterService;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcContext;
@@ -8,7 +8,7 @@ import org.apache.dubbo.rpc.RpcException;
 
 
 @DubboService(version = "exception")
-public class ExceptionDemoServiceImpl implements DemoService {
+public class ExceptionGreeterServiceImpl implements GreeterService {
 
     @Override
     public String sayHello(String name) {
