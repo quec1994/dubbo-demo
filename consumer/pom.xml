@@ -79,6 +79,9 @@
                     <pluginArtifact>
                         io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}
                     </pluginArtifact>
+                    <protoSourceRoot>
+                        ../interface/src/main/resources/proto
+                    </protoSourceRoot>
                     <protocPlugins>
                         <protocPlugin>
                             <id>dubbo</id>
