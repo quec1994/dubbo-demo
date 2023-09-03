@@ -10,7 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class TimeoutDubboConsumerDemo {
 
 
-    @DubboReference(version = "timeout")
+    @DubboReference(group ="timeout")
     private GreeterService greeterService;
 
     public static void main(String[] args) {

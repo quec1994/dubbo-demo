@@ -5,7 +5,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcException;
 
 
-@DubboService(version = "mock", timeout = 1000, cluster = "failsafe"
+@DubboService(group ="mock", timeout = 1000, cluster = "failsafe"
         // 使用com.demo.dubbo.DemoServiceMock实现类的方法返回模拟数据
         , mock = "true"
 )

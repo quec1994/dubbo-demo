@@ -9,7 +9,7 @@ import org.apache.dubbo.rpc.RpcContext;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
-@DubboService(version = "future")
+@DubboService(group ="future")
 public class FutureGreeterServiceImpl implements GreeterService {
 
     @Override

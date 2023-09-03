@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ExceptionDubboConsumerDemo {
 
-    @DubboReference(version = "exception", mock = "fail: return mock-return-123",
-//    @DubboReference(version = "exception",
+    @DubboReference(group ="exception", mock = "fail: return mock-return-123",
+//    @DubboReference(group ="exception",
             methods = {
                     @Method(name = "sayHello", oninvoke = "methodInvokeListener.oninvoke",
                             onreturn = "methodInvokeListener.onreturn",

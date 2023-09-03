@@ -15,8 +15,8 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 public class MethodListenerDubboConsumerDemo {
 
-    @DubboReference(version = "default",
-//    @DubboReference(version = "timeout", timeout = 3000,
+    @DubboReference(group ="default",
+//    @DubboReference(group ="timeout", timeout = 3000,
             methods = {
                     @Method(name = "sayHello", oninvoke = "methodInvokeListener.oninvoke",
                             onreturn = "methodInvokeListener.onreturn",

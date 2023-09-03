@@ -10,7 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class LoadBalanceDubboConsumerDemo {
 
 
-    @DubboReference(version = "default", loadbalance = "consistenthash")
+    @DubboReference(group ="default", loadbalance = "consistenthash")
     private GreeterService greeterService;
 
     public static void main(String[] args) {

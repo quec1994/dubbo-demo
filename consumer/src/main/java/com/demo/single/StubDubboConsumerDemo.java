@@ -9,7 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @EnableAutoConfiguration
 public class StubDubboConsumerDemo {
 
-    @DubboReference(version = "timeout", timeout = 1000,
+    @DubboReference(group ="timeout", timeout = 1000,
             // 使用com.demo.dubbo.DemoServiceStub实现类的方法
 //            stub = "true"
             // 使用InternalDemoServiceStub实现类的方法

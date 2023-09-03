@@ -9,7 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @EnableAutoConfiguration
 public class DefaultDubboConsumerDemo {
 
-    @DubboReference(version = "default")
+    @DubboReference(group ="default")
     private GreeterService greeterService;
 
     public static void main(String[] args) {

@@ -12,8 +12,8 @@ import java.io.IOException;
 @EnableAutoConfiguration
 public class BigDataDubboConsumerDemo {
 
-    //    @DubboReference(version = "bigData", protocol = CommonConstants.DUBBO)
-    @DubboReference(version = "bigData", protocol = CommonConstants.TRIPLE)
+    //    @DubboReference(group ="bigData", protocol = CommonConstants.DUBBO)
+    @DubboReference(group ="bigData", protocol = CommonConstants.TRIPLE)
     private GreeterService greeterService;
 
     public static void main(String[] args) throws IOException {

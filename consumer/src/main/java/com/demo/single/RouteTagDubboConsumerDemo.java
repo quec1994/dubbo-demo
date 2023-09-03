@@ -37,7 +37,7 @@ public class RouteTagDubboConsumerDemo implements WebMvcConfigurer {
             tester.add("18888888888");
         }
 
-        @DubboReference(version = "default")
+        @DubboReference(group ="default")
         private GreeterService greeterService;
 
         @RequestMapping("/consumer/user/say")

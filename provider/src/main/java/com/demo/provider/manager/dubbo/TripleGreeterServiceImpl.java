@@ -8,7 +8,7 @@ import org.apache.dubbo.common.stream.StreamObserver;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcContext;
 
-@DubboService(version = "triple", protocol = "tri")
+@DubboService(group ="triple", protocol = "tri")
 public class TripleGreeterServiceImpl extends DubboGreeterProtoServiceTriple.GreeterProtoServiceImplBase {
 
     @Override

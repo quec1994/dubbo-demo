@@ -7,7 +7,7 @@ import org.apache.dubbo.rpc.RpcContext;
 import org.apache.dubbo.rpc.RpcException;
 
 
-@DubboService(version = "exception")
+@DubboService(group ="exception")
 public class ExceptionGreeterServiceImpl implements GreeterService {
 
     @Override

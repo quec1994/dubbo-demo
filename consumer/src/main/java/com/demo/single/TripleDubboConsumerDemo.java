@@ -12,7 +12,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @EnableAutoConfiguration
 public class TripleDubboConsumerDemo {
 
-    @DubboReference(version = "triple")
+    @DubboReference(group ="triple")
     private GreeterProtoService greeterProtoService;
 
     public static void main(String[] args) {

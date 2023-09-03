@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MockDubboConsumerDemo {
 
-    @DubboReference(version = "mock",
+    @DubboReference(group ="mock",
             methods = {
                     @Method(name = "sayHello", oninvoke = "methodInvokeListener.oninvoke",
                             onreturn = "methodInvokeListener.onreturn",

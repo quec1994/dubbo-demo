@@ -5,7 +5,7 @@ import org.apache.dubbo.common.URL;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcContext;
 
-@DubboService(version = "bigData", protocol = {"tri", "dubbo"})
+@DubboService(group ="bigData", protocol = {"tri", "dubbo"})
 public class BigDataGreeterServiceImpl implements GreeterService {
 
     @Override

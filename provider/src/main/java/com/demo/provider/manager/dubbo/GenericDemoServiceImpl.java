@@ -6,7 +6,7 @@ import org.apache.dubbo.rpc.service.GenericService;
 
 import java.util.Arrays;
 
-@DubboService(interfaceName = "com.demo.dubbo.GreeterService", version = "generic")
+@DubboService(interfaceName = "com.demo.dubbo.GreeterService", group ="generic")
 public class GenericDemoServiceImpl implements GenericService {
 
     @Override

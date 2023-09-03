@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
 public class ClusterDubboConsumerDemo {
 
 
-    @DubboReference(version = "timeout", cluster = "failfast",
-//    @DubboReference(version = "timeout", cluster = "failover",
+    @DubboReference(group ="timeout", cluster = "failfast",
+//    @DubboReference(group ="timeout", cluster = "failover",
             methods = {
                     @Method(name = "sayHello", oninvoke = "methodInvokeListener.oninvoke",
                             onreturn = "methodInvokeListener.onreturn",

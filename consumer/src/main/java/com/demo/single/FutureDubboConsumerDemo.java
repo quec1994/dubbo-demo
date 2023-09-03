@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 @EnableAutoConfiguration
 public class FutureDubboConsumerDemo {
 
-    @DubboReference(version = "future", timeout = 3000)
+    @DubboReference(group ="future", timeout = 3000)
     private GreeterService greeterService;
 
     public static void main(String[] args) {

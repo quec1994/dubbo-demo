@@ -8,7 +8,7 @@ import org.apache.dubbo.rpc.RpcContext;
 import java.util.concurrent.TimeUnit;
 
 
-@DubboService(version = "timeout", timeout = 1000, parameters = "enable-timeout-countdown:true")
+@DubboService(group ="timeout", timeout = 1000, parameters = "enable-timeout-countdown:true")
 public class TimeoutGreeterServiceImpl implements GreeterService {
 
     @Override

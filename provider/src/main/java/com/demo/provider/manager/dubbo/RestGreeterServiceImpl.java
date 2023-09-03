@@ -6,7 +6,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcContext;
 
 
-@DubboService(version = "rest", protocol = "rest")
+@DubboService(group ="rest", protocol = "rest")
 public class RestGreeterServiceImpl implements RestGreeterService {
 
     @Override

@@ -17,7 +17,7 @@ import java.nio.charset.StandardCharsets;
 @Import(RestTemplate.class)
 public class RestDubboConsumerDemo {
 
-    @DubboReference(version = "rest")
+    @DubboReference(group = "rest")
     private RestGreeterService restGreeterService;
 
     public static void main(String[] args) {
@@ -30,8 +30,8 @@ public class RestDubboConsumerDemo {
         // httpDemo
         RequestEntity<Void> requestEntity = RequestEntity
                 .get("http://localhost:10880/demo/say?name=World")
-                .header(RestHeaderEnum.VERSION.getHeader(), "rest")
-//                .header(RestHeaderEnum.GROUP.getHeader(), null)
+                .header(RestHeaderEnum.GROUP.getHeader(), "rest")
+//                .header(RestHeaderEnum.VERSION.getHeader(), null)
                 .build();
         RestTemplate restTemplate = context.getBean(RestTemplate.class);
         ResponseEntity<String> responseEntity = restTemplate.exchange(requestEntity, String.class);

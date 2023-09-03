@@ -6,7 +6,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcContext;
 
 
-@DubboService(version = "default")
+@DubboService(group ="default")
 public class DefaultGreeterServiceImpl implements GreeterService {
 
     @Override

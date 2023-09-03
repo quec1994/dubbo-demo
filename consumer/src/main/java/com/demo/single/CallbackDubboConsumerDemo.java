@@ -13,7 +13,7 @@ import java.util.Set;
 @EnableAutoConfiguration
 public class CallbackDubboConsumerDemo {
 
-    @DubboReference(version = "callback")
+    @DubboReference(group ="callback")
     private GreeterService greeterService;
 
     public static void main(String[] args) {

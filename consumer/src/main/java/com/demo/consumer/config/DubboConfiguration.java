@@ -13,7 +13,7 @@ public class DubboConfiguration {
 
     public static final String CONSUMER_PROPERTIES = "classpath:/dubbo/dubbo-consumer.properties";
 
-    @DubboReference(version = "default")
+    @DubboReference(group ="default")
     private GreeterService greeterService;
 
 }
