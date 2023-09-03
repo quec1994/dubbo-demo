@@ -7,24 +7,30 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 public class SingleDubboConsumerDemoStarter {
+    static Class<?>[] STATER_CLASSES = new Class[]{ApplicationConfiguration.class, DubboConfiguration.class};
 
     static {
         System.setProperty("dubbo.application.logger", "slf4j");
     }
 
     public static ConfigurableApplicationContext run(Class<?>... primarySourceClasses) {
-        Class<?>[] annotatedClasses = new Class[primarySourceClasses.length + 1];
-        System.arraycopy(primarySourceClasses, 0, annotatedClasses, 1, primarySourceClasses.length);
-        annotatedClasses[0] = ConsumerConfiguration.class;
+        Class<?>[] annotatedClasses = new Class[primarySourceClasses.length + STATER_CLASSES.length];
+        System.arraycopy(primarySourceClasses, 0, annotatedClasses, STATER_CLASSES.length, primarySourceClasses.length);
+        System.arraycopy(STATER_CLASSES, 0, annotatedClasses, 0, STATER_CLASSES.length);
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(annotatedClasses);
         context.start();
         return context;
     }
 
+    @PropertySource(value = "classpath:/application.yml")
+    static class ApplicationConfiguration {
+
+    }
+
     @Configuration
     @EnableDubbo
-    @PropertySource(value = {"classpath:/application.yml", "classpath:/dubbo/dubbo-consumer.properties"})
-    static class ConsumerConfiguration {
+    @PropertySource(com.demo.consumer.config.DubboConfiguration.CONSUMER_PROPERTIES)
+    static class DubboConfiguration {
 
     }
 

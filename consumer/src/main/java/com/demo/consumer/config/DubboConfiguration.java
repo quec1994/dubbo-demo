@@ -8,8 +8,10 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @EnableDubbo
-@PropertySource("classpath:/dubbo/dubbo-consumer.properties")
+@PropertySource(DubboConfiguration.CONSUMER_PROPERTIES)
 public class DubboConfiguration {
+
+    public static final String CONSUMER_PROPERTIES = "classpath:/dubbo/dubbo-consumer.properties";
 
     @DubboReference(version = "default")
     private GreeterService greeterService;
