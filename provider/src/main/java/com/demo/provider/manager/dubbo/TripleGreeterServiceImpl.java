@@ -9,7 +9,11 @@ import org.apache.dubbo.common.stream.StreamObserver;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcContext;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 @DubboService(group = "triple", protocol = "tri")
 public class TripleGreeterServiceImpl extends DubboGreeterProtoServiceTriple.GreeterProtoServiceImplBase {
@@ -25,77 +29,133 @@ public class TripleGreeterServiceImpl extends DubboGreeterProtoServiceTriple.Gre
 
     @Override
     public StreamObserver<GreeterRequest> greetStream(StreamObserver<GreeterReply> responseObserver) {
+        final Stopwatch stopwatchOuter = Stopwatch.createStarted();
+        String methodFlag = "greetStream";
+        String methodFlagOuter = methodFlag + ".outer";
+        printReceivedMessage("received", methodFlagOuter, stopwatchOuter);
         StreamObserver<GreeterRequest> requestStreamObserver = new StreamObserver<GreeterRequest>() {
+
+            {
+                printMessage(stopwatchOuter + " construct", methodFlag + ".init");
+            }
+
             private final Stopwatch stopwatch = Stopwatch.createStarted();
-            private final StringBuilder sb = new StringBuilder();
+            private final StringBuilder sb = new StringBuilder(" [");
 
             @Override
-            public void onNext(GreeterRequest data) {
-                printMessage(data.getName() + " 执行了triple服务", "greetStream.onNext", stopwatch);
-                sleep(2);
-                sb.append("hello, ").append(data.getName()).append("; ");
-                responseObserver.onNext(GreeterReply.newBuilder()
-                        .setMessage(stopwatch + " hello, " + data.getName())
-                        .build());
+            public void onNext(GreeterRequest greeterRequest) {
+                String methodFlagInternal = methodFlag + ".onNext";
+                printReceivedMessage(greeterRequest.getName(), methodFlagInternal, stopwatch);
+                sleepAndRunAndPrintSentMessage(2, methodFlagInternal, stopwatch, () -> {
+                    sb.append(greeterRequest.getName()).append("; ");
+                    responseObserver.onNext(buildGreeterReply(greeterRequest));
+                });
+            }
+
+            private GreeterReply buildGreeterReply(GreeterRequest greeterRequest) {
+                return GreeterReply.newBuilder()
+                        .setMessage("Server " + stopwatch + " [" + greeterRequest.getName() + "]")
+                        .build();
             }
 
             @Override
             public void onError(Throwable throwable) {
-                printMessage(throwable, "greetStream.onError", stopwatch);
+                printMessage(throwable, methodFlag + ".onError");
                 responseObserver.onError(new IllegalStateException("Stream err"));
             }
 
             @Override
             public void onCompleted() {
-                printMessage("completed", "greetStream.onCompleted", stopwatch);
-                sleep(2);
-                sb.insert(0, stopwatch + " ");
-                responseObserver.onNext(GreeterReply.newBuilder()
-                        .setMessage(sb.toString())
-                        .build());
-                responseObserver.onCompleted();
+                String methodFlagInternal = methodFlag + ".onCompleted";
+                printReceivedMessage("completed", methodFlagInternal, stopwatch);
+                sleepAndRunAndPrintSentMessage(2, methodFlagInternal, stopwatch,
+                        () -> {
+                            sb.insert(0, stopwatch).append("]");
+                            responseObserver.onNext(GreeterReply.newBuilder()
+                                    .setMessage(sb.toString())
+                                    .build());
+                            responseObserver.onCompleted();
+                        });
             }
         };
+        sleep(3, methodFlagOuter);
+        printEndMessage("end", methodFlagOuter, stopwatchOuter);
         return requestStreamObserver;
     }
 
     @Override
     public void greetServerStream(GreeterRequest request, StreamObserver<GreeterReply> responseObserver) {
-        Stopwatch stopwatch = Stopwatch.createStarted();
-        for (int i = 10; i > 0; i--) {
-            Stopwatch stopwatchT = Stopwatch.createStarted();
-            sleep(1);
-            String sleepDiff = stopwatchT.toString();
-            stopwatchT.reset();
-            responseObserver.onNext(buildGreeterReply(request, stopwatch, i));
-            String onNextDiff = stopwatchT.toString();
-            printMessage("sleep diff:" + sleepDiff + " onNext diff:" + onNextDiff, "greetServerStream", stopwatch);
-        }
+        Stopwatch stopwatchOuter = Stopwatch.createStarted();
+        String methodFlag = "greetServerStream";
+        String methodFlagOuter = methodFlag + ".outer";
+        printReceivedMessage("received", methodFlagOuter, stopwatchOuter);
+        sleepAndRunAndPrintForMessage(1, methodFlagOuter, stopwatchOuter,
+                () -> responseObserver.onNext(buildGreeterReply(request, stopwatchOuter)));
         responseObserver.onCompleted();
-        printMessage("end", "greetServerStream", stopwatch);
+        printEndMessage("end", methodFlagOuter, stopwatchOuter);
     }
 
-    private static GreeterReply buildGreeterReply(GreeterRequest request, Stopwatch stopwatch, int i) {
+    private GreeterReply buildGreeterReply(GreeterRequest greeterRequest, Stopwatch stopwatch) {
         return GreeterReply.newBuilder()
-                .setMessage(stopwatch.toString() + " " + request.getName() + "--" + i)
+                .setMessage("Server " + stopwatch + " [" + greeterRequest.getName() + "]")
                 .build();
     }
 
-    private void printMessage(Throwable throwable, String methodName, Stopwatch stopwatch) {
-        printMessage("请求流写入了异常", methodName, stopwatch);
-        throwable.printStackTrace();
+    private void sleep(int timeout, String methodFlag) {
+        sleepAndRun(timeout, methodFlag, null, null);
     }
 
-    private void printMessage(String message, String methodName, Stopwatch stopwatch) {
-        System.out.println(Thread.currentThread().getName() + " " + stopwatch.toString() + " " + methodName + "：" + message);
+    private void sleepAndRunAndPrintForMessage(int timeout, String methodFlag, Stopwatch stopwatch, Runnable runnable) {
+        IntStream.rangeClosed(1, 10)
+                .forEach((i) -> sleepAndRun(timeout, methodFlag + "-For", stopwatch, runnable));
     }
 
-    private static void sleep(int timeout) {
+    private void sleepAndRunAndPrintSentMessage(int timeout, String methodFlagInternal, Stopwatch stopwatch, Runnable runnable) {
+        sleepAndRun(timeout, methodFlagInternal + "-Sent", stopwatch, runnable);
+    }
+
+    private void sleepAndRun(int timeout, String methodFlag, Stopwatch stopwatchOuter, Runnable runnable) {
+        Stopwatch stopwatch = Stopwatch.createStarted();
         try {
             TimeUnit.SECONDS.sleep(timeout);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            printMessage(e, "sleepAndRun[" + methodFlag + "]");
         }
+        if (Objects.isNull(methodFlag)) {
+            return;
+        }
+        StringBuilder message = new StringBuilder();
+        if (Objects.nonNull(stopwatchOuter)) {
+            message.append(stopwatchOuter).append(" [");
+        }
+        message.append("sleep_elapsed ").append(stopwatch);
+        if (Objects.nonNull(runnable)) {
+            stopwatch = Stopwatch.createStarted();
+            runnable.run();
+            message.append(", runnable_elapsed ").append(stopwatch);
+        }
+        if (Objects.nonNull(stopwatchOuter)) {
+            message.append(']');
+        }
+        printMessage(message.toString(), methodFlag);
+    }
+
+    private void printMessage(Throwable throwable, String methodFlag) {
+        printMessage("请求流被写入了异常", methodFlag);
+        throwable.printStackTrace();
+    }
+
+    private void printEndMessage(String message, String methodFlag, Stopwatch stopwatch) {
+        printMessage(stopwatch + " [" + message + "]", methodFlag + "-End");
+    }
+
+    private void printReceivedMessage(String message, String methodFlag, Stopwatch stopwatch) {
+        printMessage(stopwatch + " [" + message + "]", methodFlag + "-Received");
+    }
+
+    private void printMessage(String message, String methodFlag) {
+        String now = DateTimeFormatter.ISO_TIME.format(LocalTime.now());
+        System.out.println(now + " [" + Thread.currentThread().getName() + "] " + methodFlag + "：" + message);
     }
 
 }
