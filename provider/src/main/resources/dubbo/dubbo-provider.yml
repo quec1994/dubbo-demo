@@ -1,0 +1,33 @@
+# dubbo 配置
+dubbo:
+    application:
+        name: ${spring.application.name}
+        # 可选值
+        # 控制地址注册行为，应用级服务发现迁移用。
+        # - instance 只注册应用级地址；
+        # - interface 只注册接口级地址；
+        # - all(默认) 同时注册应用级和接口级地址；
+        register-mode: instance
+    # Dubbo Registry
+    registry:
+        address: zookeeper://localhost:2181
+    protocols:
+        # Dubbo Protocol
+        dubbo:
+            id: dubbo
+            name: dubbo
+            port: 20880
+        # Rest Protocol
+        rest:
+            name: rest
+            port: 10880
+            default: false
+        # Triple Protocol
+        tri:
+            name: tri
+            port: 50051
+            default: false
+    provider:
+        # 配置默认使用的协议
+        # 因为 dubbo.protocols.rest.default=false 不生效
+        protocol: dubbo

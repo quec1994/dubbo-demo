@@ -6,6 +6,6 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @EnableDubbo(scanBasePackages = "com.demo.provider.manager.dubbo")
-@PropertySource("classpath:/dubbo/dubbo-provider.properties")
+@PropertySource(value = "classpath:/dubbo/dubbo-provider.yml", factory = YamlPropertySourceFactory.class)
 public class DubboConfiguration {
 }
