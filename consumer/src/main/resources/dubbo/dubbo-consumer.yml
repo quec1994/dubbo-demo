@@ -5,11 +5,15 @@ dubbo:
         parameters:
             # 可选值
             # 服务引入使用级别
-            # FORCE_ INTERFACE 强制使用接口级服务引入
-            # FORCE_APPLICATION 强制使用应用级服务引入
-            # APPLICATION_ FIRST 智能选择是接口级还是应用级，默认就是这个
+            # - FORCE_ INTERFACE 强制使用接口级服务引入
+            # - FORCE_APPLICATION 强制使用应用级服务引入
+            # - APPLICATION_ FIRST 智能选择是接口级还是应用级，默认就是这个
             migration:
                 step: FORCE_APPLICATION
+         # 可选值
+         # 服务引入使用级别，仅支持通过 -D以及 全局配置中心 两种方式进行配置。
+#        service-discovery:
+#            migration: FORCE_APPLICATION
         # 可选值
         # Dubbo QOS
         qos-enable: false
