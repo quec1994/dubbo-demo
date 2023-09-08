@@ -1,5 +1,6 @@
-# dubbo 配置
+# Dubbo 框架启动配置
 dubbo:
+    # 应用配置
     application:
         name: dubbo-consumer-demo
         parameters:
@@ -17,6 +18,6 @@ dubbo:
         # 可选值
         # Dubbo QOS
         qos-enable: false
-    # Dubbo Registry
+    # 注册中心配置
     registry:
         address: zookeeper://localhost:2181

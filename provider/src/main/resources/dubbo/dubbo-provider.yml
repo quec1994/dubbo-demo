@@ -1,5 +1,6 @@
-# dubbo 配置
+# Dubbo 框架启动配置
 dubbo:
+    # 应用配置
     application:
         name: ${spring.application.name}
         # 可选值
@@ -8,26 +9,28 @@ dubbo:
         # - interface 只注册接口级地址；
         # - all(默认) 同时注册应用级和接口级地址；
         register-mode: instance
-    # Dubbo Registry
+    # 注册中心配置
     registry:
         address: zookeeper://localhost:2181
+    # 协议配置
     protocols:
-        # Dubbo Protocol
+        # Dubbo 协议配置
         dubbo:
             id: dubbo
             name: dubbo
             port: 20880
-        # Rest Protocol
+        # Rest 协议配置
         rest:
             name: rest
             port: 10880
             default: false
-        # Triple Protocol
+        # Triple 协议配置
         tri:
             name: tri
             port: 50051
             default: false
+    # 提供者公共配置
     provider:
         # 配置默认使用的协议
-        # 因为 dubbo.protocols.rest.default=false 不生效
+        # 本来可以不配置，配置 dubbo.protocols.xxx.default=false 就行，但是3.2.5有BUG，default=false 不生效
         protocol: dubbo
