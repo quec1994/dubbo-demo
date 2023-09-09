@@ -11,7 +11,7 @@ dubbo:
         register-mode: instance
     # 注册中心配置
     registry:
-        address: zookeeper://localhost:2181
+        address: nacos://127.0.0.1:8848
     # 协议配置
     protocols:
         # Dubbo 协议配置
