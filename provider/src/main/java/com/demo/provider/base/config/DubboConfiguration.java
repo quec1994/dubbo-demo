@@ -1,6 +1,8 @@
 package com.demo.provider.base.config;
 
+import com.demo.dubbo.GreeterService;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -13,6 +15,9 @@ public class DubboConfiguration {
     static {
         forceAssignLoggerFactory();
     }
+
+    @DubboReference(group ="default")
+    private GreeterService greeterService;
 
     private static void forceAssignLoggerFactory() {
         /*
