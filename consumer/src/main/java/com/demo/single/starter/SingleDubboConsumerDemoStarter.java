@@ -23,7 +23,8 @@ public class SingleDubboConsumerDemoStarter {
         return context;
     }
 
-    @PropertySource(value = "classpath:/application.yml")
+    @Configuration
+    @PropertySource(value = "classpath:/application.yml", factory = YamlPropertySourceFactory.class)
     static class ApplicationConfiguration {
 
     }
