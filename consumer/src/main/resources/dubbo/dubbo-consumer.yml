@@ -2,7 +2,7 @@
 dubbo:
     # 应用配置
     application:
-        name: dubbo-consumer-demo
+        name: ${spring.application.name}
         parameters:
             # 可选值
             # 服务引入使用级别
@@ -17,7 +17,7 @@ dubbo:
 #            migration: FORCE_APPLICATION
         # 可选值
         # Dubbo QOS
-        qos-enable: false
+        qosEnable: false
     # 注册中心配置
     registry:
         address: nacos://127.0.0.1:8848
