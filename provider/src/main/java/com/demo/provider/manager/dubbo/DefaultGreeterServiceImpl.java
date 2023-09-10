@@ -12,9 +12,7 @@ public class DefaultGreeterServiceImpl implements GreeterService {
     @Override
     public String sayHello(String name) {
         System.out.println(name + " 执行了default服务");
-
-        URL url = RpcContext.getServiceContext().getUrl();
-        return String.format("Hello %s（通过 %s:%s 请求）", name, url.getProtocol(), url.getPort());
+        return String.format("您好 %s！", name);
     }
 
 

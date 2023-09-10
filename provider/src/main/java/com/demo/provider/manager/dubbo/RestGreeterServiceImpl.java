@@ -12,9 +12,7 @@ public class RestGreeterServiceImpl implements RestGreeterService {
     @Override
     public String sayHello(String name) {
         System.out.println(name + " 执行了rest服务");
-
-        URL url = RpcContext.getServiceContext().getUrl();
-        return String.format("Hello %s（通过 %s:%s 请求）", name, url.getProtocol(), url.getPort());
+        return String.format("您好 %s！", name);
     }
 
 }

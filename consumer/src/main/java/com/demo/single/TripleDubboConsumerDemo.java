@@ -32,7 +32,7 @@ public class TripleDubboConsumerDemo {
 
     private static void unary(GreeterProtoService greeterService) {
         GreeterRequest greeterRequest = GreeterRequest.newBuilder()
-                .setName("World")
+                .setName("世界")
                 .build();
         final GreeterReply reply = greeterService.greet(greeterRequest);
         System.out.println("unary：" + reply.getMessage());

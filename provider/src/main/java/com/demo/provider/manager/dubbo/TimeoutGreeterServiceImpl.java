@@ -25,9 +25,7 @@ public class TimeoutGreeterServiceImpl implements GreeterService {
         }
 
         System.out.println(name + " 执行结束");
-
-        URL url = RpcContext.getServiceContext().getUrl();
-        return String.format("Hello %s（通过 %s:%s 请求）", name, url.getProtocol(), url.getPort());
+        return String.format("您好 %s！", name);
     }
 
 }

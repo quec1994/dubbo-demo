@@ -32,7 +32,7 @@ public class ExceptionGreeterServiceImpl implements GreeterService {
             // 不会触发消费者端集群容错，也不会消费者端触发mock容错
             throw new RpcException(RpcException.BIZ_EXCEPTION, String.format(format, "RpcException_BIZ"));
         }
-        return String.format("Hello %s（通过 %s:%s 请求）", name, url.getProtocol(), url.getPort());
+        return String.format("您好 %s！", name);
     }
 
     public static class CustomizeException extends RuntimeException {

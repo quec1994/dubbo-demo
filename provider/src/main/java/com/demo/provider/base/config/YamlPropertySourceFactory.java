@@ -1,4 +1,4 @@
-package com.demo.provider.config;
+package com.demo.provider.base.config;
 
 import org.springframework.boot.env.YamlPropertySourceLoader;
 import org.springframework.core.env.PropertySource;

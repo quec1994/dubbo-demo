@@ -1,25 +1,18 @@
-package com.demo.consumer.config;
+package com.demo.provider.base.config;
 
-import com.demo.dubbo.GreeterService;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@EnableDubbo
-@PropertySource(value = DubboConfiguration.CONSUMER_PROPERTIES, factory = YamlPropertySourceFactory.class)
+@EnableDubbo(scanBasePackages = "com.demo.provider.manager.dubbo")
+@PropertySource(value = "classpath:/dubbo/dubbo-provider.yml", factory = YamlPropertySourceFactory.class)
 public class DubboConfiguration {
-
-    public static final String CONSUMER_PROPERTIES = "classpath:/dubbo/dubbo-consumer.yml";
 
     static {
         forceAssignLoggerFactory();
     }
-
-    @DubboReference(group ="default")
-    private GreeterService greeterService;
 
     private static void forceAssignLoggerFactory() {
         /*

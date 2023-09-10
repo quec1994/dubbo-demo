@@ -25,7 +25,7 @@ public class RestDubboConsumerDemo {
 
         // dubboDemo
         RestGreeterService restGreeterService = context.getBean(RestGreeterService.class);
-        System.out.println("dubboDemo：" + restGreeterService.sayHello("World"));
+        System.out.println("dubboDemo：" + restGreeterService.sayHello("世界"));
 
         // httpDemo
         RequestEntity<Void> requestEntity = RequestEntity

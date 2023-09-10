@@ -18,7 +18,7 @@ public class GenericDubboConsumerDemo {
 
         GenericService genericService = (GenericService) context.getBean("demoService");
 
-        Object result = genericService.$invoke("sayHello", new String[]{"java.lang.String"}, new Object[]{"World"});
+        Object result = genericService.$invoke("sayHello", new String[]{"java.lang.String"}, new Object[]{"世界"});
         System.out.println(result);
 
 

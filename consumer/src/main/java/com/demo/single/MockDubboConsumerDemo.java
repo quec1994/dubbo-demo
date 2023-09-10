@@ -33,7 +33,7 @@ public class MockDubboConsumerDemo {
 
         GreeterService greeterService = context.getBean(GreeterService.class);
 //        DemoService demoService = context.getBean("demoService", DemoService.class);
-        System.out.println(greeterService.sayHello("World"));
+        System.out.println(greeterService.sayHello("世界"));
     }
 
     @Bean

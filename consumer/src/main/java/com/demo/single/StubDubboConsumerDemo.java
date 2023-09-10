@@ -22,7 +22,7 @@ public class StubDubboConsumerDemo {
 
         GreeterService greeterService = context.getBean(GreeterService.class);
 
-        System.out.println((greeterService.sayHello("World")));
+        System.out.println((greeterService.sayHello("世界")));
 
 
     }

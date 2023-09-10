@@ -15,7 +15,7 @@ public class DefaultDubboConsumerDemo {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(DefaultDubboConsumerDemo.class);
         GreeterService greeterService = context.getBean(GreeterService.class);
-        System.out.println(greeterService.sayHello("World"));
+        System.out.println(greeterService.sayHello("世界"));
     }
 
 }

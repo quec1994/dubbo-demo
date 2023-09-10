@@ -21,7 +21,7 @@ public class FutureDubboConsumerDemo {
         GreeterService greeterService = context.getBean(GreeterService.class);
 
         // 调用直接返回CompletableFuture
-        CompletableFuture<String> future = greeterService.sayHelloFuture("World");  // 5
+        CompletableFuture<String> future = greeterService.sayHelloFuture("世界");  // 5
 
         future.whenComplete((v, t) -> {
             if (t != null) {

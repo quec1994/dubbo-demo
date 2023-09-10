@@ -1,6 +1,6 @@
 package com.demo.single.starter;
 
-import com.demo.consumer.config.YamlPropertySourceFactory;
+import com.demo.consumer.base.config.YamlPropertySourceFactory;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -31,7 +31,7 @@ public class SingleDubboConsumerDemoStarter {
 
     @Configuration
     @EnableDubbo
-    @PropertySource(value = com.demo.consumer.config.DubboConfiguration.CONSUMER_PROPERTIES, factory = YamlPropertySourceFactory.class)
+    @PropertySource(value = com.demo.consumer.base.config.DubboConfiguration.CONSUMER_PROPERTIES, factory = YamlPropertySourceFactory.class)
     static class DubboConfiguration {
 
     }

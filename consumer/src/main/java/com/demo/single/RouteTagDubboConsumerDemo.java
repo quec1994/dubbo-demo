@@ -23,7 +23,7 @@ public class RouteTagDubboConsumerDemo implements WebMvcConfigurer {
                 RouteTagTestService.class);
         Map<String, String> map = new HashMap<>();
         map.put("phone", "18888888888");
-        map.put("name", "World");
+        map.put("name", "世界");
         RouteTagTestService routeTagTestService = context.getBean(RouteTagTestService.class);
         System.out.println(routeTagTestService.sayHello(map));
     }
@@ -47,7 +47,7 @@ public class RouteTagDubboConsumerDemo implements WebMvcConfigurer {
             if (tester.contains(iphone)) {
                 RpcContext.getServiceContext().setAttachment("dubbo.tag", "tester");
             }
-            return greeterService.sayHello("World");
+            return greeterService.sayHello("世界");
         }
 
     }

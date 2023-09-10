@@ -20,7 +20,7 @@ public class TimeoutDubboConsumerDemo {
 
         try {
             // 服务调用超时时间为1秒，如果这1秒内没有收到服务结果，则会报错
-            System.out.println((greeterService.sayHello("World"))); //xxservestub
+            System.out.println((greeterService.sayHello("世界"))); //xxservestub
         } catch (Exception e) {
             System.out.println("执行出现了异常");
             e.printStackTrace();
