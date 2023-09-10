@@ -12,8 +12,6 @@ public class SingleDubboConsumerDemoStarter {
 
     static {
         System.setProperty("dubbo.application.logger", "slf4j");
-        // 只注册应用级地址，让注册中心干净一点
-        System.setProperty("dubbo.application.register-mode", "instance");
     }
 
     public static ConfigurableApplicationContext run(Class<?>... primarySourceClasses) {
