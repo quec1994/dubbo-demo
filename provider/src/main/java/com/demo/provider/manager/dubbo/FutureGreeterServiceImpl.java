@@ -20,7 +20,7 @@ public class FutureGreeterServiceImpl implements GreeterService {
 
     private String createResult(String name) {
         URL url = RpcContext.getServiceContext().getUrl();
-        return String.format("%s：%s, Hello %s", url.getProtocol(), url.getPort(), name);
+        return String.format("Hello %s（通过 %s:%s 请求）", name, url.getProtocol(), url.getPort());
     }
 
     @Override

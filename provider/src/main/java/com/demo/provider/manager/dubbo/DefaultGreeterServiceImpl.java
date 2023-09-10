@@ -14,7 +14,7 @@ public class DefaultGreeterServiceImpl implements GreeterService {
         System.out.println(name + " 执行了default服务");
 
         URL url = RpcContext.getServiceContext().getUrl();
-        return String.format("%s：%s, Hello %s", url.getProtocol(), url.getPort(), name);  // 正常访问
+        return String.format("Hello %s（通过 %s:%s 请求）", name, url.getProtocol(), url.getPort());
     }
 
 
