@@ -1,8 +1,8 @@
 package com.demo.provider.manager.dubbo;
 
-import com.demo.dubbo.tri.grpc.DubboGreeterProtoServiceTriple;
-import com.demo.dubbo.tri.grpc.GreeterReply;
-import com.demo.dubbo.tri.grpc.GreeterRequest;
+import com.demo.proto.dubbo.tri.DubboGreeterProtoServiceTriple;
+import com.demo.proto.dubbo.tri.GreeterReply;
+import com.demo.proto.dubbo.tri.GreeterRequest;
 import com.google.common.base.Stopwatch;
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.common.stream.StreamObserver;
