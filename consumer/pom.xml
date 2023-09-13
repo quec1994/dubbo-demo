@@ -14,11 +14,16 @@
     <version>1.0-SNAPSHOT</version>
     <name>${project.parent.artifactId}-${project.artifactId}</name>
 
+    <properties>
+        <com.demo.interface.version>1.0-SNAPSHOT</com.demo.interface.version>
+        <proto.source.root>target/dependency/proto</proto.source.root>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.demo</groupId>
             <artifactId>interface</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${com.demo.interface.version}</version>
         </dependency>
 
         <dependency>
@@ -55,71 +60,172 @@
     </dependencies>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <!-- copy proto file from interface resources -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>copy-proto-file</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>copy-resources</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${proto.source.root}</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>
+                                            ../interface/src/main/resources
+                                        </directory>
+                                        <includes>
+                                            <include>proto/*.proto</include>
+                                        </includes>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- extract proto file from dependency jar -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>unpack-proto-file</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>unpack</goal>
+                            </goals>
+                            <configuration>
+                                <artifactItems>
+                                    <artifactItem>
+                                        <groupId>com.demo</groupId>
+                                        <artifactId>interface</artifactId>
+                                        <version>${com.demo.interface.version}</version>
+                                        <outputDirectory>${proto.source.root}</outputDirectory>
+                                        <includes>proto\/*.proto</includes>
+                                    </artifactItem>
+                                </artifactItems>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- compile proto file -->
+                <plugin>
+                    <groupId>org.xolstice.maven.plugins</groupId>
+                    <artifactId>protobuf-maven-plugin</artifactId>
+                    <configuration>
+                        <protocArtifact>
+                            com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}
+                        </protocArtifact>
+                        <pluginId>grpc-java</pluginId>
+                        <pluginArtifact>
+                            io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}
+                        </pluginArtifact>
+                        <protoSourceRoot>${proto.source.root}</protoSourceRoot>
+                        <protocPlugins>
+                            <protocPlugin>
+                                <id>dubbo</id>
+                                <groupId>org.apache.dubbo</groupId>
+                                <artifactId>dubbo-compiler</artifactId>
+                                <version>${dubbo.version}</version>
+                                <mainClass>org.apache.dubbo.gen.tri.Dubbo3TripleGenerator</mainClass>
+                            </protocPlugin>
+                        </protocPlugins>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>compile</goal>
+                                <goal>test-compile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>kr.motd.maven</groupId>
+                    <artifactId>os-maven-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <phase>initialize</phase>
+                            <goals>
+                                <goal>detect</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>add-source</goal>
+                            </goals>
+                            <configuration>
+                                <sources>
+                                    <source>target/generated-sources/protobuf/java</source>
+                                    <source>target/generated-sources/protobuf/grpc-java</source>
+                                </sources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>kr.motd.maven</groupId>
                 <artifactId>os-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>detect</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.xolstice.maven.plugins</groupId>
-                <artifactId>protobuf-maven-plugin</artifactId>
-                <configuration>
-                    <protocArtifact>
-                        com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}
-                    </protocArtifact>
-                    <pluginId>grpc-java</pluginId>
-                    <pluginArtifact>
-                        io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}
-                    </pluginArtifact>
-                    <protoSourceRoot>
-                        ../interface/src/main/resources/proto
-                    </protoSourceRoot>
-                    <protocPlugins>
-                        <protocPlugin>
-                            <id>dubbo</id>
-                            <groupId>org.apache.dubbo</groupId>
-                            <artifactId>dubbo-compiler</artifactId>
-                            <version>${dubbo.version}</version>
-                            <mainClass>org.apache.dubbo.gen.tri.Dubbo3TripleGenerator</mainClass>
-                        </protocPlugin>
-                    </protocPlugins>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>test-compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>target/generated-sources/protobuf/java</source>
-                                <source>target/generated-sources/protobuf/grpc-java</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <activation>
+                <!-- default active this profile  -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <id>developer</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.xolstice.maven.plugins</groupId>
+                        <artifactId>protobuf-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>production</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.xolstice.maven.plugins</groupId>
+                        <artifactId>protobuf-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
