@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 
-package com.demo.dubbo.tri.grpc;
+package com.demo.proto.dubbo.tri;
 
 
 // The request message containing the user's name.
