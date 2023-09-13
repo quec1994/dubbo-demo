@@ -25,9 +25,9 @@ public class TripleDubboConsumerDemo {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(TripleDubboConsumerDemo.class);
         GreeterProtoService greeterService = context.getBean(GreeterProtoService.class);
-//        unary(greeterService);
+        unary(greeterService);
 //        greetStream(greeterService);
-        greetServerStream(greeterService);
+//        greetServerStream(greeterService);
     }
 
     private static void unary(GreeterProtoService greeterService) {
