@@ -1,1 +1,1 @@
-through-log=com.demo.provider.base.dubbo.filter.ThroughLogFilter
+through-log=com.demo.provider.base.dubbo.filter.WatcherFilter
