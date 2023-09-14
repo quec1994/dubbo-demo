@@ -11,7 +11,7 @@ import org.springframework.test.context.ActiveProfiles;
         classes = BaseSingleTest.ApplicationConfiguration.class)
 // 指定测试环境的配置文件
 @ActiveProfiles("developer")
-class BaseSingleTest {
+abstract class BaseSingleTest {
 
     static class ApplicationConfiguration extends DubboConsumerDemo {
 
