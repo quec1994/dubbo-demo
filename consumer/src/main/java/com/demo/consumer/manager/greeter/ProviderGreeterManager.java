@@ -5,13 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GreeterManager {
+public class ProviderGreeterManager {
 
     @Autowired
-    private GreeterDubboService greeterDubboService;
+    private GreeterDubboService defaultGreeterDubboService;
 
     public String sayHello(String name) {
-        return greeterDubboService.sayHello(name);
+        return defaultGreeterDubboService.sayHello(name);
     }
 
 }
