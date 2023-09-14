@@ -9,17 +9,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ProviderDubbo {
 
-    private static final String PROVIDER_REGISTRY = "providerRegistry";
+    private static final String NACOS_REGISTRY = "consumerRegistryProviderNacos";
 
-    @Bean(PROVIDER_REGISTRY)
+    @Bean(NACOS_REGISTRY)
     public RegistryConfig providerRegistry() {
         RegistryConfig registryConfig = new RegistryConfig();
-        registryConfig.setId(PROVIDER_REGISTRY);
+        registryConfig.setId(NACOS_REGISTRY);
         registryConfig.setAddress("nacos://127.0.0.1:8848");
         return registryConfig;
     }
 
-    @DubboReference(id = "defaultGreeterDubboService", group = "default", registry = PROVIDER_REGISTRY)
+    @DubboReference(id = "defaultGreeterDubboService", group = "default", registry = NACOS_REGISTRY)
     private GreeterDubboService defaultGreeterDubboService;
 
 }
