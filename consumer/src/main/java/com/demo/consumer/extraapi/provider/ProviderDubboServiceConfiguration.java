@@ -16,6 +16,8 @@ public class ProviderDubboServiceConfiguration {
         RegistryConfig registryConfig = new RegistryConfig();
         registryConfig.setId(NACOS_REGISTRY);
         registryConfig.setAddress("nacos://127.0.0.1:8848");
+        // 消费者注册中心设置成非默认属性
+        registryConfig.setDefault(Boolean.FALSE);
         return registryConfig;
     }
 
