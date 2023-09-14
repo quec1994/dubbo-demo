@@ -1,4 +1,4 @@
-package com.demo.single.local;
+package com.demo.consumer.single.local;
 
 import com.demo.dubbo.GreeterService;
 

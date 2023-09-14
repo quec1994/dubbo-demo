@@ -1,11 +1,11 @@
-package com.demo.single;
+package com.demo.consumer.single;
 
+import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
 import com.demo.dubbo.RestGreeterService;
-import com.demo.single.starter.SingleDubboConsumerDemoStarter;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.rpc.protocol.rest.RestHeaderEnum;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -13,18 +13,18 @@ import org.springframework.web.client.RestTemplate;
 
 import java.nio.charset.StandardCharsets;
 
-@EnableAutoConfiguration
+
 @Import(RestTemplate.class)
-public class RestDubboConsumerDemo {
+public class RestDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
 
     @DubboReference(group = "rest")
     private RestGreeterService restGreeterService;
+    @Autowired
+    private RestTemplate restTemplate;
 
-    public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(RestDubboConsumerDemo.class);
-
+    @Test
+    public void test() {
         // dubboDemo
-        RestGreeterService restGreeterService = context.getBean(RestGreeterService.class);
         System.out.println("dubboDemo：" + restGreeterService.sayHello("世界"));
 
         // httpDemo
@@ -33,7 +33,6 @@ public class RestDubboConsumerDemo {
                 .header(RestHeaderEnum.GROUP.getHeader(), "rest")
 //                .header(RestHeaderEnum.VERSION.getHeader(), null)
                 .build();
-        RestTemplate restTemplate = context.getBean(RestTemplate.class);
         ResponseEntity<String> responseEntity = restTemplate.exchange(requestEntity, String.class);
         String result = new String(responseEntity.getBody().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
         System.out.println("httpDemo：" + result);

@@ -1,17 +1,14 @@
-package com.demo.single;
+package com.demo.consumer.single;
 
+import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
 import com.demo.dubbo.GreeterService;
-import com.demo.single.starter.SingleDubboConsumerDemoStarter;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@EnableAutoConfiguration
-@Configuration
-public class MockDubboConsumerDemo {
+
+public class MockDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
 
     @DubboReference(group ="mock",
             methods = {
@@ -20,7 +17,7 @@ public class MockDubboConsumerDemo {
                             onthrow = "methodInvokeListener.onthrow")
             }
             // 使用InternalDemoServiceMock实现类的方法返回模拟数据
-//            ,mock = "com.demo.single.MockDubboConsumerDemo$InternalDemoServiceMock"
+//            ,mock = "com.demo.single.MockDubboConsumerDemoTest$InternalDemoServiceMock"
             // 返回固定字符串“mock-return-123”
 //            ,mock = "fail: return mock-return-123"
             // 使用internalDemoServiceMock Bean的方法返回模拟数据
@@ -28,17 +25,14 @@ public class MockDubboConsumerDemo {
     )
     private GreeterService greeterService;
 
-    public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(MockDubboConsumerDemo.class);
-
-        GreeterService greeterService = context.getBean(GreeterService.class);
-//        DemoService demoService = context.getBean("demoService", DemoService.class);
+    @Test
+    public void test() {
         System.out.println(greeterService.sayHello("世界"));
     }
 
     @Bean
-    public MethodListenerDubboConsumerDemo.MethodInvokeListener methodInvokeListener() {
-        return new MethodListenerDubboConsumerDemo.MethodInvokeListener();
+    public MethodListenerDubboConsumerDemoTest.MethodInvokeListener methodInvokeListener() {
+        return new MethodListenerDubboConsumerDemoTest.MethodInvokeListener();
     }
 
 //    @Bean

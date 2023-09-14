@@ -1,27 +1,23 @@
-package com.demo.single;
+package com.demo.consumer.single;
 
-import com.demo.single.starter.SingleDubboConsumerDemoStarter;
+import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
 import com.demo.dubbo.GreeterService;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.CompletableFuture;
 
-@EnableAutoConfiguration
-public class FutureDubboConsumerDemo {
+
+public class FutureDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
 
     @DubboReference(group ="future", timeout = 3000)
     private GreeterService greeterService;
 
-    public static void main(String[] args) {
-
-        ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(FutureDubboConsumerDemo.class);
-
-        GreeterService greeterService = context.getBean(GreeterService.class);
+    @Test
+    public void test() {
 
         // 调用直接返回CompletableFuture
-        CompletableFuture<String> future = greeterService.sayHelloFuture("世界");  // 5
+        CompletableFuture<String> future = greeterService.sayHelloFuture("世界");
 
         future.whenComplete((v, t) -> {
             if (t != null) {

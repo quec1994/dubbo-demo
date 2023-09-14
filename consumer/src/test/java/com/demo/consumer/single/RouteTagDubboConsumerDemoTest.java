@@ -1,30 +1,30 @@
-package com.demo.single;
+package com.demo.consumer.single;
 
-import com.demo.single.starter.SingleDubboConsumerDemoStarter;
+import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
 import com.demo.dubbo.GreeterService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.rpc.RpcContext;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@EnableAutoConfiguration
-public class RouteTagDubboConsumerDemo implements WebMvcConfigurer {
 
-    public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(RouteTagDubboConsumerDemo.class,
-                RouteTagTestService.class);
+public class RouteTagDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
+
+    @Autowired
+    private RouteTagTestService routeTagTestService;
+
+    @Test
+    public void test() {
         Map<String, String> map = new HashMap<>();
         map.put("phone", "18888888888");
         map.put("name", "世界");
-        RouteTagTestService routeTagTestService = context.getBean(RouteTagTestService.class);
         System.out.println(routeTagTestService.sayHello(map));
     }
 

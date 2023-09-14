@@ -1,19 +1,15 @@
-package com.demo.single;
+package com.demo.consumer.single;
 
-import com.demo.single.starter.SingleDubboConsumerDemoStarter;
+import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
 import com.demo.dubbo.GreeterService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import java.util.concurrent.TimeUnit;
 
-@EnableAutoConfiguration
-@Configuration
-public class MethodListenerDubboConsumerDemo {
+public class MethodListenerDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
 
     @DubboReference(group ="default",
 //    @DubboReference(group ="timeout", timeout = 3000,
@@ -25,9 +21,8 @@ public class MethodListenerDubboConsumerDemo {
     )
     private GreeterService greeterService;
 
-    public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(MethodListenerDubboConsumerDemo.class);
-        GreeterService greeterService = context.getBean(GreeterService.class);
+    @Test
+    public void test() {
         System.out.println(greeterService.sayHello("世界"));
     }
 

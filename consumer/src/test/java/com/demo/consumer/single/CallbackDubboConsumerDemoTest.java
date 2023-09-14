@@ -1,25 +1,22 @@
-package com.demo.single;
+package com.demo.consumer.single;
 
-import com.demo.single.starter.SingleDubboConsumerDemoStarter;
+import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
 import com.demo.dubbo.GreeterService;
 import com.demo.dubbo.GreeterServiceCallback;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
 import java.util.Set;
 
-@EnableAutoConfiguration
-public class CallbackDubboConsumerDemo {
+
+public class CallbackDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
 
     @DubboReference(group ="callback")
     private GreeterService greeterService;
 
-    public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(CallbackDubboConsumerDemo.class);
-
-        GreeterService greeterService = context.getBean(GreeterService.class);
+    @Test
+    public void test() {
 
         // 用来进行callback
         GreeterServiceCallbackImpl listener = new GreeterServiceCallbackImpl();

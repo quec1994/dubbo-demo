@@ -1,17 +1,13 @@
-package com.demo.single;
+package com.demo.consumer.single;
 
-import com.demo.single.starter.SingleDubboConsumerDemoStarter;
+import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
 import com.demo.dubbo.GreeterService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@EnableAutoConfiguration
-@Configuration
-public class ExceptionDubboConsumerDemo {
+public class ExceptionDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
 
     @DubboReference(group ="exception", mock = "fail: return mock-return-123",
 //    @DubboReference(group ="exception",
@@ -23,11 +19,9 @@ public class ExceptionDubboConsumerDemo {
     )
     private GreeterService greeterService;
 
-    public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(ExceptionDubboConsumerDemo.class);
-
+    @Test
+    public void test() {
         try {
-            GreeterService greeterService = context.getBean(GreeterService.class);
             // 不会触发集群容错，也不会触发mock容错
 //            System.out.println(demoService.sayHello("customize"));
             // 不会触发集群容错，也不会触发mock容错
@@ -44,8 +38,8 @@ public class ExceptionDubboConsumerDemo {
     }
 
     @Bean
-    public MethodListenerDubboConsumerDemo.MethodInvokeListener methodInvokeListener() {
-        return new MethodListenerDubboConsumerDemo.MethodInvokeListener();
+    public MethodListenerDubboConsumerDemoTest.MethodInvokeListener methodInvokeListener() {
+        return new MethodListenerDubboConsumerDemoTest.MethodInvokeListener();
     }
 
 }

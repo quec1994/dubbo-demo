@@ -1,14 +1,13 @@
-package com.demo.single;
+package com.demo.consumer.single;
 
 import com.demo.proto.dubbo.tri.GreeterProtoService;
 import com.demo.proto.dubbo.tri.GreeterReply;
 import com.demo.proto.dubbo.tri.GreeterRequest;
-import com.demo.single.starter.SingleDubboConsumerDemoStarter;
 import com.google.common.base.Stopwatch;
 import org.apache.dubbo.common.stream.StreamObserver;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.junit.jupiter.api.Test;
+import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -16,29 +15,22 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
-@EnableAutoConfiguration
-public class TripleDubboConsumerDemo {
+public class TripleDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
 
     @DubboReference(group = "triple", timeout = 4000)
     private GreeterProtoService greeterProtoService;
 
-    public static void main(String[] args) {
-        ConfigurableApplicationContext context = SingleDubboConsumerDemoStarter.run(TripleDubboConsumerDemo.class);
-        GreeterProtoService greeterService = context.getBean(GreeterProtoService.class);
-        unary(greeterService);
-//        greetStream(greeterService);
-//        greetServerStream(greeterService);
-    }
-
-    private static void unary(GreeterProtoService greeterService) {
+    @Test
+    public void testUnary() {
         GreeterRequest greeterRequest = GreeterRequest.newBuilder()
                 .setName("世界")
                 .build();
-        final GreeterReply reply = greeterService.greet(greeterRequest);
+        final GreeterReply reply = greeterProtoService.greet(greeterRequest);
         System.out.println("unary：" + reply.getMessage());
     }
 
-    private static void greetStream(GreeterProtoService greeterService) {
+    @Test
+    public void testGreetStream() {
         Stopwatch stopwatchOuter = Stopwatch.createStarted();
         String methodFlag = "greetStream";
         String methodFlagOuter = methodFlag + ".outer";
@@ -71,7 +63,7 @@ public class TripleDubboConsumerDemo {
             }
         };
         printMessage(stopwatchOuter + " start", methodFlagOuter);
-        StreamObserver<GreeterRequest> requestStreamObserver = greeterService.greetStream(responseObserver);
+        StreamObserver<GreeterRequest> requestStreamObserver = greeterProtoService.greetStream(responseObserver);
         sleepAndRunAndPrintForMessage(1, methodFlagOuter, stopwatchOuter,
                 () -> requestStreamObserver.onNext(buildGreeterRequest(stopwatchOuter)));
         requestStreamObserver.onCompleted();
@@ -79,13 +71,14 @@ public class TripleDubboConsumerDemo {
         printMessage(stopwatchOuter + " end", methodFlagOuter);
     }
 
-    private static GreeterRequest buildGreeterRequest(Stopwatch stopwatch) {
+    private GreeterRequest buildGreeterRequest(Stopwatch stopwatch) {
         return GreeterRequest.newBuilder()
                 .setName("Client " + stopwatch)
                 .build();
     }
 
-    private static void greetServerStream(GreeterProtoService greeterService) {
+    @Test
+    public void testGreetServerStream() {
         Stopwatch stopwatchOuter = Stopwatch.createStarted();
         String methodFlag = "greetServerStream";
         String methodFlagOuter = methodFlag + ".outer";
@@ -113,24 +106,24 @@ public class TripleDubboConsumerDemo {
             }
         };
         printMessage(stopwatchOuter + " start", methodFlagOuter);
-        greeterService.greetServerStream(GreeterRequest.newBuilder()
+        greeterProtoService.greetServerStream(GreeterRequest.newBuilder()
                 .setName("Client " + stopwatchOuter)
                 .build(), responseObserver);
         waitCompleted();
         printMessage(stopwatchOuter + " end", methodFlagOuter);
     }
 
-    private static void sleepAndPrintEndMessage(int timeout, String methodFlag, Stopwatch stopwatch) {
+    private void sleepAndPrintEndMessage(int timeout, String methodFlag, Stopwatch stopwatch) {
         methodFlag += "-End";
         sleepAndRun(timeout, methodFlag, stopwatch, null);
     }
 
-    private static void sleepAndRunAndPrintForMessage(int timeout, String methodFlag, Stopwatch stopwatch, Runnable runnable) {
+    private void sleepAndRunAndPrintForMessage(int timeout, String methodFlag, Stopwatch stopwatch, Runnable runnable) {
         IntStream.rangeClosed(1, 10)
                 .forEach((i) -> sleepAndRun(timeout, methodFlag + "-For", stopwatch, runnable));
     }
 
-    private static void sleepAndRun(int timeout, String methodFlag, Stopwatch stopwatchOuter, Runnable runnable) {
+    private void sleepAndRun(int timeout, String methodFlag, Stopwatch stopwatchOuter, Runnable runnable) {
         Stopwatch stopwatch = Stopwatch.createStarted();
         try {
             TimeUnit.SECONDS.sleep(timeout);
@@ -156,30 +149,30 @@ public class TripleDubboConsumerDemo {
         printMessage(message.toString(), methodFlag);
     }
 
-    private static void printMessage(Throwable throwable, String methodFlag) {
+    private void printMessage(Throwable throwable, String methodFlag) {
         printMessage("发生了异常", methodFlag);
         throwable.printStackTrace();
     }
 
-    private static void printReceivedMessage(String message, String methodFlag, Stopwatch stopwatch) {
+    private void printReceivedMessage(String message, String methodFlag, Stopwatch stopwatch) {
         printMessage(stopwatch + " [" + message + "]", methodFlag + "-Received");
     }
 
-    private static void printMessage(String message, String methodFlag) {
+    private void printMessage(String message, String methodFlag) {
         String now = DateTimeFormatter.ISO_TIME.format(LocalTime.now());
         System.out.println(now + " [" + Thread.currentThread().getName() + "] " + methodFlag + "：" + message);
     }
 
-    private static synchronized void waitCompleted() {
+    private synchronized void waitCompleted() {
         try {
-            TripleDubboConsumerDemo.class.wait();
+            TripleDubboConsumerDemoTest.class.wait();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    private static synchronized void notifyCompleted() {
-        TripleDubboConsumerDemo.class.notify();
+    private synchronized void notifyCompleted() {
+        TripleDubboConsumerDemoTest.class.notify();
     }
 
 }
