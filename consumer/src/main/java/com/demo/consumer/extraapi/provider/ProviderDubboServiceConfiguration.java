@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ProviderDubbo {
+public class ProviderDubboServiceConfiguration {
 
     private static final String NACOS_REGISTRY = "consumerRegistryProviderNacos";
 
