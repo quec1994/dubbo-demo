@@ -20,10 +20,19 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>com.demo</groupId>
             <artifactId>interface</artifactId>
             <version>${com.demo.interface.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.demo</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>

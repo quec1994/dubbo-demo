@@ -1,7 +1,7 @@
 package com.demo.consumer.single;
 
 import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
-import com.demo.dubbo.GreeterService;
+import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.rpc.RpcContext;
 import org.junit.jupiter.api.Test;
@@ -38,7 +38,7 @@ public class RouteTagDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTe
         }
 
         @DubboReference(group ="default")
-        private GreeterService greeterService;
+        private GreeterDubboService greeterDubboService;
 
         @RequestMapping("/consumer/user/say")
         public String sayHello(Map<String, String> map) {
@@ -47,7 +47,7 @@ public class RouteTagDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTe
             if (tester.contains(iphone)) {
                 RpcContext.getServiceContext().setAttachment("dubbo.tag", "tester");
             }
-            return greeterService.sayHello("世界");
+            return greeterDubboService.sayHello("世界");
         }
 
     }

@@ -24,6 +24,3 @@ dubbo:
         # 可选值
         # Dubbo QOS
         qosEnable: false
-    # 注册中心配置
-    registry:
-        address: nacos://127.0.0.1:8848

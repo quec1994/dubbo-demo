@@ -1,7 +1,7 @@
 package com.demo.consumer.single;
 
 import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
-import com.demo.dubbo.GreeterService;
+import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ public class ExceptionDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoT
                             onthrow = "methodInvokeListener.onthrow")
             }
     )
-    private GreeterService greeterService;
+    private GreeterDubboService greeterDubboService;
 
     @Test
     public void test() {
@@ -29,7 +29,7 @@ public class ExceptionDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoT
             // 不会触发集群容错，也不会触发mock容错
 //        System.out.println(demoService.sayHello("rpc_biz"));
             // 不会触发集群容错，但是可以触发mock容错
-        System.out.println(greeterService.sayHello("rpc"));
+        System.out.println(greeterDubboService.sayHello("rpc"));
         } catch (Exception e) {
             System.out.println("执行时抛出了异常");
             e.printStackTrace();

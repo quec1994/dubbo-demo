@@ -1,7 +1,7 @@
 package com.demo.consumer.single;
 
 import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
-import com.demo.dubbo.GreeterService;
+import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
 import org.junit.jupiter.api.Test;
@@ -23,11 +23,11 @@ public class MockDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
             // 使用internalDemoServiceMock Bean的方法返回模拟数据
 //            , id = "demoService", mock = "internalDemoServiceMock"
     )
-    private GreeterService greeterService;
+    private GreeterDubboService greeterDubboService;
 
     @Test
     public void test() {
-        System.out.println(greeterService.sayHello("世界"));
+        System.out.println(greeterDubboService.sayHello("世界"));
     }
 
     @Bean
@@ -36,11 +36,11 @@ public class MockDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
     }
 
 //    @Bean
-    public GreeterService internalDemoServiceMock() {
-        return new InternalGreeterServiceMock();
+    public GreeterDubboService internalDemoServiceMock() {
+        return new InternalGreeterDubboServiceMock();
     }
 
-    public static class InternalGreeterServiceMock implements GreeterService {
+    public static class InternalGreeterDubboServiceMock implements GreeterDubboService {
 
         @Override
         public String sayHello(String name) {

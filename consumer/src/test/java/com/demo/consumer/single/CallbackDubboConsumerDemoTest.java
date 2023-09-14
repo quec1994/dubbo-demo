@@ -1,8 +1,8 @@
 package com.demo.consumer.single;
 
 import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
-import com.demo.dubbo.GreeterService;
-import com.demo.dubbo.GreeterServiceCallback;
+import com.demo.openapi.dubbo.greeter.GreeterDubboService;
+import com.demo.openapi.dubbo.greeter.GreeterDubboServiceCallback;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.junit.jupiter.api.Test;
 
@@ -13,16 +13,16 @@ import java.util.Set;
 public class CallbackDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
 
     @DubboReference(group ="callback")
-    private GreeterService greeterService;
+    private GreeterDubboService greeterDubboService;
 
     @Test
     public void test() {
 
         // 用来进行callback
-        GreeterServiceCallbackImpl listener = new GreeterServiceCallbackImpl();
-        System.out.println(greeterService.sayHello("World k1", "k1", listener));
-        System.out.println(greeterService.sayHello("World k2", "k2", listener));
-        System.out.println(greeterService.sayHello("World k3", "k3", listener));
+        GreeterDubboServiceCallbackImpl listener = new GreeterDubboServiceCallbackImpl();
+        System.out.println(greeterDubboService.sayHello("World k1", "k1", listener));
+        System.out.println(greeterDubboService.sayHello("World k2", "k2", listener));
+        System.out.println(greeterDubboService.sayHello("World k3", "k3", listener));
 
 
         try {
@@ -48,7 +48,7 @@ public class CallbackDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTe
         }
     }
 
-    static class GreeterServiceCallbackImpl implements GreeterServiceCallback {
+    static class GreeterDubboServiceCallbackImpl implements GreeterDubboServiceCallback {
 
         private final Set<String> destroyKey = new HashSet<>();
 

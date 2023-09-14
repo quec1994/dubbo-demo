@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+package com.demo.openapi.dubbo.greeter;
+
+
+// The request message containing the user's name.
+message GreeterDubboProtoRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message GreeterDubboProtoReply {
+  string message = 1;
+}
+
+service GreeterDubboProtoService{
+
+  // unary
+  rpc greet(GreeterDubboProtoRequest) returns (GreeterDubboProtoReply);
+
+  // bi streaming
+  rpc greetStream(stream GreeterDubboProtoRequest) returns (stream GreeterDubboProtoReply);
+
+  // serverStream
+  rpc greetServerStream(GreeterDubboProtoRequest) returns (stream GreeterDubboProtoReply);
+
+}

@@ -1,7 +1,7 @@
 package com.demo.consumer.single;
 
 import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
-import com.demo.dubbo.RestGreeterService;
+import com.demo.openapi.dubbo.greeter.GreeterDubboRestService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.rpc.protocol.rest.RestHeaderEnum;
 import org.junit.jupiter.api.Test;
@@ -18,14 +18,14 @@ import java.nio.charset.StandardCharsets;
 public class RestDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
 
     @DubboReference(group = "rest")
-    private RestGreeterService restGreeterService;
+    private GreeterDubboRestService greeterDubboRestService;
     @Autowired
     private RestTemplate restTemplate;
 
     @Test
     public void test() {
         // dubboDemo
-        System.out.println("dubboDemo：" + restGreeterService.sayHello("世界"));
+        System.out.println("dubboDemo：" + greeterDubboRestService.sayHello("世界"));
 
         // httpDemo
         RequestEntity<Void> requestEntity = RequestEntity

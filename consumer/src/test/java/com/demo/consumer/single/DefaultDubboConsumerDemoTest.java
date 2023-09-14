@@ -1,6 +1,6 @@
 package com.demo.consumer.single;
 
-import com.demo.dubbo.GreeterService;
+import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.junit.jupiter.api.Test;
 import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
@@ -8,11 +8,11 @@ import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
 public class DefaultDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
 
     @DubboReference(group ="default")
-    private GreeterService greeterService;
+    private GreeterDubboService greeterDubboService;
 
     @Test
     public void test() {
-        System.out.println(greeterService.sayHello("世界"));
+        System.out.println(greeterDubboService.sayHello("世界"));
     }
 
 }

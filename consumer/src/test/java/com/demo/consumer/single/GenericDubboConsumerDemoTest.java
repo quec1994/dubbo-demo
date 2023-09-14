@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class GenericDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
 
-
-    @DubboReference(id = "demoService", interfaceName = "com.demo.dubbo.GreeterService", group ="generic")
+    @DubboReference(interfaceName = "com.demo.openapi.dubbo.GreeterDubboService", group = "generic")
     private GenericService genericService;
 
     @Test

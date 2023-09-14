@@ -1,7 +1,7 @@
 package com.demo.consumer.single;
 
 import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
-import com.demo.dubbo.GreeterService;
+import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.junit.jupiter.api.Test;
 
@@ -11,13 +11,13 @@ import java.util.concurrent.CompletableFuture;
 public class FutureDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
 
     @DubboReference(group ="future", timeout = 3000)
-    private GreeterService greeterService;
+    private GreeterDubboService greeterDubboService;
 
     @Test
     public void test() {
 
         // 调用直接返回CompletableFuture
-        CompletableFuture<String> future = greeterService.sayHelloFuture("世界");
+        CompletableFuture<String> future = greeterDubboService.sayHelloFuture("世界");
 
         future.whenComplete((v, t) -> {
             if (t != null) {
