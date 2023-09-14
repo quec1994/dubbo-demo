@@ -1,6 +1,6 @@
 package com.demo.consumer.web.greeter;
 
-import com.demo.common.assertion.ParameterAssert;
+import com.demo.consumer.common.assertion.ParameterAssert;
 import com.demo.consumer.service.greeter.GreeterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

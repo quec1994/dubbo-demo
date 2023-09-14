@@ -1,8 +1,8 @@
 package com.demo.provider.openapi.dubbo.greeter;
 
-import com.demo.common.assertion.ParameterAssert;
 import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import com.demo.openapi.dubbo.greeter.GreeterDubboServiceCallback;
+import com.demo.provider.common.assertion.ParameterAssert;
 import com.demo.provider.service.greeter.CallBackGreeterService;
 import org.apache.dubbo.config.annotation.Argument;
 import org.apache.dubbo.config.annotation.DubboService;

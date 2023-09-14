@@ -1,7 +1,7 @@
 package com.demo.provider.openapi.dubbo.greeter;
 
-import com.demo.common.assertion.ParameterAssert;
 import com.demo.openapi.dubbo.greeter.GreeterDubboService;
+import com.demo.provider.common.assertion.ParameterAssert;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.apache.dubbo.rpc.RpcException;
 

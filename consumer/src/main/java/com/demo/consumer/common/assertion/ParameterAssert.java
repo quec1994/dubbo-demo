@@ -1,4 +1,4 @@
-package com.demo.common.assertion;
+package com.demo.consumer.common.assertion;
 
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;

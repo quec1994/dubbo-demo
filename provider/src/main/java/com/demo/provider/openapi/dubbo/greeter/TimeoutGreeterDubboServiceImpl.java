@@ -1,7 +1,7 @@
 package com.demo.provider.openapi.dubbo.greeter;
 
-import com.demo.common.assertion.ParameterAssert;
 import com.demo.openapi.dubbo.greeter.GreeterDubboService;
+import com.demo.provider.common.assertion.ParameterAssert;
 import com.demo.provider.service.greeter.TimeoutGreeterService;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
