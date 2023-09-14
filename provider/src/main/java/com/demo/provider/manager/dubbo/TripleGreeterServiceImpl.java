@@ -4,10 +4,8 @@ import com.demo.proto.dubbo.tri.DubboGreeterProtoServiceTriple;
 import com.demo.proto.dubbo.tri.GreeterReply;
 import com.demo.proto.dubbo.tri.GreeterRequest;
 import com.google.common.base.Stopwatch;
-import org.apache.dubbo.common.URL;
 import org.apache.dubbo.common.stream.StreamObserver;
 import org.apache.dubbo.config.annotation.DubboService;
-import org.apache.dubbo.rpc.RpcContext;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -20,10 +18,8 @@ public class TripleGreeterServiceImpl extends DubboGreeterProtoServiceTriple.Gre
 
     @Override
     public GreeterReply greet(GreeterRequest request) {
-        System.out.println(request + " 执行了triple服务");
-        URL url = RpcContext.getServiceContext().getUrl();
-        String greeting = String.format("%s：%s, Hello %s",
-                url.getProtocol(), url.getPort(), request.getName());
+        System.out.println(request.getName() + " 执行了triple服务");
+        String greeting = String.format("您好 %s！", request.getName());
         return GreeterReply.newBuilder().setMessage(greeting).build();
     }
 
