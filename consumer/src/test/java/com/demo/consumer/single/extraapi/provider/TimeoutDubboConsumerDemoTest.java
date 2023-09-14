@@ -1,12 +1,12 @@
-package com.demo.consumer.single;
+package com.demo.consumer.single.extraapi.provider;
 
-import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
+import com.demo.consumer.single.base.BaseDubboConsumerDemoSingleTest;
 import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.junit.jupiter.api.Test;
 
 
-public class TimeoutDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
+public class TimeoutDubboConsumerDemoTest extends BaseDubboConsumerDemoSingleTest {
 
     @DubboReference(group ="timeout")
     private GreeterDubboService greeterDubboService;

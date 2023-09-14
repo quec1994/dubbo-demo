@@ -1,6 +1,6 @@
-package com.demo.consumer.single;
+package com.demo.consumer.single.extraapi.provider;
 
-import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
+import com.demo.consumer.single.base.BaseDubboConsumerDemoSingleTest;
 import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.rpc.RpcContext;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class RouteTagDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
+public class RouteTagDubboConsumerDemoTest extends BaseDubboConsumerDemoSingleTest {
 
     @Autowired
     private RouteTagTestService routeTagTestService;

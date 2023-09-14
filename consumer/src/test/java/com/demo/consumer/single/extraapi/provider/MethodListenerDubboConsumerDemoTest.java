@@ -1,6 +1,6 @@
-package com.demo.consumer.single;
+package com.demo.consumer.single.extraapi.provider;
 
-import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
+import com.demo.consumer.single.base.BaseDubboConsumerDemoSingleTest;
 import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.concurrent.TimeUnit;
 
-public class MethodListenerDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
+public class MethodListenerDubboConsumerDemoTest extends BaseDubboConsumerDemoSingleTest {
 
     @DubboReference(group ="default",
 //    @DubboReference(group ="timeout", timeout = 3000,

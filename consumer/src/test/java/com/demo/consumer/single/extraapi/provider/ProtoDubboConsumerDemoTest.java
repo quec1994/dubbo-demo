@@ -1,4 +1,4 @@
-package com.demo.consumer.single;
+package com.demo.consumer.single.extraapi.provider;
 
 import com.demo.openapi.dubbo.greeter.GreeterDubboProtoReply;
 import com.demo.openapi.dubbo.greeter.GreeterDubboProtoRequest;
@@ -7,7 +7,7 @@ import com.google.common.base.Stopwatch;
 import org.apache.dubbo.common.stream.StreamObserver;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.junit.jupiter.api.Test;
-import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
+import com.demo.consumer.single.base.BaseDubboConsumerDemoSingleTest;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -15,7 +15,7 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
-public class ProtoDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
+public class ProtoDubboConsumerDemoTest extends BaseDubboConsumerDemoSingleTest {
 
     @DubboReference(group = "proto", timeout = 4000)
     private GreeterDubboProtoService greeterDubboProtoService;

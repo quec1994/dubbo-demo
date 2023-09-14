@@ -1,12 +1,12 @@
-package com.demo.consumer.single;
+package com.demo.consumer.single.extraapi.provider;
 
-import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
+import com.demo.consumer.single.base.BaseDubboConsumerDemoSingleTest;
 import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.junit.jupiter.api.Test;
 
 
-public class StubDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
+public class StubDubboConsumerDemoTest extends BaseDubboConsumerDemoSingleTest {
 
     @DubboReference(group ="timeout", timeout = 1000,
             // 使用com.demo.dubbo.DemoServiceStub实现类的方法

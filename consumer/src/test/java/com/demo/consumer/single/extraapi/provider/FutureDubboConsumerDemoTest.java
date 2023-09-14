@@ -1,6 +1,6 @@
-package com.demo.consumer.single;
+package com.demo.consumer.single.extraapi.provider;
 
-import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
+import com.demo.consumer.single.base.BaseDubboConsumerDemoSingleTest;
 import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.concurrent.CompletableFuture;
 
 
-public class FutureDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
+public class FutureDubboConsumerDemoTest extends BaseDubboConsumerDemoSingleTest {
 
     @DubboReference(group ="future", timeout = 3000)
     private GreeterDubboService greeterDubboService;

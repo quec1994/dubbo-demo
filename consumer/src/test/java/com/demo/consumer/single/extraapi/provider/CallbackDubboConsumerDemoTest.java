@@ -1,6 +1,6 @@
-package com.demo.consumer.single;
+package com.demo.consumer.single.extraapi.provider;
 
-import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
+import com.demo.consumer.single.base.BaseDubboConsumerDemoSingleTest;
 import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import com.demo.openapi.dubbo.greeter.GreeterDubboServiceCallback;
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-public class CallbackDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
+public class CallbackDubboConsumerDemoTest extends BaseDubboConsumerDemoSingleTest {
 
     @DubboReference(group ="callback")
     private GreeterDubboService greeterDubboService;

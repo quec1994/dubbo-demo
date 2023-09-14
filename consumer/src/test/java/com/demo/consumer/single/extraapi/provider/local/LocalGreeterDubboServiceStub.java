@@ -1,4 +1,4 @@
-package com.demo.consumer.single.local;
+package com.demo.consumer.single.extraapi.provider.local;
 
 import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 

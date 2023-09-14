@@ -1,13 +1,13 @@
-package com.demo.consumer.single;
+package com.demo.consumer.single.extraapi.provider;
 
-import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
+import com.demo.consumer.single.base.BaseDubboConsumerDemoSingleTest;
 import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Bean;
 
-public class ClusterDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
+public class ClusterDubboConsumerDemoTest extends BaseDubboConsumerDemoSingleTest {
 
 
     @DubboReference(group ="timeout", cluster = "failfast",

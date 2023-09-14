@@ -1,12 +1,12 @@
-package com.demo.consumer.single;
+package com.demo.consumer.single.extraapi.provider;
 
-import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
+import com.demo.consumer.single.base.BaseDubboConsumerDemoSingleTest;
 import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import org.apache.dubbo.common.constants.CommonConstants;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.junit.jupiter.api.Test;
 
-public class BigDataDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
+public class BigDataDubboConsumerDemoTest extends BaseDubboConsumerDemoSingleTest {
 
     //    @DubboReference(group ="bigData", protocol = CommonConstants.DUBBO)
     @DubboReference(group ="bigData", protocol = CommonConstants.TRIPLE)

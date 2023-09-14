@@ -1,12 +1,12 @@
-package com.demo.consumer.single;
+package com.demo.consumer.single.extraapi.provider;
 
-import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
+import com.demo.consumer.single.base.BaseDubboConsumerDemoSingleTest;
 import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.junit.jupiter.api.Test;
 
 
-public class LoadBalanceDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
+public class LoadBalanceDubboConsumerDemoTest extends BaseDubboConsumerDemoSingleTest {
 
     @DubboReference(group ="default", loadbalance = "consistenthash")
     private GreeterDubboService greeterDubboService;

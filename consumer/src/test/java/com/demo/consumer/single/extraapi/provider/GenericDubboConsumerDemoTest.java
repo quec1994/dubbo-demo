@@ -1,12 +1,12 @@
-package com.demo.consumer.single;
+package com.demo.consumer.single.extraapi.provider;
 
-import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
+import com.demo.consumer.single.base.BaseDubboConsumerDemoSingleTest;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.rpc.service.GenericService;
 import org.junit.jupiter.api.Test;
 
 
-public class GenericDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
+public class GenericDubboConsumerDemoTest extends BaseDubboConsumerDemoSingleTest {
 
     @DubboReference(interfaceName = "com.demo.openapi.dubbo.GreeterDubboService", group = "generic")
     private GenericService genericService;

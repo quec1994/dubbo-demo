@@ -1,6 +1,6 @@
-package com.demo.consumer.single;
+package com.demo.consumer.single.extraapi.provider;
 
-import com.demo.consumer.single.base.BaseSingleDubboConsumerDemoTest;
+import com.demo.consumer.single.base.BaseDubboConsumerDemoSingleTest;
 import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Bean;
 
 
-public class MockDubboConsumerDemoTest extends BaseSingleDubboConsumerDemoTest {
+public class MockDubboConsumerDemoTest extends BaseDubboConsumerDemoSingleTest {
 
     @DubboReference(group ="mock",
             methods = {
