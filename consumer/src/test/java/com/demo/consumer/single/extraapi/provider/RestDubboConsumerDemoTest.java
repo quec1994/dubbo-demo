@@ -1,6 +1,6 @@
 package com.demo.consumer.single.extraapi.provider;
 
-import com.demo.consumer.single.base.BaseDubboConsumerDemoSingleTest;
+import com.demo.consumer.single.extraapi.provider.base.BaseProviderDubboConsumerDemoSingleTest;
 import com.demo.openapi.dubbo.greeter.GreeterDubboRestService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.rpc.protocol.rest.RestHeaderEnum;
@@ -15,7 +15,7 @@ import java.nio.charset.StandardCharsets;
 
 
 @Import(RestTemplate.class)
-public class RestDubboConsumerDemoTest extends BaseDubboConsumerDemoSingleTest {
+public class RestDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSingleTest {
 
     @DubboReference(group = "rest")
     private GreeterDubboRestService greeterDubboRestService;

@@ -7,7 +7,7 @@ import com.google.common.base.Stopwatch;
 import org.apache.dubbo.common.stream.StreamObserver;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.junit.jupiter.api.Test;
-import com.demo.consumer.single.base.BaseDubboConsumerDemoSingleTest;
+import com.demo.consumer.single.extraapi.provider.base.BaseProviderDubboConsumerDemoSingleTest;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -15,7 +15,7 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
-public class ProtoDubboConsumerDemoTest extends BaseDubboConsumerDemoSingleTest {
+public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSingleTest {
 
     @DubboReference(group = "proto", timeout = 4000)
     private GreeterDubboProtoService greeterDubboProtoService;

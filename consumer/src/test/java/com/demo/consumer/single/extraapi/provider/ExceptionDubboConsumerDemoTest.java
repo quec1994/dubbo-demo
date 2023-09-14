@@ -1,13 +1,13 @@
 package com.demo.consumer.single.extraapi.provider;
 
-import com.demo.consumer.single.base.BaseDubboConsumerDemoSingleTest;
+import com.demo.consumer.single.extraapi.provider.base.BaseProviderDubboConsumerDemoSingleTest;
 import com.demo.openapi.dubbo.greeter.GreeterDubboService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.Method;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Bean;
 
-public class ExceptionDubboConsumerDemoTest extends BaseDubboConsumerDemoSingleTest {
+public class ExceptionDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSingleTest {
 
     @DubboReference(group ="exception", mock = "fail: return mock-return-123",
 //    @DubboReference(group ="exception",

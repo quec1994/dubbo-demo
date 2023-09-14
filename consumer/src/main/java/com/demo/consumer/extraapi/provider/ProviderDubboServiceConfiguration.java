@@ -12,7 +12,7 @@ public class ProviderDubboServiceConfiguration {
     private static final String NACOS_REGISTRY = "consumerRegistryProviderNacos";
 
     @Bean(NACOS_REGISTRY)
-    public RegistryConfig providerRegistry() {
+    public RegistryConfig registryConfig() {
         RegistryConfig registryConfig = new RegistryConfig();
         registryConfig.setId(NACOS_REGISTRY);
         registryConfig.setAddress("nacos://127.0.0.1:8848");
