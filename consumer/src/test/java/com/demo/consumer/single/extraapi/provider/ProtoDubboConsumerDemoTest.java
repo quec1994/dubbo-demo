@@ -1,13 +1,13 @@
 package com.demo.consumer.single.extraapi.provider;
 
-import com.demo.openapi.dubbo.greeter.GreeterDubboProtoReply;
-import com.demo.openapi.dubbo.greeter.GreeterDubboProtoRequest;
-import com.demo.openapi.dubbo.greeter.GreeterDubboProtoService;
+import com.demo.consumer.single.extraapi.provider.base.BaseProviderDubboConsumerDemoSingleTest;
+import com.demo.openapi.dubbo.greeter.GreeterProtoDubboService;
+import com.demo.openapi.dubbo.greeter.GreeterProtoReply;
+import com.demo.openapi.dubbo.greeter.GreeterProtoRequest;
 import com.google.common.base.Stopwatch;
 import org.apache.dubbo.common.stream.StreamObserver;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.junit.jupiter.api.Test;
-import com.demo.consumer.single.extraapi.provider.base.BaseProviderDubboConsumerDemoSingleTest;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -18,14 +18,13 @@ import java.util.stream.IntStream;
 public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSingleTest {
 
     @DubboReference(group = "proto", timeout = 4000)
-    private GreeterDubboProtoService greeterDubboProtoService;
+    private GreeterProtoDubboService greeterProtoDubboService;
 
     @Test
     public void testUnary() {
-        GreeterDubboProtoRequest GreeterDubboProtoRequest = com.demo.openapi.dubbo.greeter.GreeterDubboProtoRequest.newBuilder()
+        final GreeterProtoReply reply = greeterProtoDubboService.greet(GreeterProtoRequest.newBuilder()
                 .setName("世界")
-                .build();
-        final GreeterDubboProtoReply reply = greeterDubboProtoService.greet(GreeterDubboProtoRequest);
+                .build());
         System.out.println("unary：" + reply.getMessage());
     }
 
@@ -34,7 +33,7 @@ public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSin
         Stopwatch stopwatchOuter = Stopwatch.createStarted();
         String methodFlag = "greetStream";
         String methodFlagOuter = methodFlag + ".outer";
-        StreamObserver<GreeterDubboProtoReply> responseObserver = new StreamObserver<GreeterDubboProtoReply>() {
+        StreamObserver<GreeterProtoReply> responseObserver = new StreamObserver<GreeterProtoReply>() {
 
             {
                 printMessage(stopwatchOuter + " construct", methodFlag + ".init");
@@ -43,7 +42,7 @@ public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSin
             private final Stopwatch stopwatch = Stopwatch.createStarted();
 
             @Override
-            public void onNext(GreeterDubboProtoReply reply) {
+            public void onNext(GreeterProtoReply reply) {
                 String methodFlagInternal = methodFlag + ".onNext";
                 printReceivedMessage(reply.getMessage(), methodFlagInternal, stopwatch);
                 sleepAndPrintEndMessage(4, methodFlagInternal, stopwatch);
@@ -63,16 +62,16 @@ public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSin
             }
         };
         printMessage(stopwatchOuter + " start", methodFlagOuter);
-        StreamObserver<GreeterDubboProtoRequest> requestStreamObserver = greeterDubboProtoService.greetStream(responseObserver);
+        StreamObserver<GreeterProtoRequest> requestStreamObserver = greeterProtoDubboService.greetStream(responseObserver);
         sleepAndRunAndPrintForMessage(1, methodFlagOuter, stopwatchOuter,
-                () -> requestStreamObserver.onNext(buildGreeterDubboProtoRequest(stopwatchOuter)));
+                () -> requestStreamObserver.onNext(buildGreeterProtoRequest(stopwatchOuter)));
         requestStreamObserver.onCompleted();
         waitCompleted();
         printMessage(stopwatchOuter + " end", methodFlagOuter);
     }
 
-    private GreeterDubboProtoRequest buildGreeterDubboProtoRequest(Stopwatch stopwatch) {
-        return GreeterDubboProtoRequest.newBuilder()
+    private GreeterProtoRequest buildGreeterProtoRequest(Stopwatch stopwatch) {
+        return GreeterProtoRequest.newBuilder()
                 .setName("Client " + stopwatch)
                 .build();
     }
@@ -82,11 +81,11 @@ public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSin
         Stopwatch stopwatchOuter = Stopwatch.createStarted();
         String methodFlag = "greetServerStream";
         String methodFlagOuter = methodFlag + ".outer";
-        StreamObserver<GreeterDubboProtoReply> responseObserver = new StreamObserver<GreeterDubboProtoReply>() {
+        StreamObserver<GreeterProtoReply> responseObserver = new StreamObserver<GreeterProtoReply>() {
             private final Stopwatch stopwatch = Stopwatch.createStarted();
 
             @Override
-            public void onNext(GreeterDubboProtoReply reply) {
+            public void onNext(GreeterProtoReply reply) {
                 String methodFlagInternal = methodFlag + ".onNext";
                 printReceivedMessage(reply.getMessage(), methodFlagInternal, stopwatch);
                 sleepAndPrintEndMessage(3, methodFlagInternal, stopwatch);
@@ -106,7 +105,7 @@ public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSin
             }
         };
         printMessage(stopwatchOuter + " start", methodFlagOuter);
-        greeterDubboProtoService.greetServerStream(GreeterDubboProtoRequest.newBuilder()
+        greeterProtoDubboService.greetServerStream(GreeterProtoRequest.newBuilder()
                 .setName("Client " + stopwatchOuter)
                 .build(), responseObserver);
         waitCompleted();

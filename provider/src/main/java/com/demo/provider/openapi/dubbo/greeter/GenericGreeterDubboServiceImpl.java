@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Arrays;
 
 @DubboService(interfaceName = "com.demo.openapi.dubbo.GreeterDubboService", group = "generic")
-public class GenericDemoServiceImpl implements GenericService {
+public class GenericGreeterDubboServiceImpl implements GenericService {
 
     @Autowired
     private DefaultGreeterService defaultGreeterService;

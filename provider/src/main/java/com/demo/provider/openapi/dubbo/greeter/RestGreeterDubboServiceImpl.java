@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 @DubboService(group ="rest", protocol = "rest")
-public class GreeterDubboRestServiceImpl implements GreeterDubboRestService {
+public class RestGreeterDubboServiceImpl implements GreeterDubboRestService {
 
     @Autowired
     private DefaultGreeterService defaultGreeterService;
