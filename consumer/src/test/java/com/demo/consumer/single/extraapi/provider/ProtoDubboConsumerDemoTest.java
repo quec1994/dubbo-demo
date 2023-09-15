@@ -164,14 +164,14 @@ public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSin
 
     private synchronized void waitCompleted() {
         try {
-            ProtoDubboConsumerDemoTest.class.wait();
+            this.wait();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     private synchronized void notifyCompleted() {
-        ProtoDubboConsumerDemoTest.class.notify();
+        this.notifyAll();
     }
 
 }

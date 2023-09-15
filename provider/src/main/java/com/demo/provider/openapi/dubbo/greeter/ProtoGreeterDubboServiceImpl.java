@@ -47,18 +47,18 @@ public class ProtoGreeterDubboServiceImpl extends DubboGreeterProtoDubboServiceT
             private final StringBuilder sb = new StringBuilder(" [");
 
 
-            public void onNext(GreeterProtoRequest GreeterProtoRequest) {
+            public void onNext(GreeterProtoRequest request) {
                 String methodFlagInternal = methodFlag + ".onNext";
-                printReceivedMessage(GreeterProtoRequest.getName(), methodFlagInternal, stopwatch);
+                printReceivedMessage(request.getName(), methodFlagInternal, stopwatch);
                 sleepAndRunAndPrintSentMessage(2, methodFlagInternal, stopwatch, () -> {
-                    sb.append(GreeterProtoRequest.getName()).append("; ");
-                    responseObserver.onNext(buildGreeterProtoReply(GreeterProtoRequest));
+                    sb.append(request.getName()).append("; ");
+                    responseObserver.onNext(buildGreeterProtoReply(request));
                 });
             }
 
-            private GreeterProtoReply buildGreeterProtoReply(GreeterProtoRequest GreeterProtoRequest) {
+            private GreeterProtoReply buildGreeterProtoReply(GreeterProtoRequest request) {
                 return GreeterProtoReply.newBuilder()
-                        .setMessage("Server " + stopwatch + " [" + GreeterProtoRequest.getName() + "]")
+                        .setMessage("Server " + stopwatch + " [" + request.getName() + "]")
                         .build();
             }
 
@@ -105,9 +105,9 @@ public class ProtoGreeterDubboServiceImpl extends DubboGreeterProtoDubboServiceT
         printEndMessage("end", methodFlagOuter, stopwatchOuter);
     }
 
-    private GreeterProtoReply buildGreeterProtoReply(GreeterProtoRequest GreeterProtoRequest, Stopwatch stopwatch) {
+    private GreeterProtoReply buildGreeterProtoReply(GreeterProtoRequest request, Stopwatch stopwatch) {
         return GreeterProtoReply.newBuilder()
-                .setMessage("Server " + stopwatch + " [" + GreeterProtoRequest.getName() + "]")
+                .setMessage("Server " + stopwatch + " [" + request.getName() + "]")
                 .build();
     }
 
