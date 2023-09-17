@@ -13,9 +13,13 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.IntStream;
 
 public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSingleTest {
+
+    private static final ReentrantLock LOCK = new ReentrantLock();
 
     @DubboReference(group = "proto", timeout = 4000)
     private GreeterProtoDubboService greeterProtoDubboService;
@@ -30,6 +34,7 @@ public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSin
 
     @Test
     public void testGreetStream() {
+        Condition condition = LOCK.newCondition();
         Stopwatch stopwatchOuter = Stopwatch.createStarted();
         String methodFlag = "greetStream";
         String methodFlagOuter = methodFlag + ".outer";
@@ -58,7 +63,7 @@ public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSin
                 String methodFlagInternal = methodFlag + ".onCompleted";
                 printReceivedMessage("completed", methodFlagInternal, stopwatch);
                 sleepAndPrintEndMessage(2, methodFlagInternal, stopwatch);
-                notifyCompleted();
+                notifyCompleted(condition);
             }
         };
         printMessage(stopwatchOuter + " start", methodFlagOuter);
@@ -66,7 +71,7 @@ public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSin
         sleepAndRunAndPrintForMessage(1, methodFlagOuter, stopwatchOuter,
                 () -> requestStreamObserver.onNext(buildGreeterProtoRequest(stopwatchOuter)));
         requestStreamObserver.onCompleted();
-        waitCompleted();
+        waitCompleted(condition);
         printMessage(stopwatchOuter + " end", methodFlagOuter);
     }
 
@@ -78,6 +83,7 @@ public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSin
 
     @Test
     public void testGreetServerStream() {
+        Condition condition = LOCK.newCondition();
         Stopwatch stopwatchOuter = Stopwatch.createStarted();
         String methodFlag = "greetServerStream";
         String methodFlagOuter = methodFlag + ".outer";
@@ -101,14 +107,14 @@ public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSin
                 String methodFlagInternal = methodFlag + ".onCompleted";
                 printReceivedMessage("completed", methodFlagInternal, stopwatch);
                 sleepAndPrintEndMessage(2, methodFlagInternal, stopwatch);
-                notifyCompleted();
+                notifyCompleted(condition);
             }
         };
         printMessage(stopwatchOuter + " start", methodFlagOuter);
         greeterProtoDubboService.greetServerStream(GreeterProtoRequest.newBuilder()
                 .setName("Client " + stopwatchOuter)
                 .build(), responseObserver);
-        waitCompleted();
+        waitCompleted(condition);
         printMessage(stopwatchOuter + " end", methodFlagOuter);
     }
 
@@ -162,16 +168,24 @@ public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSin
         System.out.println(now + " [" + Thread.currentThread().getName() + "] " + methodFlag + "：" + message);
     }
 
-    private synchronized void waitCompleted() {
+    private void waitCompleted(Condition condition) {
+        LOCK.lock();
         try {
-            this.wait();
+            condition.await();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            LOCK.unlock();
         }
     }
 
-    private synchronized void notifyCompleted() {
-        this.notifyAll();
+    private void notifyCompleted(Condition condition) {
+        LOCK.lock();
+        try {
+            condition.signalAll();
+        } finally {
+            LOCK.unlock();
+        }
     }
 
 }
