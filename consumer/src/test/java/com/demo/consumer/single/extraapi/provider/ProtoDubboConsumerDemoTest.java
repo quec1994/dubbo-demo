@@ -12,14 +12,14 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.TimeoutException;
+import java.util.function.BiConsumer;
 import java.util.stream.IntStream;
 
 public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSingleTest {
-
-    private static final ReentrantLock LOCK = new ReentrantLock();
 
     @DubboReference(group = "proto", timeout = 4000)
     private GreeterProtoDubboService greeterProtoDubboService;
@@ -34,45 +34,25 @@ public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSin
 
     @Test
     public void testGreetStream() {
-        Condition condition = LOCK.newCondition();
-        Stopwatch stopwatchOuter = Stopwatch.createStarted();
         String methodFlag = "greetStream";
         String methodFlagOuter = methodFlag + ".outer";
-        StreamObserver<GreeterProtoReply> responseObserver = new StreamObserver<GreeterProtoReply>() {
+        testGreetServerStream(methodFlag,
+                (stopwatchOuter, responseObserver) -> {
+                    StreamObserver<GreeterProtoRequest> requestStreamObserver = greeterProtoDubboService.greetStream(responseObserver);
+                    sleepAndRunAndPrintForMessage(1, methodFlagOuter, stopwatchOuter,
+                            () -> requestStreamObserver.onNext(buildGreeterProtoRequest(stopwatchOuter)));
+                    requestStreamObserver.onCompleted();
+                });
+    }
 
-            {
-                printMessage(stopwatchOuter + " construct", methodFlag + ".init");
-            }
-
-            private final Stopwatch stopwatch = Stopwatch.createStarted();
-
-            @Override
-            public void onNext(GreeterProtoReply reply) {
-                String methodFlagInternal = methodFlag + ".onNext";
-                printReceivedMessage(reply.getMessage(), methodFlagInternal, stopwatch);
-                sleepAndPrintEndMessage(4, methodFlagInternal, stopwatch);
-            }
-
-            @Override
-            public void onError(Throwable throwable) {
-                printMessage(throwable, methodFlag + ".onError");
-            }
-
-            @Override
-            public void onCompleted() {
-                String methodFlagInternal = methodFlag + ".onCompleted";
-                printReceivedMessage("completed", methodFlagInternal, stopwatch);
-                sleepAndPrintEndMessage(2, methodFlagInternal, stopwatch);
-                notifyCompleted(condition);
-            }
-        };
+    private void testGreetServerStream(String methodFlag, BiConsumer<Stopwatch, ResponseObserver> biConsumer) {
+        Stopwatch stopwatchOuter = Stopwatch.createStarted();
+        String methodFlagOuter = methodFlag + ".outer";
+        ResponseObserver responseObserver = new ResponseObserver(methodFlag, stopwatchOuter);
         printMessage(stopwatchOuter + " start", methodFlagOuter);
-        StreamObserver<GreeterProtoRequest> requestStreamObserver = greeterProtoDubboService.greetStream(responseObserver);
-        sleepAndRunAndPrintForMessage(1, methodFlagOuter, stopwatchOuter,
-                () -> requestStreamObserver.onNext(buildGreeterProtoRequest(stopwatchOuter)));
-        requestStreamObserver.onCompleted();
-        waitCompleted(condition);
-        printMessage(stopwatchOuter + " end", methodFlagOuter);
+        biConsumer.accept(stopwatchOuter, responseObserver);
+        String msg = responseObserver.get(Integer.MAX_VALUE, TimeUnit.MINUTES);
+        printMessage(stopwatchOuter + " " + msg + " end", methodFlagOuter);
     }
 
     private GreeterProtoRequest buildGreeterProtoRequest(Stopwatch stopwatch) {
@@ -83,39 +63,10 @@ public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSin
 
     @Test
     public void testGreetServerStream() {
-        Condition condition = LOCK.newCondition();
-        Stopwatch stopwatchOuter = Stopwatch.createStarted();
         String methodFlag = "greetServerStream";
-        String methodFlagOuter = methodFlag + ".outer";
-        StreamObserver<GreeterProtoReply> responseObserver = new StreamObserver<GreeterProtoReply>() {
-            private final Stopwatch stopwatch = Stopwatch.createStarted();
-
-            @Override
-            public void onNext(GreeterProtoReply reply) {
-                String methodFlagInternal = methodFlag + ".onNext";
-                printReceivedMessage(reply.getMessage(), methodFlagInternal, stopwatch);
-                sleepAndPrintEndMessage(3, methodFlagInternal, stopwatch);
-            }
-
-            @Override
-            public void onError(Throwable throwable) {
-                printMessage(throwable, methodFlag + ".onError");
-            }
-
-            @Override
-            public void onCompleted() {
-                String methodFlagInternal = methodFlag + ".onCompleted";
-                printReceivedMessage("completed", methodFlagInternal, stopwatch);
-                sleepAndPrintEndMessage(2, methodFlagInternal, stopwatch);
-                notifyCompleted(condition);
-            }
-        };
-        printMessage(stopwatchOuter + " start", methodFlagOuter);
-        greeterProtoDubboService.greetServerStream(GreeterProtoRequest.newBuilder()
-                .setName("Client " + stopwatchOuter)
-                .build(), responseObserver);
-        waitCompleted(condition);
-        printMessage(stopwatchOuter + " end", methodFlagOuter);
+        testGreetServerStream(methodFlag,
+                (stopwatchOuter, responseObserver) ->
+                        greeterProtoDubboService.greetServerStream(buildGreeterProtoRequest(stopwatchOuter), responseObserver));
     }
 
     private void sleepAndPrintEndMessage(int timeout, String methodFlag, Stopwatch stopwatch) {
@@ -168,24 +119,45 @@ public class ProtoDubboConsumerDemoTest extends BaseProviderDubboConsumerDemoSin
         System.out.println(now + " [" + Thread.currentThread().getName() + "] " + methodFlag + "：" + message);
     }
 
-    private void waitCompleted(Condition condition) {
-        LOCK.lock();
-        try {
-            condition.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            LOCK.unlock();
-        }
-    }
+    private class ResponseObserver extends CompletableFuture<String> implements StreamObserver<GreeterProtoReply> {
 
-    private void notifyCompleted(Condition condition) {
-        LOCK.lock();
-        try {
-            condition.signalAll();
-        } finally {
-            LOCK.unlock();
+        private final String methodFlag;
+        private final Stopwatch stopwatch = Stopwatch.createStarted();
+
+        public ResponseObserver(String methodFlag, Stopwatch stopwatchOuter) {
+            this.methodFlag = methodFlag;
+            printMessage(stopwatchOuter + " construct", methodFlag + ".init");
         }
+
+        @Override
+        public void onNext(GreeterProtoReply reply) {
+            String methodFlagInternal = methodFlag + ".onNext";
+            printReceivedMessage(reply.getMessage(), methodFlagInternal, stopwatch);
+            sleepAndPrintEndMessage(4, methodFlagInternal, stopwatch);
+        }
+
+        @Override
+        public void onError(Throwable throwable) {
+            printMessage(throwable, methodFlag + ".onError");
+        }
+
+        @Override
+        public void onCompleted() {
+            String methodFlagInternal = methodFlag + ".onCompleted";
+            printReceivedMessage("completed", methodFlagInternal, stopwatch);
+            sleepAndPrintEndMessage(2, methodFlagInternal, stopwatch);
+            super.complete("completed");
+        }
+
+        @Override
+        public String get(long timeout, TimeUnit unit) {
+            try {
+                return super.get(timeout, unit);
+            } catch (InterruptedException | ExecutionException | TimeoutException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
     }
 
 }
