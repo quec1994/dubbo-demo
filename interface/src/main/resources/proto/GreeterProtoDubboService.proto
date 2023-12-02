@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 
-package com.demo.openapi.dubbo.greeter;
+package  com.quest94.demo.openapi.dubbo.greeter;
 
 
 // The request message containing the user's name.
