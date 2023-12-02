@@ -9,6 +9,7 @@ import org.apache.dubbo.config.ProviderConfig;
 import org.apache.dubbo.config.RegistryConfig;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
+import org.apache.dubbo.rpc.Constants;
 import org.apache.dubbo.rpc.protocol.dubbo.DubboProtocol;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@EnableDubbo(scanBasePackages = "com.demo.provider.openapi.dubbo")
+@EnableDubbo(scanBasePackages = "com.quest94.demo.provider.openapi.dubbo")
 public class DubboConfiguration {
 
     private static final String PROTOCOL_ID_DUBBO = CommonConstants.DUBBO;
@@ -30,7 +31,7 @@ public class DubboConfiguration {
         forceAssignLoggerFactory();
     }
 
-    @DubboReference(group ="default")
+    @DubboReference(group = "default", scope = Constants.SCOPE_LOCAL)
     private GreeterDubboService greeterDubboService;
 
     private static void forceAssignLoggerFactory() {
