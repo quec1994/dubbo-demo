@@ -7,15 +7,14 @@
     <parent>
         <groupId>com.quest94.demo</groupId>
         <artifactId>dubbo-demo</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>consumer</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>${project.parent.artifactId}-${project.artifactId}</name>
+    <artifactId>${project.parent.artifactId}-consumer</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
-        <com.demo.interface.version>1.0-SNAPSHOT</com.demo.interface.version>
+        <com.quest94.demo.interface.version>0.0.1-SNAPSHOT</com.quest94.demo.interface.version>
         <proto.source.root>target/dependency/proto</proto.source.root>
     </properties>
 
@@ -23,8 +22,8 @@
 
         <dependency>
             <groupId>com.quest94.demo</groupId>
-            <artifactId>interface</artifactId>
-            <version>${com.demo.interface.version}</version>
+            <artifactId>dubbo-demo-interface</artifactId>
+            <version>${com.quest94.demo.interface.version}</version>
             <scope>compile</scope>
         </dependency>
 
@@ -120,7 +119,7 @@
                                     <artifactItem>
                                         <groupId>com.quest94.demo</groupId>
                                         <artifactId>interface</artifactId>
-                                        <version>${com.demo.interface.version}</version>
+                                        <version>${com.quest94.demo.interface.version}</version>
                                         <outputDirectory>${proto.source.root}</outputDirectory>
                                         <includes>proto\/*.proto</includes>
                                     </artifactItem>
