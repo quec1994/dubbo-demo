@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.demo</groupId>
+        <groupId>com.quest94.demo</groupId>
         <artifactId>dubbo-demo</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
@@ -22,7 +22,7 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.demo</groupId>
+            <groupId>com.quest94.demo</groupId>
             <artifactId>interface</artifactId>
             <version>${com.demo.interface.version}</version>
             <scope>compile</scope>
@@ -118,7 +118,7 @@
                             <configuration>
                                 <artifactItems>
                                     <artifactItem>
-                                        <groupId>com.demo</groupId>
+                                        <groupId>com.quest94.demo</groupId>
                                         <artifactId>interface</artifactId>
                                         <version>${com.demo.interface.version}</version>
                                         <outputDirectory>${proto.source.root}</outputDirectory>

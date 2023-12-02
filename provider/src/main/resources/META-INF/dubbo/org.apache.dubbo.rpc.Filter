@@ -1,1 +1,1 @@
-watcher=com.demo.provider.base.filter.dubbo.WatcherDubboFilter
+watcher=dubbo.filter.base.com.quest94.demo.provider.WatcherDubboFilter
